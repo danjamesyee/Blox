@@ -13,6 +13,14 @@ const users = require("./routes/api/users");
 //body parser lets us parse JSON we send to frontend
 const bodyParser = require('body-parser');
 
+//Passport authenticates our token and constructs private routes
+const passport = require("passport");
+
+//middleware for passport
+app.use(passport.initialize());
+//setup config file for Passport
+require("./config/passport")(passport);
+
 //setup some middleware for body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,9 +30,6 @@ mongoose
 .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
 .then(() => console.log("Connected to MongoDB successfully"))
 .catch(err => console.log(err));
-
-//setup basic route to render some info on our page
-app.get("/", (req, res) => res.send("Hello World 2"));
 
 //tell Express to you route
 app.use("/api/users", users);
