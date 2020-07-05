@@ -43,20 +43,18 @@ We will need to:
   
   ### Group Members and Work Breakdown
   
-  #### July 4 - July 5
+  ### July 4 - July 5:
+   * Set up database (Alex)
+   * Write proposal Readme and plan work (Yee)
+   * Implement user authentication (Alex)
   
-    * Set up database (Alex)
-    * Write proposal Readme and plan work (Yee)
-    * Implement user authentication (Alex)
+  ### July 6 - July 7:
   
-  #### July 6 - July 7
+   * Investigate sound library and test usage (Chau) 
+   * Build React front-end interaction with sound library (Yee)
+   * Build backend for musical CRUD (Creppel)
+   * Implement user authentication (Alex)
   
-    * Investigate sound library and test usage (Chau) 
-    * Build React front-end interaction with sound library (Yee)
-    * Build backend for musical CRUD (Creppel)
-    * Implement user authentication (Alex)
-  
-  #### July 8
-    
-    * Integrate musical CRUD backend with React front-end (Yee/Creppel)
-    * 
+  ### July 8
+   * Integrate musical CRUD backend with React front-end (Yee/Creppel)
+   * 
