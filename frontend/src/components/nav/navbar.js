@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 
 
 class NavBar extends React.Component {
@@ -39,6 +40,7 @@ class NavBar extends React.Component {
         <div>
           <Link to={"/signup"}>Signup</Link>
           <Link to={"/login"}>Login</Link>
+          <br />
           <button type="button" className="demouser-button" onClick={this.handleDemoUser}>DEMO LOGIN</button>
         </div>
       );
@@ -55,4 +57,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
