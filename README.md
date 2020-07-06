@@ -55,6 +55,16 @@ We will need to:
    * Build backend for musical CRUD (Creppel)
    * Implement user authentication (Alex)
   
+  
   ### July 8
    * Integrate musical CRUD backend with React front-end (Yee/Creppel)
-   * 
+   * Styling template on display (Chau)
+   * Assist implementing functionality of musical tracks (Chau)
+
+  ### July 9-10:
+   * Implement search functionality (Chau)
+
+  ### July 11-12:
+   * Build User's Page to see all tracks created (Chau)
+   * Work on production README (Chau)
+
