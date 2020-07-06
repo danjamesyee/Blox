@@ -3,9 +3,13 @@ const Schema = mongoose.Schema;
 
 const TrackSchema = new Schema(
   {
-    blocks: {
+    blocks: [{
       type: Schema.Types.ObjectId,
       ref: 'Block'
+    }],
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
   },
   { timestamps: true }
