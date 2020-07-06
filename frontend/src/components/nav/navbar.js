@@ -29,8 +29,8 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className='nav-btn'>
-          <Button to={"/signup"}>Signup</Button>
-          <Button to={"/login"}>Login</Button>
+          <Button><Link to="/signup">Signup</Link></Button>
+          <Button><Link to="/login">Login</Link></Button>
         </div>
       );
     }
