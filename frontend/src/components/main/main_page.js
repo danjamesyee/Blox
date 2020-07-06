@@ -1,15 +1,31 @@
 import React from "react";
 import './mainpage.scss';
-import
+import { Container, Row, Col, Toast } from 'react-bootstrap'
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
   render() {
     return (
+      
+        
       <div className='main-page'>
-        <h1 className='title'>MERNblocks</h1>
-        <footer>Copyright &copy; 2020 Daniel Group</footer>
+        <Container>
+          <Row>
+            <Toast>
+              <Toast.Header>
+                <strong><h1 className='title'>MERNblocks</h1></strong>
+                <small>Checked out</small>
+              </Toast.Header>
+              <Toast.Body>
+                The best rhythm game in the biz! (for kids at least)
+              </Toast.Body>
+            </Toast>
+            <footer>Copyright &copy; 2020 Daniel Group</footer>
+          </Row>
+        </Container>
       </div>
+        
+      
     );
   }
 }
