@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { Button } from "react-bootstrap";
+import './navbar.scss';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -27,9 +28,9 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+        <div className='nav-btn'>
+          <Button to={"/signup"}>Signup</Button>
+          <Button to={"/login"}>Login</Button>
         </div>
       );
     }

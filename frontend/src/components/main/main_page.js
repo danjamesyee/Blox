@@ -20,9 +20,9 @@ class MainPage extends React.Component {
                 The best rhythm game in the biz! (for kids at least)
               </Toast.Body>
             </Toast>
-            <footer>Copyright &copy; 2020 Daniel Group</footer>
           </Row>
         </Container>
+        <footer>Copyright &copy; 2020 Daniel Group</footer>
       </div>
         
       
