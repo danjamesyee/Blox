@@ -1,0 +1,16 @@
+import React from "react";
+import { Provider } from "react-redux";
+import { HashRouter } from "react-router-dom";
+// We'll create this soon
+import App from "./app";
+
+//configure root component with hash router and provide store to each sub-component
+const Root = ({ store }) => (
+  <Provider store={store}>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </Provider>
+);
+
+export default Root;
