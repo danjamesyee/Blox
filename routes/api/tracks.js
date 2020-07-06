@@ -15,10 +15,10 @@ router.get("/", (req, res) => {
     .catch(err => res.status(400).json(err))
 });
 
-// tracks show
+// tracks user's show
 router.get("/user/:user_id", (req, res) => {
   Track
-    .findById(req.params.user_id)
+    .find({user: req.params.user_id})
     .sort({ date: -1 })
     .then(tracks => res.json(tracks))
     .catch(err => res.status(400).json(err))
@@ -35,6 +35,11 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   track.blocks = req.body.blocks.map(block => block.id);
   track.save();
   res.json('Created new track.');
+});
+
+// tracks edit
+router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+
 });
 
 module.exports = router;
