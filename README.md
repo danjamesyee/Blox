@@ -59,18 +59,21 @@ We will need to:
    * Build backend for musical CRUD (Creppel)
    * Implement user authentication (Alex)
   
+  
   ### July 8
    * Integrate musical CRUD backend with React front-end (Yee/Creppel)
-   * Seed data for musical block templates (Creppel)
+   * Styling template on display (Chau)
+   * Assist implementing functionality of musical tracks (Chau)
 
-  ### July 9
+  ### July 9-10:
+   * Implement search functionality (Chau)
    * Build backend for comments (Creppel)
+   * Build backend for upvotes (Alex)
 
-  ### July 10
-   * Build backend for upvotes (Creppel)
-
-  ### July 11
+  ### July 11-12:
+   * Build User's Page to see all tracks created (Chau)
+   * Work on production README (Yee)
+   * Seed data for musical block templates (Alex)
    * Build backend for search functionality (Creppel)
 
-  ### July 12
-   * Flex (Creppel)
+ 
