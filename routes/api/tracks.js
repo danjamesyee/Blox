@@ -39,14 +39,18 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
 // tracks edit
 router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Track.find(req.params.id)
+  Track.findById(req.params.id)
     .then(track => {
-      if (req.user.id !== track.user) {
+      // use != because user.id is string and track.user is object
+      if (req.user.id != track.user) {
         res.status(403).json('Cannot edit track!')
       } else {
-        
+        track.blocks = req.body.blocks.map(block => block.id);
+        track.save();
+        res.json('Successfully updated track.')
       }
     })
-});
+    .catch(err => res.json(err))
+  });
 
 module.exports = router;
