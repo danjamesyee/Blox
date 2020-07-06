@@ -15,10 +15,10 @@ router.get("/", (req, res) => {
     .catch(err => res.status(400).json(err))
 });
 
-// tracks user's show
-router.get("/user/:user_id", (req, res) => {
+// show tracks for currentUser
+router.get("/currentUser", passport.authenticate('jwt', {session: false}), (req, res) => {
   Track
-    .find({user: req.params.user_id})
+    .find({user: req.user.id})
     .sort({ date: -1 })
     .then(tracks => res.json(tracks))
     .catch(err => res.status(400).json(err))
@@ -39,7 +39,14 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
 // tracks edit
 router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-
+  Track.find(req.params.id)
+    .then(track => {
+      if (req.user.id !== track.user) {
+        res.status(403).json('Cannot edit track!')
+      } else {
+        
+      }
+    })
 });
 
 module.exports = router;
