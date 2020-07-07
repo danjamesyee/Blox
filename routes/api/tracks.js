@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Track = require('../../models/Track');
+const Vote = require('../../models/Vote');
 const validateTracksInput = require('../../validation/tracks');
 const passport = require("passport");
 
@@ -11,7 +12,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the tracks route" }))
 router.get("/", (req, res) => {
   Track
     .find()
-    .sort({ date: -1 })
+    .sort({ createdAt: -1 })
     .then(tracks => res.json(tracks))
     .catch(err => res.status(400).json(err))
 });
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
 router.get("/user/:user_id", (req, res) => {
   debugger;
   Track.find({ user: req.params.user_id })
-    .sort({ date: -1 })
+    .sort({ createdAt: -1 })
     .then((tracks) => res.json(tracks))
     .catch((err) => res.status(400).json(err));
 });
@@ -29,20 +30,24 @@ router.get("/user/:user_id", (req, res) => {
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   // attach user to track
   const { errors, isValid } = validateTracksInput(req.body.blocks);
-
+  
   if (!isValid) {
     res.status(400).json(errors);
   }
- 
+  
   const track = new Track({
     user: req.user.id
   });
-
+  
   // populate blocks
   track.blocks = req.body.blocks.map(block => block._id);
   track
-    .save()
-    .then(res.json('Created new track.'))
+  .save()
+  .then(() => {
+    // create vote referencing new track
+      Vote.create({ rating: 0, track: track._id })
+      res.json('Created new track.')
+    })
     .catch(err => res.json(err));
 });
 
