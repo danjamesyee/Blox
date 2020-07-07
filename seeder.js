@@ -7,11 +7,12 @@ seeder.connect(db, () => {
   // Load Mongoose models
   seeder.loadModels([
     './models/User.js',
-    './models/Block.js'
+    './models/Block.js',
+    './models/Tracks.js'
   ]);
 
   // Clear specified collections
-  seeder.clearModels(['User', 'Block'], () => {
+  seeder.clearModels(['User', 'Block', 'Track'], () => {
 
     // Callback to poplulate DB once models are cleared
     seeder.populateModels(data, () => {
@@ -20,6 +21,7 @@ seeder.connect(db, () => {
   });
 });
 
+// Populate demo user and block templates
 const data = [
   {
     model: "User",
