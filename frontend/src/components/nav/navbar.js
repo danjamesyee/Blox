@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
+import { Toast, Button } from 'react-bootstrap'
 import { Route, Redirect, withRouter } from "react-router-dom";
-
-
-
-import { Button } from "react-bootstrap";
 import './navbar.scss';
 
 class NavBar extends React.Component {
@@ -61,10 +59,22 @@ class NavBar extends React.Component {
 
   render() {
     return (
+
       <div className='navbar'>
-        <h1>User</h1>
+        <Toast>
+          <Toast.Header>
+            <strong>
+              <Link to='/'><h1 className="title">BLOX</h1></Link>
+            </strong>
+            <small>BEAT</small>
+          </Toast.Header>
+          <Toast.Body>
+            The best rhythm game in the biz!
+          </Toast.Body>
+        </Toast>
         {this.getLinks()}
       </div>
+
     );
   }
 }
