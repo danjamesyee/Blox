@@ -1,8 +1,7 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, Route, Redirect, withRouter } from "react-router-dom";
 import './form.scss';
 import { Form, Button } from 'react-bootstrap';
-
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class LoginForm extends React.Component {
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/placeholder");
+      this.props.history.push("/");
     }
 
     // Set or clear errors
@@ -45,12 +44,13 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user).then(() => window.location.reload());
   }
 
 
   render() {
-  
+    
+
     let emailError;
     if (this.state.errors.email === undefined) {
       emailError = null
@@ -94,9 +94,8 @@ class LoginForm extends React.Component {
             {passwordError}
           </Form.Group>
         
-          <Button variant="success" type="submit">
-            Submit
-          </Button>
+          <Button variant="success" type="submit">Submit</Button>
+            
 
         </Form>
       </div>
