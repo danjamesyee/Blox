@@ -12,7 +12,7 @@ router.get("/test", (req, res) =>
 // tracks index: return all tracks
 router.get("/", (req, res) => {
   Track.find()
-    .sort({ date: -1 })
+    .sort({ createdAt: -1 })
     .then((tracks) => res.json(tracks))
     .catch((err) => res.status(400).json(err));
 });
@@ -41,8 +41,7 @@ router.post(
     // attach user and title to track
     const track = new Track({
       user: req.user.id,
-      title: req.body.title,
-      rating: 0
+      title: req.body.title
     });
 
     // populate blocks
