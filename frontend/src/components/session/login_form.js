@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import './form.scss';
-import { Form,  Badge, Button, Alert } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 
 class LoginForm extends React.Component {
@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+   
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -48,32 +48,27 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
-  // Render the session errors if there are any
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
-        ))}
-      </ul>
-    );
-  }
 
   render() {
+  
+    let emailError;
+    if (this.state.errors.email === undefined) {
+      emailError = null
+    } else { emailError = <div className='errors'>{Object.values(this.state.errors.email).join('')}</div> }
 
-    let errorsRender;
-    if ( this.renderErrors() ) {
-      errorsRender = 
-        <Alert variant='danger'>
-          {this.renderErrors()}
-        </Alert>
-    } else { errorsRender = <div></div>}
+    let passwordError;
+    if (this.state.errors.password === undefined) {
+      passwordError = null
+    } else { passwordError = <div className='errors'>{Object.values(this.state.errors.password).join('')}</div> }
 
     return (
-      <div className='login-form'>
-        <h2><Badge variant="success">Login</Badge></h2>
-        <Form onSubmit={this.handleSubmit}>
+      <div className='form'>
+        
+        <header>
+          <h2>Login and lets Block'em Beats!</h2>
+        </header>
 
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control 
@@ -82,6 +77,7 @@ class LoginForm extends React.Component {
               onChange={this.update("email")} 
               placeholder="Enter email"
             />
+            {emailError}
             <Form.Text className="text-muted">
               We'll never share your email with anybody.
             </Form.Text>
@@ -95,13 +91,12 @@ class LoginForm extends React.Component {
               onChange={this.update("password")} 
               placeholder="Password" 
             />
+            {passwordError}
           </Form.Group>
-
+        
           <Button variant="success" type="submit">
             Submit
           </Button>
-
-          {errorsRender}
 
         </Form>
       </div>
@@ -111,23 +106,4 @@ class LoginForm extends React.Component {
 
 export default withRouter(LoginForm);
 
-{/* <Form>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form> */}
