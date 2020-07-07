@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Vote = require("../../models/Vote");
-const Track = require("../../models/Track");
 const passport = require("passport");
 
 // test
