@@ -81,7 +81,7 @@ class Tracks extends React.Component {
 
     let notes = this.state.notes || [];
     let blocks = this.props.blocks || [];
-    debugger;
+    // debugger;
     return (
       <div>
         <h1>MERNblocks</h1>
