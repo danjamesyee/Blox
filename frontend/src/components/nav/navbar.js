@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom'
 
 
+import { Button } from "react-bootstrap";
+import './navbar.scss';
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +40,8 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
+
+        <div className='nav-btn'>
           <Link to={"/signup"}>Signup</Link>
           <Link to={"/login"}>Login</Link>
           <br />

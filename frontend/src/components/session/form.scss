@@ -1,0 +1,27 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-form form {
+    width: 30%;
+}
+
+.fade {
+    margin-top: 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.signup-form form {
+    width: 30%;
+}

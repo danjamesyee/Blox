@@ -1,0 +1,28 @@
+//RESET SECTION
+
+
+//THE GOOD STUFF
+.container {
+    color: #FFB400;
+    display: inherit;
+    font-weight: bold;
+}
+
+.row {
+    margin: auto;
+}
+
+.main-page {
+    border: 1px solid black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80vh;
+}
+
+.main-page button {
+    display: none;
+}
+

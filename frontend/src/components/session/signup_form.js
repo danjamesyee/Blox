@@ -1,5 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import './form.scss';
+import { Form,  Badge, Button, Alert } from 'react-bootstrap';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -54,46 +56,113 @@ class SignupForm extends React.Component {
   }
 
   render() {
+
+    let errorsRender;
+    if ( this.renderErrors() ) {
+      errorsRender = 
+        <Alert variant='danger'>
+          {this.renderErrors()}
+        </Alert>
+    } else { errorsRender = <div></div>}
+
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br />
-            <input
-              type="text"
+      <div className="signup-form">
+        <h2><Badge variant="success">Sign Up</Badge></h2>
+
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control 
+              type="email"
               value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
+              onChange={this.update("email")} 
+              placeholder="Enter email"
             />
-            <br />
-            <input
+            <Form.Text className="text-muted">
+              We'll never share your email with anybody.
+            </Form.Text>
+          </Form.Group>
+          
+          <Form.Group controlId="formBasicHandle">
+            <Form.Label>Handle</Form.Label>
+            <Form.Control 
               type="text"
               value={this.state.handle}
-              onChange={this.update("handle")}
-              placeholder="Handle"
+              onChange={this.update("handle")} 
+              placeholder="Enter handle"
             />
-            <br />
-            <input
+            <Form.Text className="text-muted">
+              Make a name for yourself.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
               type="password"
               value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
+              onChange={this.update("password")} 
+              placeholder="Password" 
             />
-            <br />
-            <input
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control 
               type="password"
               value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
+              onChange={this.update("password2")} 
+              placeholder="Resubmit Password" 
             />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
+          </Form.Group>
+
+          <Button variant="success" type="submit">
+            Submit
+          </Button>
+
+            {errorsRender}
+
+        </Form>
       </div>
     );
   }
 }
 
 export default withRouter(SignupForm);
+
+
+{/* <div className='login-form'>
+        <h3><Badge variant="danger">Login</Badge></h3>
+        <Form onSubmit={this.handleSubmit}>
+
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control 
+              type="email"
+              value={this.state.email}
+              onChange={this.update("email")} 
+              placeholder="Enter email"
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anybody.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
+              type="password"
+              value={this.state.password}
+              onChange={this.update("password")} 
+              placeholder="Password" 
+            />
+          </Form.Group>
+
+          <Button variant="success" type="submit">
+            Submit
+          </Button>
+          
+          {errorsRender}
+
+        </Form>
+      </div> */}
