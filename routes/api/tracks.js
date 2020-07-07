@@ -17,10 +17,9 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-
 // show tracks for a specific user
 router.get("/user/:user_id", (req, res) => {
-  debugger;
+  // debugger;
   Track.find({ user: req.params.user_id })
     .sort({ date: -1 })
     .then((tracks) => res.json(tracks))
@@ -32,6 +31,7 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+
     const { errors, isValid } = validateTracksInput(req.body);
     
     if (!isValid) {
