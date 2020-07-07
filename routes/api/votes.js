@@ -14,12 +14,18 @@ router.get('/', (req, res) => {
     .catch(err => res.status(400).json(err))
 })
 
-// get vote for specific track
+// get votes for specific track
 router.get('/track/:track_id', (req, res) => {
-  Track
-    .findById(req.params.track_id)
-    .then(track => res.json(track))
+  Vote
+    .find(req.params.track_id)
+    .then(tracks => res.json(tracks))
     .catch(err => res.status(400).json(err));
+});
+
+// upvote track either create a vote instance if it does not already exist
+// OR update a vote instance // ! NOT RESTful
+router.post(':id', (req, res) => {
+  
 });
 
 module.exports = router;
