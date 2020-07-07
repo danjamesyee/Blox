@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Track = require('../../models/Track');
-const Vote = require('../../models/Vote');
 const validateTracksInput = require('../../validation/tracks');
 const passport = require("passport");
 
@@ -36,18 +35,15 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   }
   
   const track = new Track({
-    user: req.user.id
+    user: req.user.id,
+    rating: 0
   });
   
   // populate blocks
   track.blocks = req.body.blocks.map(block => block._id);
   track
   .save()
-  .then(() => {
-    // create vote referencing new track
-      Vote.create({ rating: 0, track: track._id })
-      res.json('Created new track.')
-    })
+    .then(() => res.json('Created new track.'))
     .catch(err => res.status(400).json(err));
 });
 
