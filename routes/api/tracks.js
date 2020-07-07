@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Track = require('../../models/Track');
+const validateTracksInput = require('../../validation/tracks');
 const passport = require("passport");
 
 // test
@@ -27,6 +28,12 @@ router.get("/user/:user_id", (req, res) => {
 // tracks create
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   // attach user to track
+  const { errors, isValid } = validateTracksInput(req.body.blocks);
+
+  if (!isValid) {
+    res.status(400).json(errors);
+  }
+ 
   const track = new Track({
     user: req.user.id
   });
