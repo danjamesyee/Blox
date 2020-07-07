@@ -33,8 +33,10 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
   // populate blocks
   track.blocks = req.body.blocks.map(block => block.id);
-  track.save();
-  res.json('Created new track.');
+  track
+    .save()
+    .then(res.json('Created new track.'))
+    .catch(err => res.json(err));
 });
 
 // tracks edit
@@ -46,11 +48,29 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
         res.status(403).json('Cannot edit track!')
       } else {
         track.blocks = req.body.blocks.map(block => block.id);
-        track.save();
-        res.json('Successfully updated track.')
+        track
+          .save()
+          .then(res.json('Successfully updated track.'))
+          .catch(err => res.json(err));
       }
     })
     .catch(err => res.json(err))
   });
+
+// tracks delete
+router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Track.findById(req.params.id)
+    .then( track => {
+      // use != because user.id is string and track.user is object
+      if (req.user.id != track.user) {
+        res.status(403).json("Cannot delete track!");
+      } else {
+        Track.deleteOne({ _id: req.params.id })
+          .then(() => res.json("Successfully deleted track."))
+          .catch(err => res.json(err));
+      }
+    })
+    .catch((err) => res.json(err));
+});
 
 module.exports = router;
