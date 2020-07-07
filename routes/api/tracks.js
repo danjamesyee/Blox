@@ -17,17 +17,15 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-// show tracks for currentUser
-router.get(
-  "/currentUser",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Track.find({ user: req.user.id })
-      .sort({ date: -1 })
-      .then((tracks) => res.json(tracks))
-      .catch((err) => res.status(400).json(err));
-  }
-);
+
+// show tracks for a specific user
+router.get("/user/:user_id", (req, res) => {
+  debugger;
+  Track.find({ user: req.params.user_id })
+    .sort({ date: -1 })
+    .then((tracks) => res.json(tracks))
+    .catch((err) => res.status(400).json(err));
+});
 
 // tracks create
 router.post(
