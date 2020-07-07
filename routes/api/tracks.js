@@ -41,7 +41,8 @@ router.post(
     // attach user and title to track
     const track = new Track({
       user: req.user.id,
-      title: req.body.title
+      title: req.body.title,
+      rating: 0
     });
 
     // populate blocks
