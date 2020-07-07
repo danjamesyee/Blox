@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Toast, Button } from 'react-bootstrap'
 import { Route, Redirect, withRouter } from "react-router-dom";
-import './navbar.scss';
+
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -67,9 +67,9 @@ class NavBar extends React.Component {
             </strong>
             <small>BEAT</small>
           </Toast.Header>
-          <Toast.Body>
-            The best rhythm game in the biz!
-          </Toast.Body>
+          {/* <Toast.Body>
+            The best rhythm maker in the biz!
+          </Toast.Body> */}
         </Toast>
         {this.getLinks()}
       </div>

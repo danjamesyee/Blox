@@ -5,7 +5,7 @@ import NavBarContainer from "./nav/navbar_container";
 
 //For React-Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.scss'; 
+// import '../App.scss'; 
 
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
