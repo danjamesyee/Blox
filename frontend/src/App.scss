@@ -3,6 +3,30 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+//app.js
+.gpage-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+}
+
+.g-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #87919E;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+
 /* The following line can be included in a src/App.scss */
 
 @import "~bootstrap/scss/bootstrap";

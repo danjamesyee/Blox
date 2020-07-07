@@ -71,7 +71,7 @@ class SignupForm extends React.Component {
     return (
       <div className="form">
         <header>
-          <h2>Signup to make some Beats!</h2>
+          <h2>Signup to BLOX some beats!</h2>
         </header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
