@@ -8,7 +8,7 @@ seeder.connect(db, () => {
   seeder.loadModels([
     './models/User.js',
     './models/Block.js',
-    './models/Tracks.js'
+    './models/Track.js'
   ]);
 
   // Clear specified collections
