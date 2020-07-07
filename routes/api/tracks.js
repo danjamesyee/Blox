@@ -32,25 +32,24 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    // attach user to track
-    debugger;
-
     const { errors, isValid } = validateTracksInput(req.body);
-
+    
     if (!isValid) {
       res.status(400).json(errors);
     }
-
+    
+    // attach user and title to track
     const track = new Track({
       user: req.user.id,
+      title: req.body.title
     });
 
     // populate blocks
-    track.blocks = req.body.map((block) => block._id);
+    track.blocks = req.body.blocks.map((block) => block._id);
     track
       .save()
       .then(res.json("Created new track."))
-      .catch((err) => res.json(err));
+      .catch((err) => res.status(400).json(err));
   }
 );
 
@@ -65,14 +64,15 @@ router.patch(
         if (req.user.id != track.user) {
           res.status(403).json("Cannot edit track!");
         } else {
-          track.blocks = req.body.map((block) => block._id);
+          track.title = req.body.title;
+          track.blocks = req.body.blocks.map((block) => block._id);
           track
             .save()
             .then(res.json("Successfully updated track."))
-            .catch((err) => res.json(err));
+            .catch((err) => res.status(400).json(err));
         }
       })
-      .catch((err) => res.json(err));
+      .catch((err) => res.status(400).json(err));
   }
 );
 
@@ -89,10 +89,10 @@ router.delete(
         } else {
           Track.deleteOne({ _id: req.params.id })
             .then(() => res.json("Successfully deleted track."))
-            .catch((err) => res.json(err));
+            .catch((err) => res.status(400).json(err));
         }
       })
-      .catch((err) => res.json(err));
+      .catch((err) => res.status(400).json(err));
   }
 );
 
