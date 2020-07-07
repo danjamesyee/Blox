@@ -1,13 +1,21 @@
 import { connect } from "react-redux";
-import { signup } from "../../actions/session_actions";
+import { makeTrack } from "../../actions/track_actions";
+import { fetchBlocks } from "../../actions/block_actions";
 import Tracks from "./tracks";
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    currentUser: state.session.user,
+    newTrack: {},
+    blocks: Object.values(state.blocks),
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    makeTrack: (track) => dispatch(makeTrack(track)),
+    fetchBlocks: (blocks) => dispatch(fetchBlocks(blocks)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracks);

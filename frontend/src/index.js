@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {login} from './util/session_api_util'
+import { login } from "./util/session_api_util";
 
 import Root from "./components/root";
 import configureStore from "./store/store";
@@ -10,6 +10,8 @@ import jwt_decode from "jwt-decode";
 
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
+import * as APITrackUtil from "./actions/track_actions";
+import { fetchBlocks } from "./actions/block_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -43,10 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
-
-  window.login = login
+  window.makeTrack = APITrackUtil.makeTrack;
+  // window.editTrack = APITrackUtil.editTrack;
+  // window.getTracks = APITrackUtil.getTracks;
+  window.fetchBlocks = fetchBlocks;
+  window.login = login;
 
   ReactDOM.render(<Root store={store} />, root);
-
-
 });
