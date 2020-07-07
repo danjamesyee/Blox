@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const TrackSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: true
+    },
     blocks: [{
       type: Schema.Types.ObjectId,
       ref: 'Block'
