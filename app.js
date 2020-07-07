@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //import your key
-const db = require('./config/keys').mongoURI;
+const db = require("./config/keys").mongoURI;
 
 //create new express server
 const express = require("express");
@@ -11,7 +11,7 @@ const app = express();
 const users = require("./routes/api/users");
 
 //body parser lets us parse JSON we send to frontend
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 //Passport authenticates our token and constructs private routes
 const passport = require("passport");
@@ -27,9 +27,9 @@ app.use(bodyParser.json());
 
 //connect to MongoDB using Mongoose
 mongoose
-.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
-.then(() => console.log("Connected to MongoDB successfully"))
-.catch(err => console.log(err));
+  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch((err) => console.log(err));
 
 //tell Express to you route
 app.use("/api/users", users);
@@ -41,4 +41,3 @@ const port = process.env.PORT || 5000;
 //tell Express to start a socket and listen for connections on the path
 //also logs a success message to the console when server is running sucessfully
 app.listen(port, () => console.log(`Server is running on port ${port}`));
-
