@@ -3,6 +3,22 @@ a {
     text-decoration: none;
 }
 
+// app.js
+.g-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.g-layout footer {
+    width: 100%;
+    padding: 5px;
+    border-top: 1px solid #87919E;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 /* The following line can be included in a src/App.scss */
 
 @import "~bootstrap/scss/bootstrap";

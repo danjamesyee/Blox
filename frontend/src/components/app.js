@@ -13,14 +13,18 @@ import SignupFormContainer from "./session/signup_form_container";
 import Tracks from "./tracks/tracks_container";
 
 const App = () => (
-  <div>
+  <div className='g-layout'>
     <NavBarContainer />
+
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/track" component={Tracks} />
     </Switch>
+
+    <footer>Copyright &copy; 2020 Daniel Group</footer>
+
   </div>
 );
 

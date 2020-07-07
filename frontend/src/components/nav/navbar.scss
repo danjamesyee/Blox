@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.logout {
+    height: 100%;
+}
+
 .logout .btn {
     margin: 5px;
     padding: 5px;
@@ -9,6 +13,10 @@
 
 .logout .btn:hover {
     color: cornflowerblue;
+}
+
+.nav-btn {
+    height: 100%
 }
 
 .nav-btn .btn {
@@ -25,3 +33,20 @@
     text-decoration: none;
 }
 
+.toast-body {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    color: #87919E;
+}
+
+.toast button {
+    display: none;
+}
+
+strong {
+    font-family: 'Quantico', sans-serif;
+}
+
+strong a:hover {
+    text-decoration: none;
+}

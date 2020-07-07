@@ -26,8 +26,6 @@ class MainPage extends React.Component {
             </Toast>
           </Row>
         </Container>
-
-        <footer>Copyright &copy; 2020 Daniel Group</footer>
       </div>
     );
   }
