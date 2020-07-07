@@ -1,27 +1,38 @@
-.login-form {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top: 5%;
 }
 
-.login-form form {
-    width: 30%;
+.form form {
+    width: 28%;
+}
+
+.form header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .fade {
     margin-top: 10px;
 }
 
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+
+.errors {
+    margin-top: 10px;
+    color: red;
+    list-style: none;
+    font-size: 11px;
+    left: 0;
 }
 
-.signup-form form {
-    width: 30%;
+
+//RESET
+ul {
+    padding: 0;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 import './mainpage.scss';
-import { Container, Row, Col, Toast } from 'react-bootstrap'
+import { Container, Row, Toast } from 'react-bootstrap'
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
