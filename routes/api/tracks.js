@@ -31,24 +31,23 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-
     const { errors, isValid } = validateTracksInput(req.body);
-    
+
     if (!isValid) {
       res.status(400).json(errors);
     }
-    
+
     // attach user and title to track
     const track = new Track({
       user: req.user.id,
-      title: req.body.title
+      title: req.body.title,
     });
 
     // populate blocks
     track.blocks = req.body.blocks.map((block) => block._id);
     track
       .save()
-      .then(res.json("Created new track."))
+      .then((track) => res.json(track))
       .catch((err) => res.status(400).json(err));
   }
 );
@@ -68,7 +67,7 @@ router.patch(
           track.blocks = req.body.blocks.map((block) => block._id);
           track
             .save()
-            .then(res.json("Successfully updated track."))
+            .then((track) => res.json(track))
             .catch((err) => res.status(400).json(err));
         }
       })
