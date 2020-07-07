@@ -9,10 +9,11 @@ seeder.connect(db, () => {
     "./models/User.js",
     "./models/Block.js",
     "./models/Track.js",
+    "./models/Vote.js",
   ]);
 
   // Clear specified collections
-  seeder.clearModels(["User", "Block", "Track"], () => {
+  seeder.clearModels(["User", "Block", "Track", "Vote"], () => {
     // Callback to poplulate DB once models are cleared
     seeder.populateModels(data, () => {
       seeder.disconnect();
