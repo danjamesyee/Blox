@@ -5,11 +5,15 @@ const VoteSchema = new Schema(
   {
     rating: {
       type: Number,
-      required: true
+      default: 0
     },
     track: {
       type: Schema.Types.ObjectId,
       ref: 'Track'
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
   }
 );
