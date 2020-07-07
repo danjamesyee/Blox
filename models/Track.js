@@ -10,10 +10,6 @@ const TrackSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User'
-    },
-    upvote: {
-      type: Schema.Types.ObjectId,
-      ref: 'Vote'
     }
   },
   { timestamps: true }
