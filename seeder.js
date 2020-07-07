@@ -1,25 +1,28 @@
-const seeder = require('mongoose-seed');
-const db = require('./config/keys').mongoURI;
+const seeder = require("mongoose-seed");
+const db = require("./config/keys").mongoURI;
+const bcrypt = require("bcryptjs");
 
 // Connect to MongoDB
 seeder.connect(db, () => {
-
   // Load Mongoose models
   seeder.loadModels([
-    './models/User.js',
-    './models/Block.js',
-    './models/Track.js'
+    "./models/User.js",
+    "./models/Block.js",
+    "./models/Track.js",
   ]);
 
   // Clear specified collections
-  seeder.clearModels(['User', 'Block', 'Track'], () => {
-
+  seeder.clearModels(["User", "Block", "Track"], () => {
     // Callback to poplulate DB once models are cleared
     seeder.populateModels(data, () => {
       seeder.disconnect();
     });
   });
 });
+
+// bcrypt demo user password
+const salt = bcrypt.genSaltSync(10);
+const hash = bcrypt.hashSync("password", salt);
 
 // Populate demo user and block templates
 const data = [
@@ -29,7 +32,7 @@ const data = [
       {
         handle: "demouser",
         email: "demouser@gmail.com",
-        password: "password",
+        password: hash,
       },
     ],
   },
