@@ -1,5 +1,6 @@
 const seeder = require('mongoose-seed');
 const db = require('./config/keys').mongoURI;
+const bcrypt = require('bcryptjs');
 
 // Connect to MongoDB
 seeder.connect(db, () => {
@@ -21,6 +22,10 @@ seeder.connect(db, () => {
   });
 });
 
+// bcrypt demo user password
+const salt = bcrypt.genSaltSync(10);
+const hash = bcrypt.hashSync('password', salt);
+
 // Populate demo user and block templates
 const data = [
   {
@@ -29,8 +34,8 @@ const data = [
       {
         handle: "demouser",
         email: "demouser@gmail.com",
-        password: "password",
-      },
+        password: hash
+      }
     ],
   },
   {
