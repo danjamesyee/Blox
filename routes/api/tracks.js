@@ -48,7 +48,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
       Vote.create({ rating: 0, track: track._id })
       res.json('Created new track.')
     })
-    .catch(err => res.json(err));
+    .catch(err => res.status(400).json(err));
 });
 
 // tracks edit
@@ -62,11 +62,11 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
         track.blocks = req.body.blocks.map(block => block._id);
         track
           .save()
-          .then(res.json('Successfully updated track.'))
-          .catch(err => res.json(err));
+          .then(() => res.json('Successfully updated track.'))
+          .catch(err => res.status(400).json(err));
       }
     })
-    .catch(err => res.json(err))
+    .catch(err => res.status(400).json(err))
   });
 
 // tracks delete
@@ -79,10 +79,10 @@ router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res)
       } else {
         Track.deleteOne({ _id: req.params.id })
           .then(() => res.json("Successfully deleted track."))
-          .catch(err => res.json(err));
+          .catch(err => res.status(400).json(err));
       }
     })
-    .catch((err) => res.json(err));
+    .catch((err) => res.status(400).json(err));
 });
 
 module.exports = router;
