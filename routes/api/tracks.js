@@ -39,7 +39,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   });
 
   // populate blocks
-  track.blocks = req.body.blocks.map(block => block.id);
+  track.blocks = req.body.blocks.map(block => block._id);
   track
     .save()
     .then(res.json('Created new track.'))
@@ -54,7 +54,7 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
       if (req.user.id != track.user) {
         res.status(403).json('Cannot edit track!')
       } else {
-        track.blocks = req.body.blocks.map(block => block.id);
+        track.blocks = req.body.blocks.map(block => block._id);
         track
           .save()
           .then(res.json('Successfully updated track.'))
