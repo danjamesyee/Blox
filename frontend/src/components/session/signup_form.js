@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import './form.scss';
-import { Form,  Badge, Button, Alert } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -45,30 +45,34 @@ class SignupForm extends React.Component {
     this.props.signup(user, this.props.history);
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
-        ))}
-      </ul>
-    );
-  }
 
   render() {
 
-    let errorsRender;
-    if ( this.renderErrors() ) {
-      errorsRender = 
-        <Alert variant='danger'>
-          {this.renderErrors()}
-        </Alert>
-    } else { errorsRender = <div></div>}
+    let emailError;
+    if (this.state.errors.email === undefined) {
+      emailError = null
+    } else { emailError = <div className='errors'>{Object.values(this.state.errors.email).join('')}</div> }
+
+    let passwordError;
+    if (this.state.errors.password === undefined) {
+      passwordError = null
+    } else { passwordError = <div className='errors'>{Object.values(this.state.errors.password).join('')}</div> }
+
+    let handleError;
+    if (this.state.errors.handle === undefined) {
+      handleError = null
+    } else { handleError = <div className='errors'>{Object.values(this.state.errors.handle).join('')}</div> }
+
+    let password2Error;
+    if (this.state.errors.password2 === undefined) {
+      password2Error = null
+    } else { password2Error = <div className='errors'>{Object.values(this.state.errors.password2).join('')}</div> }
 
     return (
-      <div className="signup-form">
-        <h2><Badge variant="success">Sign Up</Badge></h2>
-
+      <div className="form">
+        <header>
+          <h2>Signup to make some Beats!</h2>
+        </header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -78,6 +82,7 @@ class SignupForm extends React.Component {
               onChange={this.update("email")} 
               placeholder="Enter email"
             />
+            {emailError}
             <Form.Text className="text-muted">
               We'll never share your email with anybody.
             </Form.Text>
@@ -91,6 +96,7 @@ class SignupForm extends React.Component {
               onChange={this.update("handle")} 
               placeholder="Enter handle"
             />
+            {handleError}
             <Form.Text className="text-muted">
               Make a name for yourself.
             </Form.Text>
@@ -104,9 +110,10 @@ class SignupForm extends React.Component {
               onChange={this.update("password")} 
               placeholder="Password" 
             />
+            {passwordError}
           </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group controlId="reformBasicPassword">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control 
               type="password"
@@ -114,13 +121,12 @@ class SignupForm extends React.Component {
               onChange={this.update("password2")} 
               placeholder="Resubmit Password" 
             />
+            {password2Error}
           </Form.Group>
 
           <Button variant="success" type="submit">
             Submit
           </Button>
-
-            {errorsRender}
 
         </Form>
       </div>
@@ -131,38 +137,4 @@ class SignupForm extends React.Component {
 export default withRouter(SignupForm);
 
 
-{/* <div className='login-form'>
-        <h3><Badge variant="danger">Login</Badge></h3>
-        <Form onSubmit={this.handleSubmit}>
 
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control 
-              type="email"
-              value={this.state.email}
-              onChange={this.update("email")} 
-              placeholder="Enter email"
-            />
-            <Form.Text className="text-muted">
-              We'll never share your email with anybody.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control 
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")} 
-              placeholder="Password" 
-            />
-          </Form.Group>
-
-          <Button variant="success" type="submit">
-            Submit
-          </Button>
-          
-          {errorsRender}
-
-        </Form>
-      </div> */}

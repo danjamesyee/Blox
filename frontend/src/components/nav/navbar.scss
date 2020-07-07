@@ -1,6 +1,19 @@
+.navbar {
+    display: flex;
+}
+
+.logout .btn {
+    margin: 5px;
+    padding: 5px;
+}
+
+.logout .btn:hover {
+    color: cornflowerblue;
+}
 
 .nav-btn .btn {
     margin: 5px;
+    padding: 5px;
 }
 
 .nav-btn a {
@@ -9,4 +22,6 @@
 
 .nav-btn a:hover {
     color: lightgreen;
+    text-decoration: none;
 }
+
