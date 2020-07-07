@@ -65,10 +65,10 @@ class LoginForm extends React.Component {
       <div className='form'>
         
         <header>
-          <h2>Login and beat BLOX!</h2>
+          <h2>Login and lets Block'em Beats!</h2>
         </header>
 
-        <Form className='login' onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control 

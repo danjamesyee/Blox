@@ -11,12 +11,6 @@
     color: cornflowerblue;
 }
 
-.nav-btn {
-    height: 100%;
-    top: 0;
-    right: 0;
-}
-
 .nav-btn .btn {
     margin: 5px;
     padding: 5px;
@@ -31,28 +25,3 @@
     text-decoration: none;
 }
 
-// Title
-h1 {
-    font-family:'Quantico', sans-serif;
-    color: #89A1EF;
-    margin-bottom: 0;
-}
-
-strong a:hover {
-    text-decoration: none;
-}
-
-.toast-body {
-    // font-family: 'Fredoka One', cursive;
-    // font-family: 'Catamaran', sans-serif;
-    // font-weight: bold;
-    // font-family: 'Roboto Condensed', sans-serif;
-    // font-family: 'Titillium Web', sans-serif;
-    font-family: 'Ubuntu', sans-serif;
-    // color: #474954;
-    color: #87919E;
-}
-
-button {
-    display: none;
-}
