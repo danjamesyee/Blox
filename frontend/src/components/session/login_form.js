@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import './form.scss';
+import { Form,  Badge, Button, Alert } from 'react-bootstrap';
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class LoginForm extends React.Component {
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/");
+      this.props.history.push("/placeholder");
     }
 
     // Set or clear errors
@@ -57,31 +60,74 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
+    let errorsRender;
+    if ( this.renderErrors() ) {
+      errorsRender = 
+        <Alert variant='danger'>
+          {this.renderErrors()}
+        </Alert>
+    } else { errorsRender = <div></div>}
+
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
+      <div className='login-form'>
+        <h2><Badge variant="success">Login</Badge></h2>
+        <Form onSubmit={this.handleSubmit}>
+
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control 
+              type="email"
               value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
+              onChange={this.update("email")} 
+              placeholder="Enter email"
             />
-            <br />
-            <input
+            <Form.Text className="text-muted">
+              We'll never share your email with anybody.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
               type="password"
               value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
+              onChange={this.update("password")} 
+              placeholder="Password" 
             />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
+          </Form.Group>
+
+          <Button variant="success" type="submit">
+            Submit
+          </Button>
+
+          {errorsRender}
+
+        </Form>
       </div>
     );
   }
 }
 
 export default withRouter(LoginForm);
+
+{/* <Form>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" />
+  </Form.Group>
+  <Form.Group controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="Check me out" />
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+</Form> */}

@@ -9,6 +9,8 @@ const app = express();
 
 //import routes
 const users = require("./routes/api/users");
+const tracks = require("./routes/api/tracks");
+const blocks = require("./routes/api/blocks");
 
 //body parser lets us parse JSON we send to frontend
 const bodyParser = require("body-parser");
@@ -33,6 +35,8 @@ mongoose
 
 //tell Express to you route
 app.use("/api/users", users);
+app.use("/api/tracks", tracks);
+app.use("/api/blocks", blocks);
 
 //tell our app which port to run on, heroku requires process.env.PORT.
 //our server will now run on localhost:5000
