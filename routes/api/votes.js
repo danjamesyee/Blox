@@ -29,7 +29,7 @@ router.get('/track/:track_id', (req, res) => {
 // upvote track either create a vote instance if it does not already exist
 // OR update a vote instance // ! NOT RESTful
 router.post(
-  '/track/:track_id', 
+  '/track/:track_id/upvote', 
   passport.authenticate("jwt", { session: false }), 
   (req, res) => {
     Vote.find({ user: req.user.id, track: req.params.track_id })
