@@ -1,0 +1,62 @@
+.notes {
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
+  border-radius: 1px;
+  width: 100%;
+  padding-bottom: 1px;
+  border-bottom: 2px solid black;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notes > div {
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white;
+  align-items: center;
+}
+
+.tracks-container {
+  background: rgb(226, 237, 252);
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 50px;
+  font-family: "Raleway", sans-serif;
+}
+
+button {
+  border: 0px;
+  padding: 0px;
+}
+
+.track-title-form > button {
+  margin: 5px;
+  width: 70px;
+  height: 40px;
+  border-radius: 4px;
+  font-weight: 100;
+  color: white;
+  font-family: "Titillium Web", sans-serif;
+  background: black;
+}
+.tracks-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  padding-bottom: 50px;
+}
+
+.play-button {
+  margin: 5px;
+}
+
+.track-title-form > label {
+  font-family: "Raleway", sans-serif;
+}
