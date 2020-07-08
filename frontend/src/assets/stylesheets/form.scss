@@ -1,14 +1,20 @@
+
 .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 5%;
+    max-height: 100%;
+    padding-bottom: 5%;
 }
 
 .form form {
     width: 28%;
+}
+
+.login {
+    padding-bottom: 5%;
 }
 
 .form header {
@@ -29,10 +35,4 @@
     list-style: none;
     font-size: 11px;
     left: 0;
-}
-
-
-//RESET
-ul {
-    padding: 0;
 }

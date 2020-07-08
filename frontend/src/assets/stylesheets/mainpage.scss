@@ -1,5 +1,3 @@
-//RESET SECTION
-
 
 //THE GOOD STUFF
 .container {
@@ -13,13 +11,27 @@
 }
 
 .main-page {
-    border: 1px solid black;
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    width: 80%;
     height: 80vh;
+}
+
+.main-page header {
+    display: flex;
+    align-items: center;
+}
+
+.main-page h1 {
+    color: cornflowerblue;
+    font-size: 50px;
+}
+
+.main-page span {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .main-page button {

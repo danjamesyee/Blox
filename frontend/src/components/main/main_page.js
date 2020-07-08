@@ -1,8 +1,5 @@
 import React from "react";
-
-
-import './mainpage.scss';
-import { Container, Row, Toast } from 'react-bootstrap'
+import { Container, Row, Toast } from 'react-bootstrap';
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
@@ -11,23 +8,16 @@ class MainPage extends React.Component {
 
     return (
       <div className="main-page">
-        <Container>
-          <Row>
-            <Toast>
-              <Toast.Header>
-                <strong>
-                  <h1 className="title">MERNblocks</h1>
-                </strong>
-                <small>Checked out</small>
-              </Toast.Header>
-              <Toast.Body>
-                The best rhythm game in the biz! (for kids at least)
-              </Toast.Body>
-            </Toast>
-          </Row>
-        </Container>
 
-        <footer>Copyright &copy; 2020 Daniel Group</footer>
+        <header>
+          <strong>
+            <h1 className="title">BLOX</h1>
+          </strong>
+          <small>BEAT</small>
+        </header>
+            
+        <span>The best rhythm-beat maker in the biz!</span>
+        
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import './form.scss';
 import { Form, Button} from 'react-bootstrap';
 
 class SignupForm extends React.Component {
@@ -72,7 +71,7 @@ class SignupForm extends React.Component {
     return (
       <div className="form">
         <header>
-          <h2>Signup to make some Beats!</h2>
+          <h2>Signup to build Beats!</h2>
         </header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">

@@ -1,5 +1,11 @@
+
 .navbar {
     display: flex;
+    border-bottom: 1px solid #87919E;
+}
+
+.logout {
+    height: 100%;
 }
 
 .logout .btn {
@@ -9,6 +15,10 @@
 
 .logout .btn:hover {
     color: cornflowerblue;
+}
+
+.nav-btn {
+    height: 100%
 }
 
 .nav-btn .btn {
@@ -25,3 +35,15 @@
     text-decoration: none;
 }
 
+.toast button {
+    display: none;
+}
+
+strong h1 {
+    font-family: 'Quantico', sans-serif;
+    margin-bottom: 0;
+}
+
+strong a:hover {
+    text-decoration: none;
+}
