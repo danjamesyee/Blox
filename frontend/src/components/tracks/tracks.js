@@ -2,6 +2,33 @@ import React from "react";
 import * as Tone from "tone";
 import "./tracks.scss";
 
+let colors = {
+  color0: "#AF3508",
+  color2: "#C64E1B",
+  color1: "#DD662E",
+  color3: "#E98440",
+  color6: "#F5A151",
+  color5: "#F5A951",
+  color4: "#F4B150",
+  color7: "#E6B775",
+  rest: "#black",
+  color11: "#6E607A",
+  color10: "#957F9E",
+  color9: "#BC9EC1",
+  color12: "#C6A5C3",
+  color13: "#D0ACC4",
+  color14: "#E3BAC6",
+  color15: "#EAC6CF",
+  color16: "#FDE8E9",
+  color18: "#031A6B",
+  color19: "#182288",
+  color20: "#2C29A4",
+  color22: "#5438DC",
+  color21: "#4D4AE1",
+  color24: "#455BE5",
+  color25: "#357DED",
+};
+
 class Tracks extends React.Component {
   constructor(props) {
     super(props);
@@ -36,17 +63,6 @@ class Tracks extends React.Component {
     this.state.notes.push([note, length, width, height, color]);
     this.setState({ notes: this.state.notes });
     this.state.track.push(block);
-    // debugger;
-    // this.setState({
-    //   part: new Tone.Sequence(
-    //     function (time, pitch) {
-    //       synth.triggerAttackRelease(pitch, time);
-    //     },
-    //     this.state.track,
-    //     "8n"
-    //   ),
-    // });
-    // debugger;
   }
 
   playNote(part) {
@@ -109,7 +125,7 @@ class Tracks extends React.Component {
     }
 
     let notes = this.state.notes || [];
-    let blocks = this.props.blocks || [];
+    let blocks = Object.values(this.props.blocks) || [];
     // debugger;
     return (
       <div className="tracks-container">
@@ -158,109 +174,215 @@ class Tracks extends React.Component {
 
           <h3>Click the note buttons to add them to the track</h3>
           <h4>Quarter Notes</h4>
+          {blocks
+            .slice(0, 8)
+            .sort()
+            .map((block) => (
+              <button
+                style={{
+                  backgroundColor: block.color,
+                }}
+                type="button"
+                onClick={() =>
+                  this.addNoteToTrack(
+                    block.note,
+                    block.duration,
+                    block,
+                    block.width,
+                    block.height,
+                    block.color
+                  )
+                }
+                onMouseEnter={() =>
+                  synth.triggerAttackRelease(block.note, block.duration)
+                }
+              >
+                {block.note}
+              </button>
+            ))}
           <button
             style={{
-              backgroundColor: "#AF3508",
+              backgroundColor: "",
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("C4", "4n", blocks[0], 100, 25, "#AF3508")
+              this.addNoteToTrack(
+                blocks[0].note,
+                blocks[0].duration,
+                blocks[0],
+                blocks[0].width,
+                blocks[0].height,
+                blocks[0].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("C4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[0].note, blocks[0].duration)
+            }
           >
             C4
           </button>
+
           <button
             style={{
-              backgroundColor: "#C64E1B",
+              backgroundColor: colors.color2,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("D4", "4n", blocks[1], 100, 25, "#C64E1B")
+              this.addNoteToTrack(
+                blocks[2].note,
+                blocks[2].duration,
+                blocks[2],
+                blocks[2].width,
+                blocks[2].height,
+                blocks[2].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("D4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[2].note, blocks[2].duration)
+            }
           >
             D4
           </button>
           <button
             style={{
-              backgroundColor: "#DD662E",
+              backgroundColor: colors.color1,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("E4", "4n", blocks[3], 100, 25, "#DD662E")
+              this.addNoteToTrack(
+                blocks[1].note,
+                blocks[1].duration,
+                blocks[1],
+                blocks[1].width,
+                blocks[1].height,
+                blocks[1].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("E4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[1].note, blocks[1].duration)
+            }
           >
             E4
           </button>
           <button
             style={{
-              backgroundColor: "#E98440",
+              backgroundColor: colors.color3,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("F4", "4n", blocks[2], 100, 25, "#E98440")
+              this.addNoteToTrack(
+                blocks[3].note,
+                blocks[3].duration,
+                blocks[3],
+                blocks[3].width,
+                blocks[3].height,
+                blocks[3].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("F4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[3].note, blocks[3].duration)
+            }
           >
             F4
           </button>
           <button
             style={{
-              backgroundColor: "#F5A151",
+              backgroundColor: colors.color6,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("G4", "4n", blocks[4], 100, 25, "#F5A151")
+              this.addNoteToTrack(
+                blocks[6].note,
+                blocks[6].duration,
+                blocks[6],
+                blocks[6].width,
+                blocks[6].height,
+                blocks[6].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("G4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[6].note, blocks[6].duration)
+            }
           >
             G4
           </button>
           <button
             style={{
-              backgroundColor: "#F5A951",
+              backgroundColor: colors.color5,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("A4", "4n", blocks[8], 100, 25, "#F5A951")
+              this.addNoteToTrack(
+                blocks[5].note,
+                blocks[5].duration,
+                blocks[5],
+                blocks[5].width,
+                blocks[5].height,
+                blocks[5].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("A4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[5].note, blocks[5].duration)
+            }
           >
             A4
           </button>
           <button
             style={{
-              backgroundColor: "#F4B150",
+              backgroundColor: colors.color4,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("B4", "4n", blocks[5], 100, 25, "#F4B150")
+              this.addNoteToTrack(
+                blocks[4].note,
+                blocks[4].duration,
+                blocks[4],
+                blocks[4].width,
+                blocks[4].height,
+                blocks[4].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("B4", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[4].note, blocks[4].duration)
+            }
           >
             B4
           </button>
           <button
             style={{
-              backgroundColor: "#E6B775",
+              backgroundColor: colors.color7,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("C5", "4n", blocks[6], 100, 25, "#E6B775")
+              this.addNoteToTrack(
+                blocks[7].note,
+                blocks[7].duration,
+                blocks[7],
+                blocks[7].width,
+                blocks[7].height,
+                blocks[7].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("C5", "4n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[7].note, blocks[7].duration)
+            }
           >
             C5
           </button>
           <button
             style={{
-              backgroundColor: "black",
+              backgroundColor: colors.rest,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("", "4n", blocks[23], 100, 25, "white")
+              this.addNoteToTrack(
+                blocks[8].note,
+                blocks[8].duration,
+                blocks[8],
+                blocks[8].width,
+                blocks[8].height,
+                blocks[8].color
+              )
             }
           >
             Rest
@@ -268,107 +390,186 @@ class Tracks extends React.Component {
           <h4>Eighth notes</h4>
           <button
             style={{
-              backgroundColor: "#6E607A",
+              backgroundColor: colors.color11,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("C4", "8n", blocks[7], 50, 50, "#6E607A")
+              this.addNoteToTrack(
+                blocks[11].note,
+                blocks[11].duration,
+                blocks[11],
+                blocks[11].width,
+                blocks[11].height,
+                blocks[11].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("C4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[11].note, blocks[11].duration)
+            }
           >
             C4
           </button>
           <button
             style={{
-              backgroundColor: "#957F9E",
+              backgroundColor: colors.color10,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("D4", "8n", blocks[10], 50, 50, "#957F9E")
+              this.addNoteToTrack(
+                blocks[10].note,
+                blocks[10].duration,
+                blocks[10],
+                blocks[10].width,
+                blocks[10].height,
+                blocks[10].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("D4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[10].note, blocks[10].duration)
+            }
           >
             D4
           </button>
           <button
             style={{
-              backgroundColor: "#BC9EC1",
+              backgroundColor: colors.color9,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("E4", "8n", blocks[9], 50, 50, "#BC9EC1")
+              this.addNoteToTrack(
+                blocks[9].note,
+                blocks[9].duration,
+                blocks[9],
+                blocks[9].width,
+                blocks[9].height,
+                blocks[9].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("E4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[9].note, blocks[9].duration)
+            }
           >
             E4
           </button>
           <button
             style={{
-              backgroundColor: "#C6A5C3",
+              backgroundColor: colors.color12,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("F4", "8n", blocks[12], 50, 50, "#C6A5C3")
+              this.addNoteToTrack(
+                blocks[12].note,
+                blocks[12].duration,
+                blocks[12],
+                blocks[12].width,
+                blocks[12].height,
+                blocks[12].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("F4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[12].note, blocks[12].duration)
+            }
           >
             F4
           </button>
           <button
             style={{
-              backgroundColor: "#D0ACC4",
+              backgroundColor: colors.color13,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("G4", "8n", blocks[13], 50, 50, "#D0ACC4")
+              this.addNoteToTrack(
+                blocks[13].note,
+                blocks[13].duration,
+                blocks[13],
+                blocks[13].width,
+                blocks[13].height,
+                blocks[13].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("G4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[13].note, blocks[13].duration)
+            }
           >
             G4
           </button>
           <button
             style={{
-              backgroundColor: "#E3BAC6",
+              backgroundColor: colors.color14,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("A4", "8n", blocks[11], 50, 50, "#E3BAC6")
+              this.addNoteToTrack(
+                blocks[14].note,
+                blocks[14].duration,
+                blocks[14],
+                blocks[14].width,
+                blocks[14].height,
+                blocks[14].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("A4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[14].note, blocks[14].duration)
+            }
           >
             A4
           </button>
           <button
             style={{
-              backgroundColor: "#EAC6CF",
+              backgroundColor: colors.color15,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("B4", "8n", blocks[17], 50, 50, "#EAC6CF")
+              this.addNoteToTrack(
+                blocks[15].note,
+                blocks[15].duration,
+                blocks[15],
+                blocks[15].width,
+                blocks[15].height,
+                blocks[15].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("B4", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[15].note, blocks[15].duration)
+            }
           >
             B4
           </button>
           <button
             style={{
-              backgroundColor: "#FDE8E9",
+              backgroundColor: colors.color16,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("C5", "8n", blocks[16], 50, 50, "#FDE8E9")
+              this.addNoteToTrack(
+                blocks[16].note,
+                blocks[16].duration,
+                blocks[16],
+                blocks[16].width,
+                blocks[16].height,
+                blocks[16].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("C5", "8n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[16].note, blocks[16].duration)
+            }
           >
             C5
           </button>
           <button
             style={{
-              backgroundColor: "black",
+              backgroundColor: colors.rest,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("", "8n", blocks[25], 50, 50, "white")
+              this.addNoteToTrack(
+                blocks[17].note,
+                blocks[17].duration,
+                blocks[17],
+                blocks[17].width,
+                blocks[17].height,
+                blocks[17].color
+              )
             }
           >
             Rest
@@ -377,37 +578,64 @@ class Tracks extends React.Component {
           <h4>Sixteenth notes</h4>
           <button
             style={{
-              backgroundColor: "#031A6B",
+              backgroundColor: colors.color18,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("C4", "16n", blocks[15], 25, 100, "#031A6B")
+              this.addNoteToTrack(
+                blocks[18].note,
+                blocks[18].duration,
+                blocks[18],
+                blocks[18].width,
+                blocks[18].height,
+                blocks[18].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("C4", "16n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[18].note, blocks[18].duration)
+            }
           >
             C4
           </button>
           <button
             style={{
-              backgroundColor: "#182288",
+              backgroundColor: colors.color19,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("D4", "16n", blocks[18], 25, 100, "#182288")
+              this.addNoteToTrack(
+                blocks[19].note,
+                blocks[19].duration,
+                blocks[19],
+                blocks[19].width,
+                blocks[19].height,
+                blocks[19].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("D4", "16n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[19].note, blocks[19].duration)
+            }
           >
             D4
           </button>
           <button
             style={{
-              backgroundColor: "#2C29A4",
+              backgroundColor: colors.color20,
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("E4", "16n", blocks[14], 25, 100, "#2C29A4")
+              this.addNoteToTrack(
+                blocks[20].note,
+                blocks[20].duration,
+                blocks[20],
+                blocks[20].width,
+                blocks[20].height,
+                blocks[20].color
+              )
             }
-            onMouseEnter={() => synth.triggerAttackRelease("E4", "16n")}
+            onMouseEnter={() =>
+              synth.triggerAttackRelease(blocks[20].note, blocks[20].duration)
+            }
           >
             E4
           </button>
