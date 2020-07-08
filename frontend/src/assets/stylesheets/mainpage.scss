@@ -1,40 +1,89 @@
-
 //THE GOOD STUFF
 .container {
-    color: #FFB400;
-    display: inherit;
-    font-weight: bold;
+  color: #ffb400;
+  display: inherit;
+  font-weight: bold;
 }
 
 .row {
-    margin: auto;
+  margin: auto;
 }
 
 .main-page {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 80%;
-    height: 80vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: 80vh;
 }
 
 .main-page header {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .main-page h1 {
-    color: cornflowerblue;
-    font-size: 50px;
+  color: cornflowerblue;
+  font-size: 50px;
 }
 
 .main-page span {
-    font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .main-page button {
-    display: none;
+  display: none;
 }
 
+.track {
+  display: flex;
+  align-items: flex-end;
+  height: 104px;
+  border-radius: 5px;
+  width: 100%;
+  padding-bottom: 0px;
+  border: 2px solid black;
+  margin-top: 10px;
+  background: white;
+  cursor: pointer;
+}
+
+.track > div {
+  border: 1px solid grey;
+  border-radius: 2px;
+  color: white;
+  align-items: center;
+}
+
+.track-outer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-outer > h4 {
+  margin: 10px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+}
+
+.top-tracks {
+  margin: 10px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+}
+
+.play-button {
+  position: relative;
+  right: 6px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 30px;
+  text-align: center;
+  margin: 10px;
+}

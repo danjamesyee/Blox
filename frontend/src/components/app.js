@@ -7,24 +7,24 @@ import NavBarContainer from "./nav/navbar_container";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../App.scss'; 
 
-import MainPage from "./main/main_page";
+
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import Tracks from "./tracks/tracks_container";
+import MainPage from "./main/main_page_container";
 
 const App = () => (
-  <div className='g-layout'>
+  <div className="g-layout">
     <NavBarContainer />
 
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
+      <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/track" component={Tracks} />
     </Switch>
 
     <footer>Copyright &copy; 2020 Daniel Group</footer>
-
   </div>
 );
 
