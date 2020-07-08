@@ -62,7 +62,7 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then((user) => {
-              const payload = { id: user.id, handle: user.handle };
+              const payload = { id: user.id, handle: user.handle, email: user.email };
 
               jwt.sign(
                 payload,
@@ -104,7 +104,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        const payload = { id: user.id, email: user.email };
+        const payload = { id: user.id, email: user.email, handle: user.handle };
 
         //we want to return signed jsonwebtoken with each login or register request
         //in order to 'sign the user in' on the frontend
