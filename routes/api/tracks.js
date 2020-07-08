@@ -32,7 +32,7 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateTracksInput(req.body);
-
+    // debugger;
     if (!isValid) {
       res.status(400).json(errors);
     }

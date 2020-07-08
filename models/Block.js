@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const BlockSchema = new Schema({
   note: {
     type: String,
-    required: true,
   },
   duration: {
     type: String,
