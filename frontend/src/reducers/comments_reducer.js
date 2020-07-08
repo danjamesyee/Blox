@@ -13,7 +13,6 @@ export default (state={}, action) => {
       // set newState to empty so prev state is replaced
       newState = {};
       // receive comments arr
-      debugger;
       action.comments.forEach(comment => {
         newState[comment._id] = comment;
       });
