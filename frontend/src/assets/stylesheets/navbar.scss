@@ -1,6 +1,7 @@
 
 .navbar {
     display: flex;
+    border-bottom: 1px solid #87919E;
 }
 
 .logout {
@@ -32,12 +33,6 @@
 .nav-btn a:hover {
     color: lightgreen;
     text-decoration: none;
-}
-
-.toast-body {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: bold;
-    color: #87919E;
 }
 
 .toast button {
