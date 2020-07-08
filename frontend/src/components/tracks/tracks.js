@@ -86,6 +86,27 @@ class Tracks extends React.Component {
   render() {
     const synth = new Tone.Synth().toMaster();
     // debugger;
+    let titleError;
+    if (this.props.errors.title === undefined) {
+      titleError = <div className="errors"></div>;
+    } else {
+      titleError = (
+        <div className="errors">
+          {Object.values(this.props.errors.title).join("")}
+        </div>
+      );
+    }
+
+    let blocksError;
+    if (this.props.errors.blocks === undefined) {
+      blocksError = <div className="errors"></div>;
+    } else {
+      blocksError = (
+        <div className="errors">
+          {Object.values(this.props.errors.blocks).join("")}
+        </div>
+      );
+    }
 
     let notes = this.state.notes || [];
     let blocks = this.props.blocks || [];
@@ -103,6 +124,7 @@ class Tracks extends React.Component {
               onChange={this.update("title")}
             />
           </label>
+          {titleError}
           <div className="notes">
             {notes.map((note, i) => (
               <div
@@ -133,7 +155,9 @@ class Tracks extends React.Component {
           >
             Clear
           </button>
-          <h3>Quarter Notes</h3>
+
+          <h3>Click the note buttons to add them to the track</h3>
+          <h4>Quarter Notes</h4>
           <button
             style={{
               backgroundColor: "#AF3508",
@@ -241,7 +265,7 @@ class Tracks extends React.Component {
           >
             Rest
           </button>
-          <h3>Eighth notes</h3>
+          <h4>Eighth notes</h4>
           <button
             style={{
               backgroundColor: "#6E607A",
@@ -350,7 +374,7 @@ class Tracks extends React.Component {
             Rest
           </button>
 
-          <h3>Sixteenth notes</h3>
+          <h4>Sixteenth notes</h4>
           <button
             style={{
               backgroundColor: "#031A6B",
@@ -463,6 +487,7 @@ class Tracks extends React.Component {
           <br />
 
           <input type="submit" value="Save track" />
+          {blocksError}
         </form>
       </div>
     );
