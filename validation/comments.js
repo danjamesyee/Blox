@@ -10,7 +10,7 @@ module.exports = function validateCommentInput(data) {
         errors.text = 'Comment must be at least 2 and less than 150 chars'
     }
 
-    if (!Validator.isEmpty(data.text)) {
+    if (Validator.isEmpty(data.text)) {
         errors.text = 'Text field is required'
     }
 
