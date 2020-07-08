@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 
 //For React-Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../App.scss'; 
 
 import MainPage from "./main/main_page";

@@ -34,12 +34,43 @@ class NavBar extends React.Component {
           {/* <Link to={"/blockbeats"}>All Block Beats</Link>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/new_tweet"}>Write a Tweet</Link> */}
-          
-            <Link to={"/track"}>Create a track</Link>
-          
-          Logged in as:
-          {this.props.currentUser.handle}
-          <div className="logout" onClick={this.logoutUser}>Logout</div>
+          <Link to={"/track"} id="create-track-link">
+            Create a track
+          </Link>
+          <span id="logged-in-as">Logged in as:</span>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {this.props.currentUser.handle}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">
+                My Tracks
+              </a>
+              <a class="dropdown-item" href="#">
+                Placeholder
+              </a>
+              <a
+                class="dropdown-item"
+                id="logout-user"
+                onClick={this.logoutUser}
+              >
+                Logout
+              </a>
+            </div>
+          </div>
+          {/* <div className="dropdown">
+              
+            <div className="dropdown-content" id="sign-in-drop">
+              <div className="logout" onClick={this.logoutUser}>Logout</div>
+            </div>
+          </div> */}
         </div>
       );
     } else {
@@ -65,7 +96,18 @@ class NavBar extends React.Component {
     return (
       <div id="navbar">
         <div className="navbar-inner">
-          <div>LOGO</div>
+          <div>
+            <Toast>
+              <Toast.Header>
+                <strong>
+                  <Link to="/">
+                    <h1 className="title">BLOX</h1>
+                  </Link>
+                </strong>
+                <small>BEAT</small>
+              </Toast.Header>
+            </Toast>
+          </div>
           {this.getLinks()}
         </div>
       </div>

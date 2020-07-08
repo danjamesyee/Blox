@@ -1,0 +1,22 @@
+.dropdown-menu.show {
+  display: block;
+  background-color: steelblue;
+}
+
+.logout a:hover {
+    color: white;
+    text-decoration: none;
+    background-color: orange;
+}
+
+#logout-user {
+  color: white;
+    margin-top: 20px;
+    cursor: pointer;
+    padding-bottom: 0;
+}
+
+#dropdownMenuButton {
+  background: transparent;
+  border-color: transparent;
+}

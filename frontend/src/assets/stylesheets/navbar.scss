@@ -14,13 +14,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 80%;
 }
 
 .logout {
   height: 100%;
   display: flex;
-  justify-content: center;
+  width: 400px;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -39,6 +40,7 @@
 }
 .logout a:hover {
   text-decoration: none;
+  color: orange
 }
 .nav-btn {
     height: 100%;
@@ -75,4 +77,35 @@ strong a:hover {
   text-decoration: none;
 }
 
+#create-track-link {
+  background-color: transparent;
+}
 
+#create-track-link:hover {
+  color: orange;
+}
+
+.demouser-button.btn.btn-success {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
+
+.demouser-button.btn.btn-success:hover {
+  color: orange;
+}
+
+.btn.btn-secondary.dropdown-toggle {
+  background-color: transparent;
+  border-color: transparent;
+  color: orange;
+  text-transform: uppercase;
+}
+
+.btn.btn-secondary.dropdown-toggle:hover {
+  color: white;
+}
+
+#logged-in-as {
+  font-size: 14px;
+}
