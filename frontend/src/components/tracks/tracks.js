@@ -27,9 +27,8 @@ class Tracks extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    // debugger;
     this.props.makeTrack({ title: this.state.title, blocks: this.state.track });
-
   }
 
   addNoteToTrack(note, length, block, width, height, color) {
@@ -37,6 +36,7 @@ class Tracks extends React.Component {
     this.state.notes.push([note, length, width, height, color]);
     this.setState({ notes: this.state.notes });
     this.state.track.push(block);
+    // debugger;
     // this.setState({
     //   part: new Tone.Sequence(
     //     function (time, pitch) {
@@ -236,7 +236,7 @@ class Tracks extends React.Component {
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("", "4n", blocks[22], 100, 25, "white")
+              this.addNoteToTrack("", "4n", blocks[23], 100, 25, "white")
             }
           >
             Rest
@@ -344,7 +344,7 @@ class Tracks extends React.Component {
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("", "8n", blocks[22], 50, 50, "white")
+              this.addNoteToTrack("", "8n", blocks[25], 50, 50, "white")
             }
           >
             Rest
@@ -453,7 +453,7 @@ class Tracks extends React.Component {
             }}
             type="button"
             onClick={() =>
-              this.addNoteToTrack("", "16n", blocks[22], 25, 100, "white")
+              this.addNoteToTrack("", "16n", blocks[26], 25, 100, "white")
             }
           >
             Rest

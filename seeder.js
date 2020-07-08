@@ -136,6 +136,18 @@ const data = [
         note: "C5",
         duration: "16n",
       },
+      {
+        note: "",
+        duration: "4n",
+      },
+      {
+        note: "",
+        duration: "8n",
+      },
+      {
+        note: "",
+        duration: "16n",
+      },
     ],
   },
 ];
