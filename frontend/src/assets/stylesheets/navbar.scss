@@ -1,7 +1,10 @@
 .navbar {
   display: flex;
-  border-bottom: 1px solid #87919e;
-  background: rgb(226, 237, 252);
+  border-bottom: 1px solid gray;
+  background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .logout {
