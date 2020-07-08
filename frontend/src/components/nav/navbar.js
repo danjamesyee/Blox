@@ -30,6 +30,7 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+    // debugger
     if (this.props.loggedIn) {
       return (
         <div className="logout">
@@ -65,6 +66,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="navbar">
         <Toast>

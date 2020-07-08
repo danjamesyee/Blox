@@ -27,7 +27,9 @@ class Tracks extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     this.props.makeTrack({ title: this.state.title, blocks: this.state.track });
+
   }
 
   addNoteToTrack(note, length, block, width, height, color) {
