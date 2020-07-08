@@ -45,3 +45,13 @@ const port = process.env.PORT || 5000;
 //tell Express to start a socket and listen for connections on the path
 //also logs a success message to the console when server is running sucessfully
 app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+//importing path from Express
+const path = require("path");
+//loading the static build if in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
