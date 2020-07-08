@@ -1,49 +1,56 @@
-
 .navbar {
-    display: flex;
-    border-bottom: 1px solid #87919E;
+  display: flex;
+  border-bottom: 1px solid #87919e;
+  background: rgb(226, 237, 252);
 }
 
 .logout {
-    height: 100%;
+  height: 100%;
 }
 
 .logout .btn {
-    margin: 5px;
-    padding: 5px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .logout .btn:hover {
-    color: cornflowerblue;
+  color: cornflowerblue;
 }
 
+.logout a {
+  color: white;
+  text-decoration: none;
+}
+.logout a:hover {
+  text-decoration: none;
+}
 .nav-btn {
-    height: 100%
+  height: 100%;
 }
 
 .nav-btn .btn {
-    margin: 5px;
-    padding: 5px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .nav-btn a {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .nav-btn a:hover {
-    color: lightgreen;
-    text-decoration: none;
+  color: lightgreen;
+  text-decoration: none;
 }
 
 .toast button {
-    display: none;
+  display: none;
 }
 
 strong h1 {
-    font-family: 'Quantico', sans-serif;
-    margin-bottom: 0;
+  font-family: "Quantico", sans-serif;
+  margin-bottom: 0;
 }
 
 strong a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }

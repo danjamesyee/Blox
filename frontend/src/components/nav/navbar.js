@@ -66,7 +66,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
     return (
       <div className="navbar">
         <Toast>
