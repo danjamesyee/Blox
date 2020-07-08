@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { login } from "./util/session_api_util";
+import './assets/stylesheets/index.scss';
 
 import Root from "./components/root";
 import configureStore from "./store/store";

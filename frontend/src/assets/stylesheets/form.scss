@@ -1,10 +1,11 @@
+
 .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    max-height: 100%;
     padding-bottom: 5%;
 }
 
@@ -34,10 +35,4 @@
     list-style: none;
     font-size: 11px;
     left: 0;
-}
-
-
-//RESET
-ul {
-    padding: 0;
 }

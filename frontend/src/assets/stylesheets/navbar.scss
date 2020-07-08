@@ -1,3 +1,4 @@
+
 .navbar {
     display: flex;
 }
@@ -43,8 +44,9 @@
     display: none;
 }
 
-strong {
+strong h1 {
     font-family: 'Quantico', sans-serif;
+    margin-bottom: 0;
 }
 
 strong a:hover {
