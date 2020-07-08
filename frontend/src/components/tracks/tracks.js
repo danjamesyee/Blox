@@ -19,7 +19,7 @@ class Tracks extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
+    // debugger;
     this.props.makeTrack(this.state.track);
   }
 

@@ -8,7 +8,7 @@ export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = (currentUser) => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser,
