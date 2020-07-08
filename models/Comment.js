@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'User'
     },
 
     track: {
         type: Schema.Types.ObjectId,
-        ref: 'tracks'
+        ref: 'Track'
     },
 
     text: {
@@ -23,5 +23,5 @@ const CommentSchema = new Schema({
     }
 })
 
-const Comment = mongoose.model('comment', CommentSchema)
+const Comment = mongoose.model('Comment', CommentSchema)
 module.exports = Comment;
