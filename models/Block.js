@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BlockSchema = new Schema({
+  idx: {
+    type: Number,
+    required: true,
+  },
   note: {
     type: String,
   },
@@ -11,16 +15,16 @@ const BlockSchema = new Schema({
   },
   width: {
     type: Number,
-    required: true
+    required: true,
   },
   height: {
     type: Number,
-    required: true
+    required: true,
   },
   color: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 module.exports = Block = mongoose.model("Block", BlockSchema);

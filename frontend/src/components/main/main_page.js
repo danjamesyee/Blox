@@ -5,6 +5,10 @@ import * as Tone from "tone";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
+    this.state.track = [];
+    this.playNote = this.playNote.bind(this);
+    this.sleep = this.sleep.bind(this);
   }
 
   componentDidMount() {
@@ -15,26 +19,16 @@ class MainPage extends React.Component {
   playNote(track) {
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
-    // this.state.part.loop = true;
-
-    // if (this.state.part.state === "started") {
-    //   this.state.part.stop(0);
-    // } else {
-    //   this.state.part.start(0);
-    // }
-    // debugger;
-    for (let i = 0; i < track.length; i++) {
-      // debugger;
-
+    for (let i = 0; i < track.blocks.length; i++) {
       synth.triggerAttackRelease(
-        this.state.notes[i][0],
-        this.state.notes[i][1]
+        track.blocks[i].note,
+        track.blocks[i].duration
       );
-      if (this.state.notes[i][1] === "16n") {
+      if (track.blocks[i].duration === "16n") {
         this.sleep(200);
-      } else if (this.state.notes[i][1] === "8n") {
+      } else if (track.blocks[i].duration === "8n") {
         this.sleep(400);
-      } else if (this.state.notes[i][1] === "4n") {
+      } else if (track.blocks[i].duration === "4n") {
         this.sleep(800);
       }
     }
@@ -49,7 +43,15 @@ class MainPage extends React.Component {
   render() {
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
-    // debugger;
+    for (let i = 0; i < tracks.length; i++) {
+      for (let j = 0; j < tracks[i].blocks.length; j++) {
+        for (let b = 0; b < blocks.length; b++) {
+          if (blocks[b]._id === tracks[i].blocks[j]) {
+            tracks[i].blocks[j] = blocks[b];
+          }
+        }
+      }
+    }
     return (
       <div className="main-page">
         <header>
@@ -59,10 +61,35 @@ class MainPage extends React.Component {
           <small>BEAT</small>
         </header>
 
-        <span>The best rhythm-beat maker in the biz!</span>
+        <div className="top-tracks">The best rhythm-beat maker in the biz!</div>
         <br />
-        {tracks.map((track) => (
-          <div>{track.blocks}</div>
+        <h3 className="top-tracks">Today's Tracks</h3>
+        {tracks.map((track, i) => (
+          <div className="track-outer" key={i}>
+            <h4>{track.title}</h4>
+            <br />
+
+            <img
+              src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+              className="play-button"
+              onClick={() => this.playNote(track)}
+            ></img>
+            <br />
+
+            <div className="track" onClick={() => this.playNote(track)}>
+              {track.blocks.map((block, i) => (
+                <div
+                  style={{
+                    backgroundColor: block.color,
+                    width: block.width,
+                    height: block.height,
+                  }}
+                  key={i}
+                ></div>
+              ))}
+              <br />
+            </div>
+          </div>
         ))}
       </div>
     );

@@ -2,33 +2,6 @@ import React from "react";
 import * as Tone from "tone";
 import "./tracks.scss";
 
-let colors = {
-  color0: "#AF3508",
-  color2: "#C64E1B",
-  color1: "#DD662E",
-  color3: "#E98440",
-  color6: "#F5A151",
-  color5: "#F5A951",
-  color4: "#F4B150",
-  color7: "#E6B775",
-  rest: "#black",
-  color11: "#6E607A",
-  color10: "#957F9E",
-  color9: "#BC9EC1",
-  color12: "#C6A5C3",
-  color13: "#D0ACC4",
-  color14: "#E3BAC6",
-  color15: "#EAC6CF",
-  color16: "#FDE8E9",
-  color18: "#031A6B",
-  color19: "#182288",
-  color20: "#2C29A4",
-  color22: "#5438DC",
-  color21: "#4D4AE1",
-  color24: "#455BE5",
-  color25: "#357DED",
-};
-
 class Tracks extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +11,6 @@ class Tracks extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { title: "" };
     this.state.track = [];
-    this.state.notes = [];
   }
 
   componentDidMount() {
@@ -58,36 +30,26 @@ class Tracks extends React.Component {
     this.props.makeTrack({ title: this.state.title, blocks: this.state.track });
   }
 
-  addNoteToTrack(note, length, block, width, height, color) {
-    const synth = new Tone.Synth().toMaster();
-    this.state.notes.push([note, length, width, height, color]);
-    this.setState({ notes: this.state.notes });
+  addNoteToTrack(block) {
+    this.setState({ track: this.state.track });
     this.state.track.push(block);
   }
 
   playNote(part) {
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
-    // this.state.part.loop = true;
-
-    // if (this.state.part.state === "started") {
-    //   this.state.part.stop(0);
-    // } else {
-    //   this.state.part.start(0);
-    // }
-    // debugger;
-    for (let i = 0; i < this.state.notes.length; i++) {
+    for (let i = 0; i < this.state.track.length; i++) {
       // debugger;
 
       synth.triggerAttackRelease(
-        this.state.notes[i][0],
-        this.state.notes[i][1]
+        this.state.track[i].note,
+        this.state.track[i].duration
       );
-      if (this.state.notes[i][1] === "16n") {
+      if (this.state.track[i].duration === "16n") {
         this.sleep(200);
-      } else if (this.state.notes[i][1] === "8n") {
+      } else if (this.state.track[i].duration === "8n") {
         this.sleep(400);
-      } else if (this.state.notes[i][1] === "4n") {
+      } else if (this.state.track[i].duration === "4n") {
         this.sleep(800);
       }
     }
@@ -124,12 +86,13 @@ class Tracks extends React.Component {
       );
     }
 
-    let notes = this.state.notes || [];
     let blocks = Object.values(this.props.blocks) || [];
+    let track = this.state.track || [];
     // debugger;
     return (
       <div className="tracks-container">
         <h2 className="tracks-title">Unleash your inner musical genius</h2>
+
         <form className="track-title-form" onSubmit={this.handleSubmit}>
           <label>
             Title your masterpiece...
@@ -141,13 +104,14 @@ class Tracks extends React.Component {
             />
           </label>
           {titleError}
+          <h1 className="real-title">{this.state.title}</h1>
           <div className="notes">
-            {notes.map((note, i) => (
+            {track.map((block, i) => (
               <div
                 style={{
-                  backgroundColor: note[note.length - 1],
-                  width: note[note.length - 3],
-                  height: note[note.length - 2],
+                  backgroundColor: block.color,
+                  width: block.width,
+                  height: block.height,
                 }}
                 key={i}
               >
@@ -156,7 +120,9 @@ class Tracks extends React.Component {
             ))}
           </div>
           <br />
-
+          <p className="begin">
+            Press play to begin or to hear your track once you've made it
+          </p>
           <button
             className="play-button"
             type="button"
@@ -175,32 +141,26 @@ class Tracks extends React.Component {
           <h3>Click the note buttons to add them to the track</h3>
           <h4>Quarter Notes</h4>
           {blocks
-            .slice(0, 8)
-            .sort()
-            .map((block) => (
+            .slice(0, 9)
+            .sort(function (a, b) {
+              return a.idx - b.idx;
+            })
+            .map((block, i) => (
               <button
+                key={i}
                 style={{
                   backgroundColor: block.color,
                 }}
                 type="button"
-                onClick={() =>
-                  this.addNoteToTrack(
-                    block.note,
-                    block.duration,
-                    block,
-                    block.width,
-                    block.height,
-                    block.color
-                  )
-                }
+                onClick={() => this.addNoteToTrack(block)}
                 onMouseEnter={() =>
                   synth.triggerAttackRelease(block.note, block.duration)
                 }
               >
-                {block.note}
+                {!block.note ? "Rest" : block.note}
               </button>
             ))}
-          <button
+          {/* <button
             style={{
               backgroundColor: "",
             }}
@@ -386,9 +346,29 @@ class Tracks extends React.Component {
             }
           >
             Rest
-          </button>
+          </button> */}
           <h4>Eighth notes</h4>
-          <button
+          {blocks
+            .slice(9, 18)
+            .sort(function (a, b) {
+              return a.idx - b.idx;
+            })
+            .map((block, i) => (
+              <button
+                key={i}
+                style={{
+                  backgroundColor: block.color,
+                }}
+                type="button"
+                onClick={() => this.addNoteToTrack(block)}
+                onMouseEnter={() =>
+                  synth.triggerAttackRelease(block.note, block.duration)
+                }
+              >
+                {!block.note ? "Rest" : block.note}
+              </button>
+            ))}
+          {/* <button
             style={{
               backgroundColor: colors.color11,
             }}
@@ -573,10 +553,30 @@ class Tracks extends React.Component {
             }
           >
             Rest
-          </button>
+          </button> */}
 
           <h4>Sixteenth notes</h4>
-          <button
+          {blocks
+            .slice(18, 27)
+            .sort(function (a, b) {
+              return a.idx - b.idx;
+            })
+            .map((block, i) => (
+              <button
+                key={i}
+                style={{
+                  backgroundColor: block.color,
+                }}
+                type="button"
+                onClick={() => this.addNoteToTrack(block)}
+                onMouseEnter={() =>
+                  synth.triggerAttackRelease(block.note, block.duration)
+                }
+              >
+                {!block.note ? "Rest" : block.note}
+              </button>
+            ))}
+          {/* <button
             style={{
               backgroundColor: colors.color18,
             }}
@@ -709,7 +709,7 @@ class Tracks extends React.Component {
             }
           >
             Rest
-          </button>
+          </button> */}
 
           <br />
           <br />

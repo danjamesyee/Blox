@@ -28,11 +28,12 @@ ul {
   padding-top: 50px;
   padding-left: 10px;
   padding-right: 10px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 19%;
+  margin-right: 19%;
   padding-bottom: 50px;
   font-family: "Raleway", sans-serif;
   box-shadow: 1px -2px 10px 2px #888888;
+  overflow: scroll;
 }
 
 button {
@@ -65,8 +66,13 @@ button {
   padding-bottom: 50px;
 }
 
+.real-title {
+  height: 60px;
+  font-weight: bold;
+}
+
 .play-button {
-  margin: 5px;
+  margin-left: 5px;
 }
 
 .track-title-form > label {

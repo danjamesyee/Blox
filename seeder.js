@@ -41,193 +41,220 @@ const data = [
     model: "Block",
     documents: [
       {
+        idx: 0,
         note: "C4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#AF3508"
+        color: "#AF3508",
       },
       {
+        idx: 1,
         note: "D4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#C64E1B"
+        color: "#C64E1B",
       },
       {
+        idx: 2,
         note: "E4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#DD662E"
+        color: "#DD662E",
       },
       {
+        idx: 3,
         note: "F4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#E98440"
+        color: "#E98440",
       },
       {
+        idx: 4,
         note: "G4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#F5A151"
+        color: "#F5A151",
       },
       {
+        idx: 5,
         note: "A4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#F5A951"
+        color: "#F5A951",
       },
       {
+        idx: 6,
         note: "B4",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#F4B150"
+        color: "#F4B150",
       },
       {
+        idx: 7,
         note: "C5",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "#E6B775"
+        color: "#E6B775",
       },
       {
+        idx: 8,
         note: "",
         duration: "4n",
         width: 100,
         height: 25,
-        color: "black"
+        color: "black",
       },
       {
+        idx: 9,
         note: "C4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#6E607A"
+        color: "#6E607A",
       },
       {
+        idx: 10,
         note: "D4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#957F9E"
+        color: "#957F9E",
       },
       {
+        idx: 11,
         note: "E4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#BC9EC1"
+        color: "#BC9EC1",
       },
       {
+        idx: 12,
         note: "F4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#C6A5C3"
+        color: "#C6A5C3",
       },
       {
+        idx: 13,
         note: "G4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#D0ACC4"
+        color: "#D0ACC4",
       },
       {
+        idx: 14,
         note: "A4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#E3BAC6"
+        color: "#E3BAC6",
       },
       {
+        idx: 15,
         note: "B4",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#EAC6CF"
+        color: "#EAC6CF",
       },
       {
+        idx: 16,
         note: "C5",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#FDE8E9"
+        color: "#FDE8E9",
       },
       {
+        idx: 17,
         note: "",
         duration: "8n",
         width: 50,
         height: 50,
-        color: "black"
+        color: "black",
       },
       {
+        idx: 18,
         note: "C4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#031A6B"
+        color: "#031A6B",
       },
       {
+        idx: 19,
         note: "D4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#182288"
+        color: "#182288",
       },
       {
+        idx: 20,
         note: "E4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#2C29A4"
+        color: "#2C29A4",
       },
       {
+        idx: 21,
         note: "F4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#5438DC"
+        color: "#5438DC",
       },
       {
+        idx: 22,
         note: "G4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#4D4AE1"
+        color: "#4D4AE1",
       },
       {
+        idx: 23,
         note: "A4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#455BE5"
+        color: "#455BE5",
       },
       {
+        idx: 24,
         note: "B4",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#357DED"
+        color: "#357DED",
       },
       {
+        idx: 25,
         note: "C5",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "#4789EF"
+        color: "#4789EF",
       },
       {
+        idx: 26,
         note: "",
         duration: "16n",
         width: 25,
         height: 100,
-        color: "black"
+        color: "black",
       },
     ],
   },
