@@ -7,6 +7,11 @@ const CommentSchema = new Schema({
         ref: 'users'
     },
 
+    track: {
+        type: Schema.Types.ObjectId,
+        ref: 'tracks'
+    },
+
     text: {
         type: String,
         required: true
