@@ -6,6 +6,7 @@
   width: 100%;
   padding-bottom: 1px;
   border-bottom: 2px solid black;
+  margin-top: 40px;
 }
 
 ul {
@@ -26,8 +27,8 @@ ul {
   padding-top: 50px;
   padding-left: 10px;
   padding-right: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
   padding-bottom: 50px;
   font-family: "Raleway", sans-serif;
 }
@@ -47,6 +48,15 @@ button {
   font-family: "Titillium Web", sans-serif;
   background: black;
 }
+
+.track-title-form > h4 {
+  padding-top: 10px;
+}
+.track-title-form > h3 {
+  padding-top: 10px;
+  font-weight: 900;
+}
+
 .tracks-title {
   font-family: "Raleway", sans-serif;
   font-weight: 900;
@@ -59,4 +69,12 @@ button {
 
 .track-title-form > label {
   font-family: "Raleway", sans-serif;
+}
+
+.errors {
+  color: red;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 13px;
+  font-weight: 100;
+  height: 20px;
 }

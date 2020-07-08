@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     currentUser: state.session.user,
     newTrack: {},
     blocks: Object.values(state.blocks),
+    errors: state.errors.tracks,
   };
 };
 
