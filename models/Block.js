@@ -9,6 +9,18 @@ const BlockSchema = new Schema({
     type: String,
     required: true,
   },
+  width: {
+    type: Number,
+    required: true
+  },
+  height: {
+    type: Number,
+    required: true
+  },
+  color: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = Block = mongoose.model("Block", BlockSchema);

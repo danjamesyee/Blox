@@ -12,6 +12,7 @@ const users = require("./routes/api/users");
 const tracks = require("./routes/api/tracks");
 const blocks = require("./routes/api/blocks");
 const votes = require("./routes/api/votes");
+const search = require("./routes/api/searches");
 
 //body parser lets us parse JSON we send to frontend
 const bodyParser = require("body-parser");
@@ -39,6 +40,7 @@ app.use("/api/users", users);
 app.use("/api/tracks", tracks);
 app.use("/api/blocks", blocks);
 app.use("/api/votes", votes);
+app.use("/api/search", search);
 
 //tell our app which port to run on, heroku requires process.env.PORT.
 //our server will now run on localhost:5000
