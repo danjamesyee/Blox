@@ -9,14 +9,25 @@ router.get('/test', (req,res) => res.json("This is the search route"));
 
 // search
 router.get('/', (req,res) => {
-  if (!validText(req.body.query)) {
+  const query = req.body.query;
+
+  if (!validText(query)) {
     return res.status(400).json("Invalid Query");
   }
 
-  const usersQuery = User.find({ handle: req.body });
-  const tracksQuery = Track.find({ title: req.body });
+  const usersQuery = User.find({ handle: { $regex: query } });
+  const tracksQuery = Track.find({ title: { $regex: query } });
 
-  Promise.all([usersQuery, tracksQuery]);
+  Promise.all([usersQuery, tracksQuery])
+    .then(queryArr => {
+      const queryResult = {
+        users: queryArr[0],
+        tracks: queryArr[1]
+      }
+
+      return res.json(queryResult);
+    })
+    .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;
