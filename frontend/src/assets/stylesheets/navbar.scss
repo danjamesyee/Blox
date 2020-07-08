@@ -1,14 +1,28 @@
-.navbar {
+#navbar {
+  height: 100px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   border-bottom: 1px solid gray;
   background-color: #537895;
-background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.navbar-inner {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .logout {
   height: 100%;
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logout .btn {
@@ -26,9 +40,14 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .logout a:hover {
   text-decoration: none;
+  color: orange
 }
 .nav-btn {
-  height: 100%;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .nav-btn .btn {
@@ -41,7 +60,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .nav-btn a:hover {
-  color: lightgreen;
+  color: orange;
   text-decoration: none;
 }
 
@@ -56,4 +75,37 @@ strong h1 {
 
 strong a:hover {
   text-decoration: none;
+}
+
+#create-track-link {
+  background-color: transparent;
+}
+
+#create-track-link:hover {
+  color: orange;
+}
+
+.demouser-button.btn.btn-success {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
+
+.demouser-button.btn.btn-success:hover {
+  color: orange;
+}
+
+.btn.btn-secondary.dropdown-toggle {
+  background-color: transparent;
+  border-color: transparent;
+  color: orange;
+  text-transform: uppercase;
+}
+
+.btn.btn-secondary.dropdown-toggle:hover {
+  color: white;
+}
+
+#logged-in-as {
+  font-size: 14px;
 }

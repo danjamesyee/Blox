@@ -4,8 +4,9 @@ import { Switch, Route } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 
 //For React-Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-// import '../App.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.scss'; 
+
 
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
