@@ -29,21 +29,21 @@ const removeComment = (commentId) => ({
   commentId
 });
 
-export const fetchTrackComments = (trackId) => dispatch => (
-  getTrackComments(trackId)
-    .then(comments => dispatch(receiveTrackComments(comments)))
-    .catch(err => dispatch(receiveCommentErrors(err.response.data)))
-);
+export const fetchTrackComments = (trackId) => dispatch => {
+  return getTrackComments(trackId)
+    .then(comments => dispatch(receiveTrackComments(comments.data)))
+    .catch(err => dispatch(receiveCommentErrors(err.response.data)));
+}
 
 export const createComment = (comment) => dispatch => (
   postComment(comment)
-    .then(createdComment => dispatch(receiveComment(createdComment)))
+    .then(createdComment => dispatch(receiveComment(createdComment.data)))
     .catch(err => dispatch(receiveCommentErrors(err.response.data)))
 );
 
 export const updateComment = (comment) => dispatch => (
   patchComment(comment)
-    .then(updatedComment => dispatch(receiveComment(updatedComment)))
+    .then(updatedComment => dispatch(receiveComment(updatedComment.data)))
     .catch(err => dispatch(receiveCommentErrors(err.response.data)))
 );
 
