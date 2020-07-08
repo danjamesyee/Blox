@@ -11,6 +11,7 @@ const app = express();
 const users = require("./routes/api/users");
 const tracks = require("./routes/api/tracks");
 const blocks = require("./routes/api/blocks");
+const votes = require("./routes/api/votes");
 
 //body parser lets us parse JSON we send to frontend
 const bodyParser = require("body-parser");
@@ -37,6 +38,7 @@ mongoose
 app.use("/api/users", users);
 app.use("/api/tracks", tracks);
 app.use("/api/blocks", blocks);
+app.use("/api/votes", votes);
 
 //tell our app which port to run on, heroku requires process.env.PORT.
 //our server will now run on localhost:5000
