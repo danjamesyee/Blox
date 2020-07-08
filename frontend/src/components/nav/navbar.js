@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { Toast, Button } from "react-bootstrap";
-
 import { Route, Redirect, withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
@@ -30,28 +28,26 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    // debugger
     if (this.props.loggedIn) {
       return (
         <div className="logout">
           {/* <Link to={"/blockbeats"}>All Block Beats</Link>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/new_tweet"}>Write a Tweet</Link> */}
-          <Button>
+          
             <Link to={"/track"}>Create a track</Link>
-          </Button>
-          <Button onClick={this.logoutUser}>Logout</Button>
+          
+          Logged in as:
+          {this.props.currentUser.handle}
+          <div className="logout" onClick={this.logoutUser}>Logout</div>
         </div>
       );
     } else {
       return (
-        <div className="nav-btn">
-          <Button>
+        <div className="nav-btn">         
             <Link to={"/signup"}>Signup</Link>
-          </Button>
-          <Button>
-            <Link to={"/login"}>Login</Link>
-          </Button>
+            <Link to={"/login"}>Login</Link> 
+
           <Button
             variant="success"
             type="button"
@@ -66,23 +62,26 @@ class NavBar extends React.Component {
   }
 
   render() {
-    // debugger
     return (
-      <div className="navbar">
-        <Toast>
-          <Toast.Header>
-            <strong>
-              <Link to="/">
-                <h1 className="title">BLOX</h1>
-              </Link>
-            </strong>
-            <small>BEAT</small>
-          </Toast.Header>
-        </Toast>
-        {this.getLinks()}
+      <div id="navbar">
+        <div className="navbar-inner">
+          <div>LOGO</div>
+          {this.getLinks()}
+        </div>
       </div>
     );
   }
 }
+
+{/* <Toast>
+  <Toast.Header>
+    <strong>
+      <Link to="/">
+        <h1 className="title">BLOX</h1>
+      </Link>
+    </strong>
+    <small>BEAT</small>
+  </Toast.Header>
+</Toast>; */}
 
 export default withRouter(NavBar);
