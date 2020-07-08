@@ -13,12 +13,13 @@ export default (state={}, action) => {
       // set newState to empty so prev state is replaced
       newState = {};
       // receive comments arr
+      debugger;
       action.comments.forEach(comment => {
-        newState[comment.id] = comment;
+        newState[comment._id] = comment;
       });
       return newState;
     case RECEIVE_COMMENT:
-      newState[action.comment.id] = action.comment;
+      newState[action.comment._id] = action.comment;
       return newState;
     case REMOVE_COMMENT:
       delete newState[action.commentId];
