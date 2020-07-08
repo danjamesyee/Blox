@@ -1,5 +1,5 @@
 #navbar {
-  height: 100px;
+  height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +7,7 @@
   background-color: #537895;
   background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
 }
 
 .navbar-inner {
@@ -14,7 +15,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  width: 650px;
+}
+
+.toast {
+  margin: 0;
 }
 
 .logout {
@@ -44,7 +49,7 @@
 }
 .nav-btn {
     height: 100%;
-    width: 25%;
+    width: 400px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
