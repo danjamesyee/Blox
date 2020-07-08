@@ -1,12 +1,13 @@
 .notes {
   display: flex;
   align-items: flex-end;
-  height: 100px;
-  border-radius: 1px;
+  height: 104px;
+  border-radius: 5px;
   width: 100%;
-  padding-bottom: 1px;
-  border-bottom: 2px solid black;
+  padding-bottom: 0px;
+  border: 2px solid black;
   margin-top: 40px;
+  background: white;
 }
 
 ul {
@@ -16,8 +17,8 @@ ul {
 }
 
 .notes > div {
-  border: 2px solid white;
-  border-radius: 4px;
+  border: 1px solid grey;
+  border-radius: 2px;
   color: white;
   align-items: center;
 }
@@ -31,6 +32,7 @@ ul {
   margin-right: 20%;
   padding-bottom: 50px;
   font-family: "Raleway", sans-serif;
+  box-shadow: 1px -2px 10px 2px #888888;
 }
 
 button {
