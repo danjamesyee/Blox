@@ -1,6 +1,5 @@
 import React from "react";
 import * as Tone from "tone";
-import "./tracks.scss";
 
 class Tracks extends React.Component {
   constructor(props) {
