@@ -44,6 +44,7 @@ class MainPage extends React.Component {
   render() {
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
+    // debugger;
     for (let i = 0; i < tracks.length; i++) {
       for (let j = 0; j < tracks[i].blocks.length; j++) {
         for (let b = 0; b < blocks.length; b++) {
@@ -76,7 +77,12 @@ class MainPage extends React.Component {
                 {track.title}
               </Link>
             </h4>
-
+            <Link
+              style={{ textDecoration: "none", color: "black" }}
+              to={`/users/${track.user}`}
+            >
+              {track.user}
+            </Link>
             <div className="flexer">
               <img
                 src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"

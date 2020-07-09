@@ -1,5 +1,6 @@
 import {
   RECEIVE_TRACKS,
+  RECEIVE_USER_TRACKS,
   RECEIVE_TRACK,
   RECEIVE_NEW_TRACK,
   REMOVE_TRACK,
@@ -8,9 +9,14 @@ import {
 const TracksReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
+
   switch (action.type) {
     case RECEIVE_TRACKS:
       return action.tracks.data;
+    case RECEIVE_USER_TRACKS:
+      return action.tracks.data;
+    // debugger;
+
     case RECEIVE_NEW_TRACK:
       newState.track = action.track.data;
       return newState;
