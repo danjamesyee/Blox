@@ -10,6 +10,7 @@ import {
 const MSTP = (state, ownProps) => ({
   comments: Object.values(state.comments),
   trackId: ownProps.trackId,
+  currentUser: state.session.user
 });
 // trackId is present since we are on the track show page
 // pass trackID like this >>> <CommentsContainer trackId={track.id}/>
