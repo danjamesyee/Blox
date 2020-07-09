@@ -12,6 +12,7 @@ router.get("/test", (req, res) =>
 // tracks index: return all tracks
 router.get("/", (req, res) => {
   Track.find()
+    .populate("user", "_id handle")
     .sort({ createdAt: -1 })
     .then((tracks) => res.json(tracks))
     .catch((err) => res.status(400).json(err));

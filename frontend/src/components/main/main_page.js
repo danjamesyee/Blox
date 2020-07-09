@@ -77,12 +77,14 @@ class MainPage extends React.Component {
                 {track.title}
               </Link>
             </h4>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to={`/users/${track.user}`}
-            >
-              {track.user}
-            </Link>
+            <h4 id="th">
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/users/${track.user._id}`}
+              >
+                by {track.user.handle}
+              </Link>
+            </h4>
             <div className="flexer">
               <img
                 src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
