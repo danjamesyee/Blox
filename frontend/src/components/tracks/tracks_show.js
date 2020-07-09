@@ -1,20 +1,19 @@
 import React from "react";
 import * as Tone from "tone";
-import { Link } from "react-router-dom";
-
 //what users will see when they land on the home page
-class MainPage extends React.Component {
+class TracksShowPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.track = [];
+    // this.state.track = [];
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
   }
 
   componentDidMount() {
+    // debugger;
     this.props.fetchBlocks();
-    this.props.fetchTracks();
+    this.props.fetchTrack(this.props.match.params.trackId);
   }
 
   playNote(track) {
@@ -42,18 +41,21 @@ class MainPage extends React.Component {
   }
 
   render() {
-    let blocks = this.props.blocks || {};
-    let tracks = this.props.tracks || [];
-    for (let i = 0; i < tracks.length; i++) {
-      for (let j = 0; j < tracks[i].blocks.length; j++) {
+    let blocks = Object.values(this.props.blocks) || [];
+    let track = this.props.tracks.track || [];
+    // debugger;
+    if (blocks.length === 0 || track.length === 0) {
+      return null;
+    } else {
+      for (let j = 0; j < track.blocks.length; j++) {
         for (let b = 0; b < blocks.length; b++) {
-          if (blocks[b]._id === tracks[i].blocks[j]) {
-            tracks[i].blocks[j] = blocks[b];
+          if (blocks[b]._id === track.blocks[j]) {
+            track.blocks[j] = blocks[b];
           }
         }
       }
     }
-    // debugger;
+
     return (
       <div className="main-page">
         <header>
@@ -66,38 +68,35 @@ class MainPage extends React.Component {
         <div className="top-tracks">The best rhythm-beat maker in the biz!</div>
         <br />
         <h3 className="top-tracks">Today's Tracks</h3>
-        {tracks.map((track, i) => (
-          <div className="track-outer" key={i}>
-            <Link to={`/tracks/${track._id}`}>
-              <h4>{track.title}</h4>
-            </Link>
-            <br />
 
-            <img
-              src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-              className="play-button"
-              onClick={() => this.playNote(track)}
-            ></img>
-            <br />
+        <div className="track-outer">
+          <h4>{track.title}</h4>
+          <br />
 
-            <div className="track" onClick={() => this.playNote(track)}>
-              {track.blocks.map((block, i) => (
-                <div
-                  style={{
-                    backgroundColor: block.color,
-                    width: block.width,
-                    height: block.height,
-                  }}
-                  key={i}
-                ></div>
-              ))}
-              <br />
-            </div>
+          <img
+            src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+            className="play-button"
+            onClick={() => this.playNote(track)}
+          ></img>
+          <br />
+
+          <div className="track" onClick={() => this.playNote(track)}>
+            {track.blocks.map((block, i) => (
+              <div
+                style={{
+                  backgroundColor: block.color,
+                  width: block.width,
+                  height: block.height,
+                }}
+                key={i}
+              ></div>
+            ))}
+            <br />
           </div>
-        ))}
+        </div>
       </div>
     );
   }
 }
 
-export default MainPage;
+export default TracksShowPage;
