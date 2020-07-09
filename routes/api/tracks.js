@@ -97,8 +97,10 @@ router.delete(
   }
 );
 
+// fetch track by id
 router.get("/:id", (req, res) => {
   Track.findById(req.params.id)
+    .populate("user", "_id handle")
     .then((track) => res.json(track))
     .catch((err) =>
       res.status(404).json({ msg: "No track found with that ID" })
