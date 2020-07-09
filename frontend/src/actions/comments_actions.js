@@ -37,11 +37,11 @@ export const fetchTrackComments = (trackId) => dispatch => {
 
 // data format: 
 // { text: "some text", trackId: "some trackId" }
-export const createComment = (data) => dispatch => (
-  postComment(data)
+export const createComment = (data) => dispatch => {
+  return postComment(data)
     .then(createdComment => dispatch(receiveComment(createdComment.data)))
     .catch(err => dispatch(receiveCommentErrors(err.response.data)))
-);
+};
 
 export const updateComment = (comment) => dispatch => (
   patchComment(comment)

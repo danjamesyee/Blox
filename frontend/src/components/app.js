@@ -12,11 +12,9 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import Tracks from "./tracks/tracks_container";
 import MainPage from "./main/main_page_container";
-
 const App = () => (
   <div className="g-layout">
     <NavBarContainer />
-
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
