@@ -22,6 +22,7 @@ router.get("/", (req, res) => {
 router.get("/user/:user_id", (req, res) => {
   // debugger;
   Track.find({ user: req.params.user_id })
+    .populate("user", "_id handle")
     .sort({ createdAt: -1 })
     .then((tracks) => res.json(tracks))
     .catch((err) => res.status(400).json(err));
