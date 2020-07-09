@@ -14,6 +14,7 @@ class Profile extends React.Component {
   componentWillMount() {
     console.log(this.props.currentUser.id);
     this.props.fetchUserTracks(this.props.match.params.userId);
+    this.props.fetchBlocks();
   }
 
   componentWillReceiveProps(newState) {
@@ -43,14 +44,26 @@ class Profile extends React.Component {
     while (currentTime + miliseconds >= new Date().getTime()) {}
   }
   render() {
-    debugger;
+    let blocks = this.props.blocks || {};
+    let tracks = this.state.tracks || [];
+    let user = tracks[0] || {};
+    
+    for (let i = 0; i < tracks.length; i++) {
+      for (let j = 0; j < tracks[i].blocks.length; j++) {
+        for (let b = 0; b < blocks.length; b++) {
+          if (blocks[b]._id === tracks[i].blocks[j]) {
+            tracks[i].blocks[j] = blocks[b];
+          }
+        }
+      }
+    }
     if (this.state.tracks.length === 0) {
       return <div>This user has no tracks</div>;
     } else {
       return (
-        <div>
-          <h2>All of This User's tracks</h2>
-          {this.state.tracks.map((track, i) => (
+        <div className="main-page">
+          <h2>All of {user.user.handle}'s tracks</h2>
+          {tracks.map((track, i) => (
             <div className="track-outer" key={i}>
               <h4 id="tt">
                 <Link
@@ -60,14 +73,7 @@ class Profile extends React.Component {
                   {track.title}
                 </Link>
               </h4>
-              <h4 id="th">
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to={`/users/${track.user._id}`}
-                >
-                  by {track.user.handle}
-                </Link>
-              </h4>
+
               <div className="flexer">
                 <img
                   src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
