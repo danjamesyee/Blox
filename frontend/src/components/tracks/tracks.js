@@ -106,7 +106,10 @@ class Tracks extends React.Component {
       );
     }
 
-    let blocks = Object.values(this.props.blocks) || [];
+    let blocks =
+      Object.values(this.props.blocks).sort(function (a, b) {
+        return a.idx - b.idx;
+      }) || [];
     let track = this.state.track || [];
     // debugger;
     return (
@@ -143,6 +146,7 @@ class Tracks extends React.Component {
                           key={i}
                         >
                           <div
+                            className="actual-block"
                             style={{
                               backgroundColor: block.color,
                               width: block.width,
@@ -179,7 +183,7 @@ class Tracks extends React.Component {
             <h3>Click the note buttons to add them to the track</h3>
             <h4>Quarter Notes</h4>
             {blocks
-              .slice(0, 9)
+              .slice(0, 15)
               .sort(function (a, b) {
                 return a.idx - b.idx;
               })
@@ -387,7 +391,7 @@ class Tracks extends React.Component {
           </button> */}
             <h4>Eighth notes</h4>
             {blocks
-              .slice(9, 18)
+              .slice(15, 30)
               .sort(function (a, b) {
                 return a.idx - b.idx;
               })
@@ -595,7 +599,7 @@ class Tracks extends React.Component {
 
             <h4>Sixteenth notes</h4>
             {blocks
-              .slice(18, 27)
+              .slice(30, 45)
               .sort(function (a, b) {
                 return a.idx - b.idx;
               })
