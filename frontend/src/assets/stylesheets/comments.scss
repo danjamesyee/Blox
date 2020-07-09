@@ -5,5 +5,18 @@
 }
 
 .comment-button {
-  border: 1px solid gray
+  border: 1px solid gray;
+}
+
+.create-comment-box {
+  background: none;
+  border: none;
+}
+
+.create-comment-box:focus {
+  outline: none;
+}
+
+li {
+  list-style-type: none;
 }
