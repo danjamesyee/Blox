@@ -44,7 +44,14 @@ export default class Comment extends React.Component {
   }
   
   render(){
-    const { comment, destroyComment } = this.props;
+    const { comment, destroyComment, currentUser } = this.props;
+    let renderButtons;
+    if (currentUser.id === comment.user._id) {
+      renderButtons = <div className="show-page-comment-buttons">
+        <div className="comment-button" onClick={this.handleEdit}>Edit</div>&nbsp;
+          <div className="comment-button" onClick={() => destroyComment(comment._id)}>Delete</div>
+      </div>
+    }
 
     return !this.state.edit ? (
       <li>
@@ -52,10 +59,7 @@ export default class Comment extends React.Component {
         <div className="comment-text">
           <p>{comment.text}</p>
         </div>
-        <div className="show-page-comment-buttons">
-          <div className="comment-button" onClick={this.handleEdit}>Edit</div>&nbsp;
-          <div className="comment-button" onClick={() => destroyComment(comment._id)}>Delete</div>
-        </div>
+        {renderButtons}
       </li>
     ) : (
       <li>
