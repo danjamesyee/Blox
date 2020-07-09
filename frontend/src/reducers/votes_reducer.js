@@ -9,8 +9,6 @@ export default (state={}, action) => {
 
   switch(action.type) {
     case RECEIVE_VOTES:
-      // set newState to empty so prev state is replaced
-      newState = {};
       // receive votes arr
       action.votes.forEach(vote => {
         newState[vote._id] = vote;
