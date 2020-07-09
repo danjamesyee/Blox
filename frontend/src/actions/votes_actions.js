@@ -1,4 +1,4 @@
-import { getTrackVotes, getAllVotes, upvote, downvote } from '../util/votes_api_util';
+import { getTrackVotes, getAllVotes, postUpvote, postDownvote } from '../util/votes_api_util';
 
 export const RECEIVE_VOTES = 'RECEIVE_VOTES';
 export const RECEIVE_VOTE = 'RECEIVE_VOTE';
@@ -38,13 +38,13 @@ export const fetchAllVotes = () => dispatch => {
 }
 
 export const upvote = (trackId) => dispatch => {
-  return upvote(trackId)
+  return postUpvote(trackId)
     .then((vote) => dispatch(receiveVote(vote)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
 
 export const downvote = (trackId) => dispatch => {
-  return downvote(trackId)
+  return postDownvote(trackId)
     .then((vote) => dispatch(receiveVote(vote)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }

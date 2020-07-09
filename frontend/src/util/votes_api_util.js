@@ -6,12 +6,12 @@ export const getTrackVotes = (trackId) => (
 );
 
 // upvote a track
-export const upvote = (trackId) => (
+export const postUpvote = (trackId) => (
   axios.post(`/track/${trackId}/upvote`)
 );
 
 // downvote a track
-export const downvote = (trackId) => (
+export const postDownvote = (trackId) => (
   axios.post(`/track/${trackId}/downvote`)
 );
 
