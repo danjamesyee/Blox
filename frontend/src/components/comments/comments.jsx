@@ -30,6 +30,7 @@ export default class Comments extends React.Component {
     )
     return (
       <div className='comments'>
+
         <CreateComment 
           currentUser={currentUser} 
           createComment={createComment} 

@@ -48,7 +48,11 @@ export default class CreateComment extends React.Component {
 
     return (
       <form className='create-comment-form'>
-        <br/>
+        
+        <header>
+          <h4>Like this track?</h4>
+        </header>
+
         <input className="comment-box"
           type="text"
           placeholder="Add a comment..."

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Image} from 'react-bootstrap';
 
 export default class Comment extends React.Component {
   constructor(props) {
@@ -42,9 +43,10 @@ export default class Comment extends React.Component {
       .then(() => this.setState({ edit: false }))
       .then(() => this.props.fetchTrackComments(this.props.trackId));
   }
-  
+
   render(){
     const { comment, destroyComment, currentUser } = this.props;
+    
     let renderButtons;
     if (currentUser.id === comment.user._id) {
       renderButtons = <div className="show-page-comment-buttons">
@@ -55,18 +57,20 @@ export default class Comment extends React.Component {
 
     return !this.state.edit ? (
       <li>
-
-        <br/>
- 
-        <Link to={`/users/${comment.user._id}`}>{comment.user.handle}</Link>
-        <div className="comment-text">
-          <p>{comment.text}</p>
+        <div className='profile-pic'>
+          <div className= 'circle'></div>
         </div>
-        {renderButtons}
+
+        <div className='comment-content'>
+          <Link to={`/users/${comment.user._id}`}>{comment.user.handle}</Link>
+          <div className="comment-text">
+            <p>{comment.text}</p>
+          </div>
+          {renderButtons}
+        </div>
       </li>
     ) : (
-      <li>
-        <br/>  
+      <li>  
         <form className="edit-comment-form">
           <input className="comment-box"
             type="text"
