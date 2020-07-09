@@ -106,6 +106,11 @@ class NavBar extends React.Component {
           </div>
           {this.getLinks()}
         </div>
+        <div className="right-of-links">
+          <a href="https://github.com/danjamesyee/MERNblocks">
+            <img id="git-icon" src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png" />
+          </a>
+        </div>
       </div>
     );
   }
