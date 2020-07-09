@@ -1,17 +1,17 @@
 import axios from "axios";
 
 // grab votes for a specific track
-export const getTrackVotes = () => (
+export const getTrackVotes = (trackId) => (
   axios.get(`/track/${trackId}`)
 );
 
 // upvote a track
-export const upvote = () => (
+export const upvote = (trackId) => (
   axios.post(`/track/${trackId}/upvote`)
 );
 
 // downvote a track
-export const downvote = () => (
+export const downvote = (trackId) => (
   axios.post(`/track/${trackId}/downvote`)
 );
 
