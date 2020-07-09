@@ -59,6 +59,7 @@ class NavBar extends React.Component {
               <a
                 class="dropdown-item"
                 id="logout-user"
+                href="#"
                 onClick={this.logoutUser}
               >
                 Logout
