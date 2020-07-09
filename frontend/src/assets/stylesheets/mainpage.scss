@@ -16,7 +16,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 80%;
-  height: 80vh;
+  padding-bottom: 50px;
 }
 
 .main-page header {
@@ -60,12 +60,15 @@
 .track-outer {
   height: 100%;
   width: 100%;
+}
+
+.flexer {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.track-outer > h4 {
+.track-outer > a > h4 {
   margin: 10px;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
