@@ -39,12 +39,12 @@ export const fetchAllVotes = () => dispatch => {
 
 export const upvote = (trackId) => dispatch => {
   return postUpvote(trackId)
-    .then((vote) => dispatch(receiveVote(vote)))
+    .then((vote) => dispatch(receiveVote(vote.data)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
 
 export const downvote = (trackId) => dispatch => {
   return postDownvote(trackId)
-    .then((vote) => dispatch(receiveVote(vote)))
+    .then((vote) => dispatch(receiveVote(vote.data)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
