@@ -8,8 +8,11 @@
   border: 2px solid black;
   margin-top: 40px;
   background: white;
+  overflow: scroll;
 }
-
+.actual-block {
+  flex: 1 1 auto;
+}
 ul {
   list-style: none;
   padding: 0;
