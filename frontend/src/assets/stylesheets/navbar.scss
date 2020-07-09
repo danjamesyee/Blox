@@ -2,7 +2,7 @@
   height: 65px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: 1px solid gray;
   background-color: #537895;
   background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
@@ -15,17 +15,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 650px;
+  width: 100%;
 }
 
 .toast {
   margin: 0;
+  text-align: left;
 }
 
 .logout {
   height: 100%;
   display: flex;
-  width: 400px;
+  width: 40%;
   justify-content: space-between;
   align-items: center;
 }
@@ -45,14 +46,14 @@
 }
 .logout a:hover {
   text-decoration: none;
-  color: orange
+  color: orange;
 }
 .nav-btn {
-    height: 100%;
-    width: 400px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .nav-btn .btn {
