@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Comment extends React.Component {
   constructor(props) {
@@ -47,15 +48,13 @@ export default class Comment extends React.Component {
 
     return !this.state.edit ? (
       <li>
-        <h4>{comment.user.handle}</h4>
+        <Link to={`/users/${comment.user._id}`}>{comment.user.handle}</Link>
         <div className="comment-text">
           <p>{comment.text}</p>
         </div>
         <div className="show-page-comment-buttons">
           <div className="comment-button" onClick={this.handleEdit}>Edit</div>&nbsp;
           <div className="comment-button" onClick={() => destroyComment(comment._id)}>Delete</div>
-          {/* <input type="button" value="Edit" onClick={this.handleEdit} />
-          <input type="button" value="Delete" onClick={() => destroyComment(comment._id)} /> */}
         </div>
       </li>
     ) : (
@@ -70,8 +69,6 @@ export default class Comment extends React.Component {
           <div className="show-page-comment-buttons">
             <div className="comment-button" onClick={this.handleCancel}>Cancel</div>&nbsp;
             <div className="comment-button" onClick={this.handleSave}>Save</div>
-            {/* <input type="button" value="Cancel" onClick={this.handleCancel} />
-            <input type="button" value="Save" onClick={this.handleSave} />            */}
           </div>
         </form>
       </li>
