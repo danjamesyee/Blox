@@ -14,6 +14,10 @@ const TrackSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User'
+    }, 
+    rating: {
+      type: Number,
+      default: 0
     }
   },
   { timestamps: true }
