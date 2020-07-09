@@ -17,7 +17,6 @@ import UserProfile from "./user/user_profile_container";
 const App = () => (
   <div className="g-layout">
     <NavBarContainer />
-
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

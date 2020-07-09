@@ -19,13 +19,14 @@ const validateCommentInput = require('../../validation/comments');
 
 //show comments for a specific track
 router.get('/track/:track_id', (req, res) => {
-    Comment.find({track: req.params.track_id})
-        .sort({ date: -1 })
-        .then(comments => res.json(comments))
-        .catch(err =>
-            res.status(404).json({ nocommentsfound: 'No comments found from that track' }
-        )
-    );
+  Comment.find({track: req.params.track_id})
+    .populate('user')
+    .sort({ date: -1 })
+    .then(comments => res.json(comments))
+    .catch(err =>
+      res.status(404).json({ nocommentsfound: 'No comments found from that track' }
+    )
+  );
 });
 
 // show comment by specific ID
@@ -54,8 +55,8 @@ router.post('/',
         });
 
         newComment.save()
-            .then(comment => res.json(comment))
-            .catch(err => res.status(400).json(err));
+          .then(comment => res.json(comment))
+          .catch(err => res.status(400).json(err));
     }
 );
 

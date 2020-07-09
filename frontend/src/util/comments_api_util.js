@@ -14,7 +14,7 @@ export const postComment = (data) => (
 
 //Edit Comment
 export const patchComment = (comment) => (
-  axios.patch(`/api/comments/${comment.id}`, {text: comment.text})
+  axios.patch(`/api/comments/${comment._id}`, {text: comment.text})
 );
 
 //Delete Comment
