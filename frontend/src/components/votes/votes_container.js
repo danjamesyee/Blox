@@ -10,9 +10,12 @@ import {
 const trackRating = (trackId, votes) => {
   const votesArr = Object.values(votes);
   let rating = 0;
+
   votesArr.forEach(vote => {
-    if (vote.rating > 0) rating += 1;
-    else rating -= 1;
+    if (vote.track == trackId) {
+      if (vote.rating > 0) rating += 1;
+      else rating -= 1;
+    }
   });
   return rating;
 }
