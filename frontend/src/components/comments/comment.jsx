@@ -67,8 +67,8 @@ export default class Comment extends React.Component {
               onChange={this.handleChange}
             />
             <div>
-              <button onClick={this.handleCancel}>Cancel</button>
-              <button onClick={this.handleSave}>Save</button>
+              <button id="comment-buttons" onClick={this.handleCancel}>Cancel</button>
+              <button id="comment-buttons" onClick={this.handleSave}>Save</button>
             </div>
           </form>
         </li>
