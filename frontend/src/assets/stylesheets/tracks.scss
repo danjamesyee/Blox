@@ -1,7 +1,7 @@
 .notes {
   display: flex;
   align-items: flex-end;
-  height: 104px;
+  height: 110px;
   border-radius: 5px;
   width: 100%;
   padding-bottom: 0px;
@@ -13,6 +13,11 @@
 .actual-block {
   flex: 1 1 auto;
 }
+
+#dragger {
+  display: flex;
+}
+
 ul {
   list-style: none;
   padding: 0;

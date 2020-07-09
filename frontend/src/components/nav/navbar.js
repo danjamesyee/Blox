@@ -50,19 +50,23 @@ class NavBar extends React.Component {
               {this.props.currentUser.handle}
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#">
+              <Link
+                to={`users/${this.props.currentUser.id}`}
+                className="dropdown-item"
+              >
                 My Tracks
-              </a>
+              </Link>
               <a className="dropdown-item" href="#">
                 Placeholder
               </a>
+
               <a
                 className="dropdown-item"
                 id="logout-user"
                 href="#"
                 onClick={this.logoutUser}
               >
-                Logout
+                <Link to="/">Logout</Link>
               </a>
             </div>
           </div>

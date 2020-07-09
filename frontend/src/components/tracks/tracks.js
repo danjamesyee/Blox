@@ -137,7 +137,12 @@ class Tracks extends React.Component {
                   className="notes"
                 >
                   {track.map((block, i) => (
-                    <Draggable key={i} draggableId={i + " "} index={i}>
+                    <Draggable
+                      key={i}
+                      draggableId={i + " "}
+                      index={i}
+                      id="dragger"
+                    >
                       {(provided) => (
                         <div
                           ref={provided.innerRef}
@@ -149,8 +154,9 @@ class Tracks extends React.Component {
                             className="actual-block"
                             style={{
                               backgroundColor: block.color,
-                              width: block.width,
-                              height: block.height,
+                              width: block.width / 2,
+                              minWidth: 0,
+                              height: block.height / 2,
                             }}
                           ></div>
                         </div>
