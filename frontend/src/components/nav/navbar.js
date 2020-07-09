@@ -37,7 +37,7 @@ class NavBar extends React.Component {
             Create a track
           </Link>
 
-          <div class="dropdown">
+          <div className="dropdown">
             <span id="logged-in-as">Logged in as:</span>
             <button
               className="btn btn-secondary dropdown-toggle"
