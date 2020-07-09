@@ -35,8 +35,10 @@ export const fetchTrackComments = (trackId) => dispatch => {
     .catch(err => dispatch(receiveCommentErrors(err.response.data)));
 }
 
-export const createComment = (comment) => dispatch => (
-  postComment(comment)
+// data format: 
+// { text: "some text", trackId: "some trackId" }
+export const createComment = (data) => dispatch => (
+  postComment(data)
     .then(createdComment => dispatch(receiveComment(createdComment.data)))
     .catch(err => dispatch(receiveCommentErrors(err.response.data)))
 );
