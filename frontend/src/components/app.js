@@ -12,6 +12,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import Tracks from "./tracks/tracks_container";
 import MainPage from "./main/main_page_container";
 import TracksShowContainer from "./tracks/tracks_show_container";
+import UserProfile from "./user/user_profile_container";
 
 const App = () => (
   <div className="g-layout">
@@ -23,6 +24,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/track" component={Tracks} />
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
+      <Route exact path="/users/:userId" component={UserProfile} />
     </Switch>
     <footer>Copyright &copy; 2020 Daniel Group</footer>
   </div>
