@@ -24,7 +24,6 @@ const App = () => (
       <Route exact path="/track" component={Tracks} />
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
     </Switch>
-
     <footer>Copyright &copy; 2020 Daniel Group</footer>
   </div>
 );

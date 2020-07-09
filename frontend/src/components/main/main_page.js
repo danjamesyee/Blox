@@ -71,27 +71,28 @@ class MainPage extends React.Component {
             <Link to={`/tracks/${track._id}`}>
               <h4>{track.title}</h4>
             </Link>
-            <br />
 
-            <img
-              src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-              className="play-button"
-              onClick={() => this.playNote(track)}
-            ></img>
-            <br />
-
-            <div className="track" onClick={() => this.playNote(track)}>
-              {track.blocks.map((block, i) => (
-                <div
-                  style={{
-                    backgroundColor: block.color,
-                    width: block.width,
-                    height: block.height,
-                  }}
-                  key={i}
-                ></div>
-              ))}
+            <div className="flexer">
+              <img
+                src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                className="play-button"
+                onClick={() => this.playNote(track)}
+              ></img>
               <br />
+
+              <div className="track" onClick={() => this.playNote(track)}>
+                {track.blocks.map((block, i) => (
+                  <div
+                    style={{
+                      backgroundColor: block.color,
+                      width: block.width,
+                      height: block.height,
+                    }}
+                    key={i}
+                  ></div>
+                ))}
+                <br />
+              </div>
             </div>
           </div>
         ))}
