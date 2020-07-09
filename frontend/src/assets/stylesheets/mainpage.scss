@@ -1,4 +1,8 @@
 //THE GOOD STUFF
+
+a {
+  text-decoration: none;
+}
 .container {
   color: #ffb400;
   display: inherit;
@@ -50,6 +54,10 @@
   cursor: pointer;
 }
 
+.link-to-track {
+  width: 100%;
+}
+
 .track > div {
   border: 1px solid grey;
   border-radius: 2px;
@@ -68,10 +76,18 @@
   align-items: center;
 }
 
-.track-outer > a > h4 {
+.track-outer > h4 {
   margin: 10px;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
+  text-decoration: none;
+}
+
+#tt {
+  text-decoration: none;
+  color: black;
+  padding-left: 40px;
+  padding-top: 40px;
 }
 
 .top-tracks {

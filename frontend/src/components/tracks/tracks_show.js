@@ -67,10 +67,10 @@ class TracksShowPage extends React.Component {
 
         <div className="top-tracks">The best rhythm-beat maker in the biz!</div>
         <br />
-        <h3 className="top-tracks">Today's Tracks</h3>
 
         <div className="track-outer">
           <h4>{track.title}</h4>
+          <h3></h3>
           <br />
 
           <img

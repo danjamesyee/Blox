@@ -68,9 +68,14 @@ class MainPage extends React.Component {
         <h3 className="top-tracks">Today's Tracks</h3>
         {tracks.map((track, i) => (
           <div className="track-outer" key={i}>
-            <Link to={`/tracks/${track._id}`}>
-              <h4>{track.title}</h4>
-            </Link>
+            <h4 id="tt">
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/tracks/${track._id}`}
+              >
+                {track.title}
+              </Link>
+            </h4>
 
             <div className="flexer">
               <img
@@ -79,20 +84,21 @@ class MainPage extends React.Component {
                 onClick={() => this.playNote(track)}
               ></img>
               <br />
-
-              <div className="track" onClick={() => this.playNote(track)}>
-                {track.blocks.map((block, i) => (
-                  <div
-                    style={{
-                      backgroundColor: block.color,
-                      width: block.width,
-                      height: block.height,
-                    }}
-                    key={i}
-                  ></div>
-                ))}
-                <br />
-              </div>
+              <Link className="link-to-track" to={`/tracks/${track._id}`}>
+                <div className="track">
+                  {track.blocks.map((block, i) => (
+                    <div
+                      style={{
+                        backgroundColor: block.color,
+                        width: block.width,
+                        height: block.height,
+                      }}
+                      key={i}
+                    ></div>
+                  ))}
+                  <br />
+                </div>
+              </Link>
             </div>
           </div>
         ))}
