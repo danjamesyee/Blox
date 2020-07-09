@@ -1,6 +1,7 @@
 import React from "react";
 import * as Tone from "tone";
 import CommentsContainer from "../comments/comments_container";
+import VotesContainer from "../votes/votes_container";
 //what users will see when they land on the home page
 class TracksShowPage extends React.Component {
   constructor(props) {
@@ -94,6 +95,8 @@ class TracksShowPage extends React.Component {
             ))}
             <br />
           </div>
+          
+          <VotesContainer trackId={this.props.match.params.trackId} />
 
           <CommentsContainer trackId={this.props.match.params.trackId} />
         </div>
