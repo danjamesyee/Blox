@@ -23,6 +23,7 @@ export default class Comments extends React.Component {
         comment={comment} 
         fetchTrackComments={fetchTrackComments}
         trackId={trackId}
+        currentUser={currentUser}
         destroyComment={destroyComment}
         updateComment={updateComment} 
         key={comment._id} />
