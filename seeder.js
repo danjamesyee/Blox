@@ -118,7 +118,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#6E607A",
+        color: "#1E6E37",
       },
       {
         idx: 10,
@@ -126,7 +126,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#957F9E",
+        color: "#138A36",
       },
       {
         idx: 11,
@@ -134,7 +134,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#BC9EC1",
+        color: "#10A232",
       },
       {
         idx: 12,
@@ -142,7 +142,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#C6A5C3",
+        color: "#0CB92D",
       },
       {
         idx: 13,
@@ -150,7 +150,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#D0ACC4",
+        color: "#04E824",
       },
       {
         idx: 14,
@@ -158,7 +158,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#E3BAC6",
+        color: "#0EF449",
       },
       {
         idx: 15,
@@ -166,7 +166,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#EAC6CF",
+        color: "#18FF6D",
       },
       {
         idx: 16,
@@ -174,7 +174,7 @@ const data = [
         duration: "8n",
         width: 50,
         height: 50,
-        color: "#FDE8E9",
+        color: "#85FFB1",
       },
       {
         idx: 17,
