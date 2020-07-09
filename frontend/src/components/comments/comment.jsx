@@ -55,6 +55,9 @@ export default class Comment extends React.Component {
 
     return !this.state.edit ? (
       <li>
+
+        <br/>
+ 
         <Link to={`/users/${comment.user._id}`}>{comment.user.handle}</Link>
         <div className="comment-text">
           <p>{comment.text}</p>
@@ -63,13 +66,15 @@ export default class Comment extends React.Component {
       </li>
     ) : (
       <li>
+        <br/>  
         <form className="edit-comment-form">
-          <input
+          <input className="comment-box"
             type="text"
-            placeholder="Add a comment..."
+            placeholder="Edit your comment..."
             value={this.state.text}
             onChange={this.handleChange}
           />
+          <hr/>
           <div className="show-page-comment-buttons">
             <div className="comment-button" onClick={this.handleCancel}>Cancel</div>&nbsp;
             <div className="comment-button" onClick={this.handleSave}>Save</div>
