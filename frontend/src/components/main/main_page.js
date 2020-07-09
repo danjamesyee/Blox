@@ -1,5 +1,6 @@
 import React from "react";
 import * as Tone from "tone";
+import { Link } from "react-router-dom";
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
@@ -43,6 +44,7 @@ class MainPage extends React.Component {
   render() {
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
+    // debugger;
     for (let i = 0; i < tracks.length; i++) {
       for (let j = 0; j < tracks[i].blocks.length; j++) {
         for (let b = 0; b < blocks.length; b++) {
@@ -52,6 +54,7 @@ class MainPage extends React.Component {
         }
       }
     }
+    // debugger;
     return (
       <div className="main-page">
         <header>
@@ -66,28 +69,42 @@ class MainPage extends React.Component {
         <h3 className="top-tracks">Today's Tracks</h3>
         {tracks.map((track, i) => (
           <div className="track-outer" key={i}>
-            <h4>{track.title}</h4>
-            <br />
-
-            <img
-              src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-              className="play-button"
-              onClick={() => this.playNote(track)}
-            ></img>
-            <br />
-
-            <div className="track" onClick={() => this.playNote(track)}>
-              {track.blocks.map((block, i) => (
-                <div
-                  style={{
-                    backgroundColor: block.color,
-                    width: block.width,
-                    height: block.height,
-                  }}
-                  key={i}
-                ></div>
-              ))}
+            <h4 id="tt">
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/tracks/${track._id}`}
+              >
+                {track.title}
+              </Link>
+            </h4>
+            <Link
+              style={{ textDecoration: "none", color: "black" }}
+              to={`/users/${track.user}`}
+            >
+              {track.user}
+            </Link>
+            <div className="flexer">
+              <img
+                src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                className="play-button"
+                onClick={() => this.playNote(track)}
+              ></img>
               <br />
+              <Link className="link-to-track" to={`/tracks/${track._id}`}>
+                <div className="track">
+                  {track.blocks.map((block, i) => (
+                    <div
+                      style={{
+                        backgroundColor: block.color,
+                        width: block.width,
+                        height: block.height,
+                      }}
+                      key={i}
+                    ></div>
+                  ))}
+                  <br />
+                </div>
+              </Link>
             </div>
           </div>
         ))}
