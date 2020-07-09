@@ -49,13 +49,13 @@ export default class CreateComment extends React.Component {
     return (
       <form className='create-comment-form'>
         <br/>
-        <input className="create-comment-box"
+        <input className="comment-box"
           type="text"
           placeholder="Add a comment..."
           value={this.state.text}
           onChange={this.handleChange}
         />
-
+        <hr/>
         {buttons}
         
       </form>
