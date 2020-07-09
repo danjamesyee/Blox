@@ -7,18 +7,20 @@ import {
 } from '../../actions/votes_actions';
 
 // Filter votes that belong to a track
-const trackVotes = (trackId, votes) => {
+const trackRating = (trackId, votes) => {
   const votesArr = Object.values(votes);
-  const filteredVotes = votesArr.filter(vote => {
-    return vote.track == trackId;
-  })
-  return filteredVotes;
+  let rating = 0;
+  votesArr.forEach(vote => {
+    if (vote.rating > 0) rating += 1;
+    else rating -= 1;
+  });
+  return rating;
 }
 
 // make sure to pass VotesContainer the trackId
 // like this <VotesContainer trackId={trackId}
 const MSP = (state, ownProps) => ({
-  votes: trackVotes(ownProps.trackId, state.votes),
+  rating: trackRating(ownProps.trackId, state.votes),
   trackId: ownProps.trackId,
   currentUser: state.session.user
 });
