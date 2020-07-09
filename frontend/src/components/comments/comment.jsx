@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Comment extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class Comment extends React.Component {
 
     return !this.state.edit ? (
       <li>
-        <h4>{comment.user.handle}</h4>
+        <Link to={`/users/${comment.user._id}`}>{comment.user.handle}</Link>
         <div className="comment-text">
           <p>{comment.text}</p>
         </div>
