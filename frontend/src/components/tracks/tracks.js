@@ -1,6 +1,8 @@
 import React from "react";
 import * as Tone from "tone";
 
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 class Tracks extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,26 @@ class Tracks extends React.Component {
     this.state = { title: "" };
     this.state.track = [];
   }
+  onDragEnd = (result) => {
+    const { destination, source, reason } = result;
 
+    if (!destination || reason === "CANCEL") {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    const blocks = Object.assign([], this.state.track);
+    const droppedBlock = this.state.track[source.index];
+
+    blocks.splice(source.index, 1);
+    blocks.splice(destination.index, 0, droppedBlock);
+    this.setState({ track: blocks });
+  };
   componentDidMount() {
     this.props.fetchBlocks();
   }
@@ -89,77 +110,95 @@ class Tracks extends React.Component {
     let track = this.state.track || [];
     // debugger;
     return (
-      <div className="tracks-container">
-        <h2 className="tracks-title">Unleash your inner musical genius</h2>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <div className="tracks-container">
+          <h2 className="tracks-title">Unleash your inner musical genius</h2>
 
-        <form className="track-title-form" onSubmit={this.handleSubmit}>
-          <label>
-            Title your masterpiece...
+          <form className="track-title-form" onSubmit={this.handleSubmit}>
+            <label>
+              Title your masterpiece...
+              <br />
+              <input
+                type="text"
+                value={this.state.title}
+                onChange={this.update("title")}
+              />
+            </label>
+            {titleError}
+            <h1 className="real-title">{this.state.title}</h1>
+            <Droppable droppableId="dp1" direction="horizontal">
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className="notes"
+                >
+                  {track.map((block, i) => (
+                    <Draggable key={i} draggableId={i + " "} index={i}>
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          key={i}
+                        >
+                          <div
+                            style={{
+                              backgroundColor: block.color,
+                              width: block.width,
+                              height: block.height,
+                            }}
+                          ></div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
             <br />
-            <input
-              type="text"
-              value={this.state.title}
-              onChange={this.update("title")}
-            />
-          </label>
-          {titleError}
-          <h1 className="real-title">{this.state.title}</h1>
-          <div className="notes">
-            {track.map((block, i) => (
-              <div
-                style={{
-                  backgroundColor: block.color,
-                  width: block.width,
-                  height: block.height,
-                }}
-                key={i}
-              >
-                {/* {note[1]} */}
-              </div>
-            ))}
-          </div>
-          <br />
-          <p className="begin">
-            Press play to begin or to hear your track once you've made it
-          </p>
-          <button
-            className="play-button"
-            type="button"
-            onClick={() => this.playNote()}
-          >
-            Play
-          </button>
-          <button
-            className="play-button"
-            type="button"
-            onClick={() => this.setState({ notes: [], track: [] })}
-          >
-            Clear
-          </button>
+            <p className="begin">
+              Press play to begin or to hear your track once you've made it
+            </p>
+            <button
+              className="play-button"
+              type="button"
+              onClick={() => this.playNote()}
+            >
+              Play
+            </button>
+            <button
+              className="play-button"
+              type="button"
+              onClick={() => this.setState({ notes: [], track: [] })}
+            >
+              Clear
+            </button>
 
-          <h3>Click the note buttons to add them to the track</h3>
-          <h4>Quarter Notes</h4>
-          {blocks
-            .slice(0, 9)
-            .sort(function (a, b) {
-              return a.idx - b.idx;
-            })
-            .map((block, i) => (
-              <button
-                key={i}
-                style={{
-                  backgroundColor: block.color,
-                }}
-                type="button"
-                onClick={() => this.addNoteToTrack(block)}
-                onMouseEnter={() =>
-                  synth.triggerAttackRelease(block.note, block.duration)
-                }
-              >
-                {!block.note ? "Rest" : block.note}
-              </button>
-            ))}
-          {/* <button
+            <h3>Click the note buttons to add them to the track</h3>
+            <h4>Quarter Notes</h4>
+            {blocks
+              .slice(0, 9)
+              .sort(function (a, b) {
+                return a.idx - b.idx;
+              })
+              .map((block, i) => (
+                <button
+                  key={i}
+                  style={{
+                    backgroundColor: block.color,
+                  }}
+                  type="button"
+                  onClick={() => this.addNoteToTrack(block)}
+                  onMouseEnter={() =>
+                    synth.triggerAttackRelease(block.note, block.duration)
+                  }
+                >
+                  {!block.note ? "Rest" : block.note}
+                </button>
+              ))}
+            {/* <button
             style={{
               backgroundColor: "",
             }}
@@ -346,28 +385,28 @@ class Tracks extends React.Component {
           >
             Rest
           </button> */}
-          <h4>Eighth notes</h4>
-          {blocks
-            .slice(9, 18)
-            .sort(function (a, b) {
-              return a.idx - b.idx;
-            })
-            .map((block, i) => (
-              <button
-                key={i}
-                style={{
-                  backgroundColor: block.color,
-                }}
-                type="button"
-                onClick={() => this.addNoteToTrack(block)}
-                onMouseEnter={() =>
-                  synth.triggerAttackRelease(block.note, block.duration)
-                }
-              >
-                {!block.note ? "Rest" : block.note}
-              </button>
-            ))}
-          {/* <button
+            <h4>Eighth notes</h4>
+            {blocks
+              .slice(9, 18)
+              .sort(function (a, b) {
+                return a.idx - b.idx;
+              })
+              .map((block, i) => (
+                <button
+                  key={i}
+                  style={{
+                    backgroundColor: block.color,
+                  }}
+                  type="button"
+                  onClick={() => this.addNoteToTrack(block)}
+                  onMouseEnter={() =>
+                    synth.triggerAttackRelease(block.note, block.duration)
+                  }
+                >
+                  {!block.note ? "Rest" : block.note}
+                </button>
+              ))}
+            {/* <button
             style={{
               backgroundColor: colors.color11,
             }}
@@ -554,28 +593,28 @@ class Tracks extends React.Component {
             Rest
           </button> */}
 
-          <h4>Sixteenth notes</h4>
-          {blocks
-            .slice(18, 27)
-            .sort(function (a, b) {
-              return a.idx - b.idx;
-            })
-            .map((block, i) => (
-              <button
-                key={i}
-                style={{
-                  backgroundColor: block.color,
-                }}
-                type="button"
-                onClick={() => this.addNoteToTrack(block)}
-                onMouseEnter={() =>
-                  synth.triggerAttackRelease(block.note, block.duration)
-                }
-              >
-                {!block.note ? "Rest" : block.note}
-              </button>
-            ))}
-          {/* <button
+            <h4>Sixteenth notes</h4>
+            {blocks
+              .slice(18, 27)
+              .sort(function (a, b) {
+                return a.idx - b.idx;
+              })
+              .map((block, i) => (
+                <button
+                  key={i}
+                  style={{
+                    backgroundColor: block.color,
+                  }}
+                  type="button"
+                  onClick={() => this.addNoteToTrack(block)}
+                  onMouseEnter={() =>
+                    synth.triggerAttackRelease(block.note, block.duration)
+                  }
+                >
+                  {!block.note ? "Rest" : block.note}
+                </button>
+              ))}
+            {/* <button
             style={{
               backgroundColor: colors.color18,
             }}
@@ -710,13 +749,14 @@ class Tracks extends React.Component {
             Rest
           </button> */}
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <input type="submit" value="Save track" />
-          {blocksError}
-        </form>
-      </div>
+            <input type="submit" value="Save track" />
+            {blocksError}
+          </form>
+        </div>
+      </DragDropContext>
     );
   }
 }
