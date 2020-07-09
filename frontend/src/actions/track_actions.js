@@ -1,5 +1,6 @@
 import {
   getTracks,
+  getTrack,
   createTrack,
   editTrack,
   deleteTrack,
@@ -7,6 +8,7 @@ import {
 
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
+export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
@@ -17,6 +19,11 @@ export const receiveTracks = (tracks) => ({
 
 export const receiveNewTrack = (track) => ({
   type: RECEIVE_NEW_TRACK,
+  track,
+});
+
+export const receiveTrack = (track) => ({
+  type: RECEIVE_TRACK,
   track,
 });
 
@@ -33,6 +40,11 @@ export const receiveErrors = (errors) => ({
 export const fetchTracks = () => (dispatch) => {
   return getTracks()
     .then((tracks) => dispatch(receiveTracks(tracks)))
+    .catch((err) => dispatch(receiveErrors(err.response.data)));
+};
+export const fetchTrack = (id) => (dispatch) => {
+  return getTrack(id)
+    .then((track) => dispatch(receiveTrack(track)))
     .catch((err) => dispatch(receiveErrors(err.response.data)));
 };
 

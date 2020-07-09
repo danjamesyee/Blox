@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { login } from "./util/session_api_util";
-import './assets/stylesheets/index.scss';
+import "./assets/stylesheets/index.scss";
 
 import Root from "./components/root";
 import configureStore from "./store/store";
@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import * as APITrackUtil from "./actions/track_actions";
+import * as APITrackUtil from "./util/track_api_util";
 import { fetchBlocks } from "./actions/block_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
-  window.makeTrack = APITrackUtil.makeTrack;
+  window.fetchTrack = APITrackUtil.getTrack;
   // window.editTrack = APITrackUtil.editTrack;
   // window.getTracks = APITrackUtil.getTracks;
   window.fetchBlocks = fetchBlocks;

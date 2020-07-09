@@ -95,4 +95,11 @@ router.delete(
   }
 );
 
+router.get("/:id", (req, res) => {
+  Track.findById(req.params.id)
+    .then((track) => res.json(track))
+    .catch((err) =>
+      res.status(404).json({ msg: "No track found with that ID" })
+    );
+});
 module.exports = router;

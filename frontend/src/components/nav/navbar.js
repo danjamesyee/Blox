@@ -37,10 +37,11 @@ class NavBar extends React.Component {
           <Link to={"/track"} id="create-track-link">
             Create a track
           </Link>
+
           <div class="dropdown">
             <span id="logged-in-as">Logged in as:</span>
             <button
-              class="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
               data-toggle="dropdown"
@@ -49,15 +50,15 @@ class NavBar extends React.Component {
             >
               {this.props.currentUser.handle}
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a className="dropdown-item" href="#">
                 My Tracks
               </a>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Placeholder
               </a>
               <a
-                class="dropdown-item"
+                className="dropdown-item"
                 id="logout-user"
                 href="#"
                 onClick={this.logoutUser}
@@ -70,9 +71,9 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div className="nav-btn">         
-            <Link to={"/signup"}>Signup</Link>
-            <Link to={"/login"}>Login</Link> 
+        <div className="nav-btn">
+          <Link to={"/signup"}>Signup</Link>
+          <Link to={"/login"}>Login</Link>
 
           <Button
             variant="success"
@@ -110,7 +111,8 @@ class NavBar extends React.Component {
   }
 }
 
-{/* <Toast>
+{
+  /* <Toast>
   <Toast.Header>
     <strong>
       <Link to="/">
@@ -119,6 +121,7 @@ class NavBar extends React.Component {
     </strong>
     <small>BEAT</small>
   </Toast.Header>
-</Toast>; */}
+</Toast>; */
+}
 
 export default withRouter(NavBar);
