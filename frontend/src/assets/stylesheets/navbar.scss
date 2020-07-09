@@ -119,6 +119,7 @@ strong a:hover {
 }
 
 .right-of-links {
-  position: absolute;
-  right: 490px;
+  display: flex;
+  justify-content: flex-end;
+  width: 250px;
 }
