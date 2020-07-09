@@ -37,8 +37,8 @@ class NavBar extends React.Component {
           <Link to={"/track"} id="create-track-link">
             Create a track
           </Link>
-          <span id="logged-in-as">Logged in as:</span>
           <div class="dropdown">
+            <span id="logged-in-as">Logged in as:</span>
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
@@ -65,12 +65,6 @@ class NavBar extends React.Component {
               </a>
             </div>
           </div>
-          {/* <div className="dropdown">
-              
-            <div className="dropdown-content" id="sign-in-drop">
-              <div className="logout" onClick={this.logoutUser}>Logout</div>
-            </div>
-          </div> */}
         </div>
       );
     } else {
