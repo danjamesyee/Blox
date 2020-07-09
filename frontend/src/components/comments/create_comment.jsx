@@ -42,15 +42,14 @@ export default class CreateComment extends React.Component {
         <div className="show-page-comment-buttons">
           <div className="comment-button" onClick={this.handleCancel}>Cancel</div>&nbsp;
           <div className="comment-button" onClick={this.handleComment}>Comment</div>
-          {/* <input id="show-page-buttons" type="button" value="Cancel" onClick={this.handleCancel} /> */}
-          {/* <input id="show-page-buttons" type="button" value="Comment" onClick={this.handleComment} /> */}
         </div>
       );
     }
 
     return (
       <form className='create-comment-form'>
-        <input 
+        <br/>
+        <input className="create-comment-box"
           type="text"
           placeholder="Add a comment..."
           value={this.state.text}
