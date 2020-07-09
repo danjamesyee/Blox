@@ -15,16 +15,18 @@ export default class Votes extends React.Component {
     const { upvote, downvote, trackId } = this.props;
 
     return (
-      <div onClick={() => upvote(trackId)} className="material-icons">
-        keyboard_arrow_up
-      </div>
+      <div className="vote">
+        <div onClick={() => upvote(trackId)} className="material-icons">
+          keyboard_arrow_up
+        </div>
 
-      <div onClick={() => downvote(trackId)} className="rating">
-        {this.props.rating}
-      </div>
+        <div onClick={() => downvote(trackId)} className="rating">
+          {this.props.rating}
+        </div>
 
-      <div className="material-icons">
-        keyboard_arrow_down
+        <div className="material-icons">
+          keyboard_arrow_down
+        </div>
       </div>
     )
   }
