@@ -1,6 +1,7 @@
 import React from "react";
 import * as Tone from "tone";
 import { Link } from "react-router-dom";
+import VotesContainer from '../votes/votes_container';
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
@@ -108,6 +109,8 @@ class MainPage extends React.Component {
                 </div>
               </Link>
             </div>
+            <VotesContainer trackId={track._id} key={i}/>
+
           </div>
         ))}
       </div>
