@@ -32,8 +32,7 @@ class NavBar extends React.Component {
       return (
         <div className="logout">
           {/* <Link to={"/blockbeats"}>All Block Beats</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/new_tweet"}>Write a Tweet</Link> */}
+          <Link to={"/profile"}>Profile</Link>*/}
           <Link to={"/track"} id="create-track-link">
             Create a track
           </Link>
@@ -105,11 +104,6 @@ class NavBar extends React.Component {
             </Toast>
           </div>
           {this.getLinks()}
-        </div>
-        <div className="right-of-links">
-          <a href="https://github.com/danjamesyee/MERNblocks">
-            <img id="git-icon" src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png" />
-          </a>
         </div>
       </div>
     );
