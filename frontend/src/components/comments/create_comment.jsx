@@ -39,11 +39,11 @@ export default class CreateComment extends React.Component {
     let buttons;
     if (this.state.buttons) {
       buttons = (
-        <div>
-          <input type="button" value="Cancel" onClick={this.handleCancel} />
-          <input type="button" value="Comment" onClick={this.handleComment} />
-          {/* <button onClick={this.handleCancel}>Cancel</button>
-          <button onClick={this.handleComment}>Comment</button> */}
+        <div className="show-page-comment-buttons">
+          <div className="comment-button" onClick={this.handleCancel}>Cancel</div>&nbsp;
+          <div className="comment-button" onClick={this.handleComment}>Comment</div>
+          {/* <input id="show-page-buttons" type="button" value="Cancel" onClick={this.handleCancel} /> */}
+          {/* <input id="show-page-buttons" type="button" value="Comment" onClick={this.handleComment} /> */}
         </div>
       );
     }
