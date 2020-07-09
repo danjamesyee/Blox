@@ -45,34 +45,32 @@ export default class Comment extends React.Component {
   render(){
     const { comment, destroyComment } = this.props;
 
-    return (
-      (!this.state.edit) ? (
-        <li>
-          <h4>{comment.user.handle}</h4>
-          <div className='comment-text'>
-            <p>{comment.text}</p>
+    return !this.state.edit ? (
+      <li>
+        <h4>{comment.user.handle}</h4>
+        <div className="comment-text">
+          <p>{comment.text}</p>
+        </div>
+        <div className="comment-btns">
+          <input type="button" value="Edit" onClick={this.handleEdit} />
+          <input type="button" value="Delete" onClick={this.handleDelete} />
+        </div>
+      </li>
+    ) : (
+      <li>
+        <form className="edit-comment-form">
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            value={this.state.text}
+            onChange={this.handleChange}
+          />
+          <div>
+            <input type="button" value="Cancel" onClick={this.handleCancel} />
+            <input type="button" value="Save" onClick={this.handleSave} />           
           </div>
-          <div className='comment-btns'>
-            <button onClick={this.handleEdit}>Edit</button>
-            <button onClick={() => destroyComment(comment._id)}>Delete</button>
-          </div>
-        </li>
-      ) : (
-        <li>
-          <form className='edit-comment-form'>
-            <input
-              type="text"
-              placeholder="Add a comment..."
-              value={this.state.text}
-              onChange={this.handleChange}
-            />
-            <div>
-              <button id="comment-buttons" onClick={this.handleCancel}>Cancel</button>
-              <button id="comment-buttons" onClick={this.handleSave}>Save</button>
-            </div>
-          </form>
-        </li>
-      )
-    )
+        </form>
+      </li>
+    );
   }
 }
