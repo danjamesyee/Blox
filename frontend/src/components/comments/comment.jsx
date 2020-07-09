@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Image} from 'react-bootstrap';
+// import {Image} from 'react-bootstrap';
+
+// Random Color function
+function randomColor() {
+  const color='rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+  return color;
+}
 
 export default class Comment extends React.Component {
   constructor(props) {
@@ -9,6 +15,7 @@ export default class Comment extends React.Component {
       edit: false,
       text: props.comment.text
     };
+    this.randomColor = randomColor()
     this.handleEdit = this.handleEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -46,7 +53,7 @@ export default class Comment extends React.Component {
 
   render(){
     const { comment, destroyComment, currentUser } = this.props;
-    
+
     let renderButtons;
     if (currentUser.id === comment.user._id) {
       renderButtons = <div className="show-page-comment-buttons">
@@ -58,7 +65,7 @@ export default class Comment extends React.Component {
     return !this.state.edit ? (
       <li>
         <div className='profile-pic'>
-          <div className= 'circle'></div>
+          <div className= 'circle' style={{backgroundColor: this.randomColor}}></div>
         </div>
 
         <div className='comment-content'>

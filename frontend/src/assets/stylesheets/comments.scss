@@ -27,8 +27,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid gray;
+  border: none;
   border-radius: 3px;
+  background-color: cornflowerblue;
   padding: 1px 3px;
   top: 0;
   right: 0;
@@ -69,13 +70,9 @@ li {
   margin: 2px
 }
 
-// @mixin random-bgr(){
-//   background: rgb(random(255), random(255), random(255));
-// }
 .circle {
   width: 30px;
   height: 30px;
   margin-right: 10px;
   border-radius: 50%;
-  background-color: rgb(random(255), random(255), random(255));;
 }

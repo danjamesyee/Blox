@@ -52,7 +52,7 @@ export default class CreateComment extends React.Component {
         <header>
           <h4>Like this track?</h4>
         </header>
-
+        
         <input className="comment-box"
           type="text"
           placeholder="Add a comment..."
@@ -60,6 +60,7 @@ export default class CreateComment extends React.Component {
           onChange={this.handleChange}
         />
         <hr/>
+
         {buttons}
         
       </form>
