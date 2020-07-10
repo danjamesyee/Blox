@@ -7,7 +7,6 @@ export const getTrackVotes = (trackId) => {
 
 // grab all votes
 export const getAllVotes = () => {
-  debugger;
   return axios.get(`/api/votes/`)
 };
 

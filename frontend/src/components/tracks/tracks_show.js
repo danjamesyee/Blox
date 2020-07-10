@@ -66,7 +66,6 @@ class TracksShowPage extends React.Component {
     } else {
       editLink = <div></div>;
     }
-    debugger;
     return (
       <div className="main-page">
         <header>

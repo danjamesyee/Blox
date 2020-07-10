@@ -4,7 +4,6 @@ import { fetchBlocks } from "../../actions/block_actions";
 import TracksShow from "./tracks_show";
 
 const mapStateToProps = (state, ownProps) => {
-  //   debugger;
   return {
     currentUser: state.session.user,
     tracks: state.tracks,
