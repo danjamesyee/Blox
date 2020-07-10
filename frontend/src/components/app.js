@@ -15,10 +15,11 @@ import TracksShowContainer from "./tracks/tracks_show_container";
 import UserProfile from "./user/user_profile_container";
 import TracksEdit from "./tracks/tracks_edit_container";
 import GlobalFooter from "./footer/footer";
+import SearchContainer from "./search/search_container";
 
 const App = () => (
   <div className="g-layout">
-    <NavBarContainer />
+    {/* <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -30,7 +31,8 @@ const App = () => (
     </Switch>
     <footer id="global-footer">
       <GlobalFooter />
-    </footer>
+    </footer> */}
+    <SearchContainer />
   </div>
 );
 
