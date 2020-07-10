@@ -22,13 +22,37 @@
   margin: 0;
   text-align: left;
 }
-
-.logout {
-  height: 100%;
+.toast-header {
   display: flex;
-  width: 40%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+#text-fill {
+  background-color: #565656;
+  position: relative;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+#text-fill::before {
+  content: attr(data-title);
+  background: linear-gradient(#f107ba, #155af0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  transition: all 0.75s ease-in-out;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+#text-fill:hover::before{
+  width: 100%
 }
 
 .logout .btn {
@@ -85,6 +109,7 @@ strong a:hover {
 
 #create-track-link {
   background-color: transparent;
+  margin-right: 30px;
 }
 
 #create-track-link:hover {
@@ -113,6 +138,19 @@ strong a:hover {
 }
 
 #logged-in-as {
-  font-size: 14px;
+  font-size: 13px;
 }
+
+.outer-links-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 

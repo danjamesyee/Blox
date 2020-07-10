@@ -7,7 +7,7 @@ const GlobalFooter= () => (
         Copyright &copy; 2020 Daniel Group
       </div>
       <a href="https://github.com/danjamesyee/MERNblocks">
-        <img
+        <img alt=""
           id="git-icon"
           src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
         />

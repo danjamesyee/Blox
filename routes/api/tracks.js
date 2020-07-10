@@ -13,7 +13,7 @@ router.get("/test", (req, res) =>
 router.get("/", (req, res) => {
   Track.find()
     .populate("user", "_id handle")
-    .sort({ createdAt: -1 })
+    .sort({ rating: -1 })
     .then((tracks) => res.json(tracks))
     .catch((err) => res.status(400).json(err));
 });
@@ -105,5 +105,15 @@ router.get("/:id", (req, res) => {
     .catch((err) =>
       res.status(404).json({ msg: "No track found with that ID" })
     );
+});
+
+// update track rating
+router.patch("/:id/rating", (req, res) => {
+  Track.findById(req.params.id)
+    .then( track => {
+      track.rating = req.body.rating;
+      track.save()
+        .then(() => res.json(req.body.rating));
+    })
 });
 module.exports = router;
