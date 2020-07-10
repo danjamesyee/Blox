@@ -1,5 +1,6 @@
 import {
-  RECEIVE_SEARCH
+  RECEIVE_SEARCH,
+  CLEAR_SEARCH
 } from "../actions/search_actions";
 
 export default (state = {}, action ) => {
@@ -8,6 +9,10 @@ export default (state = {}, action ) => {
   switch(action.type) {
     case RECEIVE_SEARCH:
       return action.searchResults.users
+    
+    case CLEAR_SEARCH:
+      return {};
+
     default: 
       return state;
   }
