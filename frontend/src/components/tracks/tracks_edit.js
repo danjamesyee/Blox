@@ -109,7 +109,7 @@ class TracksEdit extends React.Component {
   }
   render() {
     const synth = new Tone.Synth().toMaster();
-    debugger;
+    // debugger;
     let titleError;
     if (this.props.errors.title === undefined) {
       titleError = <div className="errors"></div>;
@@ -287,7 +287,7 @@ class TracksEdit extends React.Component {
             <br />
             <br />
 
-            <input type="submit" value="Save track" />
+            <input type="submit" className="save-track" value="Save track" />
             {blocksError}
           </form>
         </DragDropContext>
