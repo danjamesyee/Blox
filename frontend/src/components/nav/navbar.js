@@ -100,7 +100,7 @@ class NavBar extends React.Component {
               <Toast.Header>
                 <strong>
                   <Link to="/">
-                    <h1 className="title">BLOX</h1>
+                    <h1 data-title="BLOX" id="text-fill" className="title">BLOX</h1>
                   </Link>
                 </strong>
                 <small>BEAT</small>
@@ -112,19 +112,6 @@ class NavBar extends React.Component {
       </div>
     );
   }
-}
-
-{
-  /* <Toast>
-  <Toast.Header>
-    <strong>
-      <Link to="/">
-        <h1 className="title">BLOX</h1>
-      </Link>
-    </strong>
-    <small>BEAT</small>
-  </Toast.Header>
-</Toast>; */
 }
 
 export default withRouter(NavBar);
