@@ -13,6 +13,7 @@ import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
 import { fetchUserTracks } from "./actions/track_actions";
 import { fetchBlocks } from "./actions/block_actions";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
