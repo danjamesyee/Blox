@@ -51,7 +51,7 @@ class NavBar extends React.Component {
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <Link
-                to={`users/${this.props.currentUser.id}`}
+                to={`/users/${this.props.currentUser.id}`}
                 className="dropdown-item"
               >
                 My Tracks

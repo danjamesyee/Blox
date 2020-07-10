@@ -47,7 +47,9 @@ class Tracks extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
-    this.props.makeTrack({ title: this.state.title, blocks: this.state.track });
+    this.props.makeTrack({ title: this.state.title, blocks: this.state.track })
+    .then(this.props.history.push(`/users/${this.props.currentUser.id}`))
+    .then(() => window.location.reload())
   }
 
   addNoteToTrack(block) {

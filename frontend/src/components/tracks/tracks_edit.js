@@ -52,11 +52,14 @@ class TracksEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
-    this.props.updateTrack({
-      title: this.state.title,
-      blocks: this.state.track,
-      id: this.state.id,
-    });
+    this.props
+      .updateTrack({
+        title: this.state.title,
+        blocks: this.state.track,
+        id: this.state.id,
+      })
+      .then(this.props.history.push("/"))
+      .then(() => window.location.reload());
   }
 
   addNoteToTrack(block) {
