@@ -84,26 +84,29 @@ class TracksShowPage extends React.Component {
           <h3></h3>
           <br />
 
-          <img
-            src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-            className="play-button"
-            onClick={() => this.playNote(track)}
-          ></img>
           <br />
-
-          <div className="track" onClick={() => this.playNote(track)}>
-            {track.blocks.map((block, i) => (
-              <div
-                style={{
-                  backgroundColor: block.color,
-                  width: block.width,
-                  height: block.height,
-                }}
-                key={i}
-              ></div>
-            ))}
-            <br />
+          <div className="outer-track-container">
+            <VotesContainer trackId={this.props.match.params.trackId} />
+            <img
+              src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+              className="play-button"
+              onClick={() => this.playNote(track)}
+            ></img>
+            <div className="track" onClick={() => this.playNote(track)}>
+              {track.blocks.map((block, i) => (
+                <div
+                  style={{
+                    backgroundColor: block.color,
+                    width: block.width,
+                    height: block.height,
+                  }}
+                  key={i}
+                ></div>
+              ))}
+              <br />
+            </div>
           </div>
+
           {editLink}
         
           
