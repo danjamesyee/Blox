@@ -87,6 +87,7 @@ class MainPage extends React.Component {
               </Link>
             </h4>
             <div className="flexer">
+              <VotesContainer trackId={track._id} key={i} />
               <img
                 src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
                 className="play-button"
@@ -109,8 +110,6 @@ class MainPage extends React.Component {
                 </div>
               </Link>
             </div>
-            <VotesContainer trackId={track._id} key={i}/>
-
           </div>
         ))}
       </div>
