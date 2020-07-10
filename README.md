@@ -1,4 +1,5 @@
 # Blox
+[Live Website](https://morning-plains-24273.herokuapp.com/#/)
 
 ### Blox 
 
@@ -45,35 +46,5 @@ We will need to:
   
 
   
-  ### Group Members and Work Breakdown
-  
-  ### July 4 - July 5:
-   * Set up database (Alex)
-   * Write proposal Readme and plan work (Yee)
-   * Implement user authentication (Alex)
-  
-  ### July 6 - July 7:
-  
-   * Investigate sound library and test usage (Chau) 
-   * Build React front-end interaction with sound library (Yee)
-   * Build backend for musical CRUD (Creppel)
-   * Implement user authentication (Alex)
-  
-  
-  ### July 8
-   * Integrate musical CRUD backend with React front-end (Yee/Creppel)
-   * Styling template on display (Chau)
-   * Assist implementing functionality of musical tracks (Chau)
-
-  ### July 9-10:
-   * Implement search functionality (Chau)
-   * Build backend for comments (Creppel)
-   * Build backend for upvotes (Alex)
-
-  ### July 11-12:
-   * Build User's Page to see all tracks created (Chau)
-   * Work on production README (Yee)
-   * Seed data for musical block templates (Alex)
-   * Build backend for search functionality (Creppel)
 
  

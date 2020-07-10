@@ -94,20 +94,17 @@ button {
 }
 
 .save-track {
-  font-weight: 900;
-  background-color: palevioletred;
-  color: white;
-  font-family: "Titillium Web", sans-serif;
   border: none;
   border-radius: 5px;
+  background-color: palevioletred;
+  font-family: "Titillium Web", sans-serif;
   height: 40px;
 }
- 
-.save-track:hover {
-  color: greenyellow;
-  background-color: plum;
-}
 
+.save-track:hover {
+  background-color: plum;
+  color: whitesmoke;
+}
 
 .errors {
   color: red;
@@ -121,4 +118,28 @@ button {
   height: 50px;
   width: 80px;
   background: black;
+}
+
+#show-title {
+  margin-left: 95px;
+}
+
+#show-edit {
+  display: inline-block;
+  padding: 5px;
+  color: #fffcf9;
+  position: relative;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+  float: right;
+  right: 866px;
+  bottom: 37px;
+}
+
+.no-tracks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

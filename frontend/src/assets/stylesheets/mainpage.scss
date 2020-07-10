@@ -69,6 +69,20 @@ a {
 .track-outer {
   height: 100%;
   width: 100%;
+  margin-bottom: 25px;
+}
+
+.track-outer header {
+  margin-left: 79px;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.track-outer header h4 {
+  font-weight: 900;
 }
 
 .flexer {
@@ -96,7 +110,7 @@ a {
   font-size: 16px;
   color: black;
   padding-left: 40px;
-  padding-top: 10px;
+  padding-top: 2px;
 }
 
 .top-tracks {
@@ -113,5 +127,5 @@ a {
   border-radius: 20px;
   width: 30px;
   text-align: center;
-  margin: 10px;
+  margin: 20px;
 }

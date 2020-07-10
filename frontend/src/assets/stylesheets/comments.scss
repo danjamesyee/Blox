@@ -75,10 +75,15 @@ li {
 
 .create-comment-form {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .create-comment-form h4 {
   font-weight: 900;
+
 }
 
 .create-comment-form input {
@@ -86,7 +91,8 @@ li {
 }
 
 .comments hr {
-  margin: 3px
+  margin: 3px;
+  width: 100%;
 }
 
 .circle {

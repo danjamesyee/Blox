@@ -12,6 +12,7 @@ class TracksEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { track: [] };
     this.testFunc = this.testFunc.bind(this);
+    this.clear = this.clear.bind(this);
   }
   onDragEnd = (result) => {
     const { destination, source, reason } = result;
@@ -101,6 +102,11 @@ class TracksEdit extends React.Component {
     while (currentTime + miliseconds >= new Date().getTime()) {}
   }
 
+  clear() {
+    this.setState({ track: [] }, () => {
+      console.log(this.state.track);
+    });
+  }
   render() {
     const synth = new Tone.Synth().toMaster();
     // debugger;
@@ -130,11 +136,11 @@ class TracksEdit extends React.Component {
       Object.values(this.props.blocks).sort(function (a, b) {
         return a.idx - b.idx;
       }) || [];
-    if (!this.props.tracks.track) return null;
+    // if (!this.props.tracks.track) return null;
     // this.state.track = this.props.tracks.track.blocks || [];
     // debugger;
     let trackTitle = this.state.title;
-    if (blocks.length === 0 || this.state.track.length === 0) {
+    if (blocks.length === 0) {
       return null;
     } else {
       for (let j = 0; j < this.state.track.length; j++) {
@@ -207,11 +213,7 @@ class TracksEdit extends React.Component {
             >
               Play
             </button>
-            <button
-              className="play-button"
-              type="button"
-              onClick={() => this.setState({ notes: [], track: [] })}
-            >
+            <button className="play-button" type="button" onClick={this.clear}>
               Clear
             </button>
 
@@ -285,7 +287,7 @@ class TracksEdit extends React.Component {
             <br />
             <br />
 
-            <input type="submit" value="Save track" />
+            <input type="submit" className="save-track" value="Save track" />
             {blocksError}
           </form>
         </DragDropContext>
