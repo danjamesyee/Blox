@@ -5,6 +5,7 @@ import {
   upvote,
   downvote
 } from '../../actions/votes_actions';
+import { patchTrackRating } from '../../util/track_api_util';
 
 // Filter votes that belong to a track
 const trackRating = (trackId, votes) => {
@@ -13,10 +14,11 @@ const trackRating = (trackId, votes) => {
 
   votesArr.forEach(vote => {
     if (vote.track == trackId) {
-      if (vote.rating > 0) rating += 1;
-      else rating -= 1;
+      rating += vote.rating;
     }
   });
+  
+  patchTrackRating(trackId, rating);
   return rating;
 }
 
