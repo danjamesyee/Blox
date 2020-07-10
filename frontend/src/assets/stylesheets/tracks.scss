@@ -94,20 +94,17 @@ button {
 }
 
 .save-track {
-  font-weight: 900;
-  background-color: palevioletred;
-  color: white;
-  font-family: "Titillium Web", sans-serif;
   border: none;
   border-radius: 5px;
+  background-color: palevioletred;
+  font-family: "Titillium Web", sans-serif;
   height: 40px;
 }
- 
-.save-track:hover {
-  color: greenyellow;
-  background-color: plum;
-}
 
+.save-track:hover {
+  background-color: plum;
+  color: whitesmoke;
+}
 
 .errors {
   color: red;

@@ -81,6 +81,8 @@ class MainPage extends React.Component {
             <h3 className="top-tracks">Today's Tracks</h3>
             {tracks.map((track, i) => (
               <div className="track-outer" key={i}>
+                  <header>
+
                 <h4 id="tt">
                   <Link
                     style={{ textDecoration: "none", color: "black" }}
@@ -97,6 +99,7 @@ class MainPage extends React.Component {
                     by {track.user.handle}
                   </Link>
                 </h4>
+                </header>
                 <div className="flexer">
                   <VotesContainer trackId={track._id} key={i} />
                   <img
@@ -104,6 +107,7 @@ class MainPage extends React.Component {
                     className="play-button"
                     onClick={() => this.playNote(track)}
                   ></img>
+
 
                   <br />
                   <Link className="link-to-track" to={`/tracks/${track._id}`}>
