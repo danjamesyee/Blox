@@ -61,12 +61,12 @@ class TracksShowPage extends React.Component {
     }
     let editLink;
 
-    if (this.props.currentUser.id === track.user) {
+    if (this.props.currentUser.id === track.user._id) {
       editLink = <Link to={`/tracks/${track._id}/edit`}>Edit</Link>;
     } else {
       editLink = <div></div>;
     }
-
+    debugger;
     return (
       <div className="main-page">
         <header>
@@ -81,7 +81,6 @@ class TracksShowPage extends React.Component {
 
         <div className="track-outer">
           <h4>{track.title}</h4>
-          <h3></h3>
           <br />
 
           <br />
@@ -106,10 +105,8 @@ class TracksShowPage extends React.Component {
               <br />
             </div>
           </div>
+          <div>{editLink}</div>
 
-          {editLink}
-        
-          
           <VotesContainer trackId={this.props.match.params.trackId} />
 
           <CommentsContainer trackId={this.props.match.params.trackId} />
