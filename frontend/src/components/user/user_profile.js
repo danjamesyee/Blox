@@ -59,7 +59,17 @@ class Profile extends React.Component {
       }
     }
     if (this.state.tracks.length === 0) {
-      return <div>This user has no tracks</div>;
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <ReactBootStrap.Spinner animation="border" />
+          &nbsp; &nbsp;This User has no tracks
+        </div>
+      );
     } else {
       return (
         <div>
