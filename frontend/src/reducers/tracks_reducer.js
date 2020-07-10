@@ -6,6 +6,10 @@ import {
   REMOVE_TRACK,
 } from "../actions/track_actions";
 
+import { 
+  RECEIVE_SEARCH
+} from "../actions/search_actions";
+
 const TracksReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
@@ -28,6 +32,10 @@ const TracksReducer = (state = {}, action) => {
     case REMOVE_TRACK:
       delete newState[action.trackId.data];
       return newState;
+
+    case RECEIVE_SEARCH: 
+      return action.searchResults.tracks
+
     default:
       return state;
   }
