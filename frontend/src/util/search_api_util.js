@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const searchRequest = query => (
-  axios.get(`/api/search/${query}`)
+export const searchRequest = search => (
+  axios.get(`/api/search/?`, { params: {search} })
 );

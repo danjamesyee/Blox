@@ -5,9 +5,8 @@ const User = require("../../models/User");
 const validText = require("../../validation/valid-text");
 
 // search
-router.get('/:query', (req,res) => {
-  const query = req.params.query;
-  debugger;
+router.get('/?', (req,res) => {
+  const query = req.query.search;
 
   if (!validText(query)) {
     return res.status(400).json("Invalid Query");
