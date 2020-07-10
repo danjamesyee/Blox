@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Toast, Button } from "react-bootstrap";
-import { Route, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -30,44 +30,44 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div className="logout">
-          {/* <Link to={"/blockbeats"}>All Block Beats</Link>
-          <Link to={"/profile"}>Profile</Link>*/}
-          <Link to={"/track"} id="create-track-link">
-            Create a track
-          </Link>
+        <div className="outer-links-container">
+          <div className="logout">
+            <Link to={"/track"} id="create-track-link">
+              Create a track
+            </Link>
 
-          <div className="dropdown">
-            <span id="logged-in-as">Logged in as:</span>
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {this.props.currentUser.handle}
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <Link
-                to={`/users/${this.props.currentUser.id}`}
-                className="dropdown-item"
+            <div className="dropdown">
+              <span id="logged-in-as">Logged in as:</span>
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                My Tracks
-              </Link>
-              <a className="dropdown-item" href="#">
-                Placeholder
-              </a>
+                {this.props.currentUser.handle}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <Link
+                  to={`/users/${this.props.currentUser.id}`}
+                  className="dropdown-item"
+                >
+                  My Tracks
+                </Link>
+                <a className="dropdown-item" href="#">
+                  Placeholder
+                </a>
 
-              <a
-                className="dropdown-item"
-                id="logout-user"
-                href="#"
-                onClick={this.logoutUser}
-              >
-                <Link to="/">Logout</Link>
-              </a>
+                <a
+                  className="dropdown-item"
+                  id="logout-user"
+                  href="#"
+                  onClick={this.logoutUser}
+                >
+                  <Link to="/">Logout</Link>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ class NavBar extends React.Component {
               <Toast.Header>
                 <strong>
                   <Link to="/">
-                    <h1 className="title">BLOX</h1>
+                    <h1 data-title="BLOX" id="text-fill" className="title">BLOX</h1>
                   </Link>
                 </strong>
                 <small>BEAT</small>
@@ -112,19 +112,6 @@ class NavBar extends React.Component {
       </div>
     );
   }
-}
-
-{
-  /* <Toast>
-  <Toast.Header>
-    <strong>
-      <Link to="/">
-        <h1 className="title">BLOX</h1>
-      </Link>
-    </strong>
-    <small>BEAT</small>
-  </Toast.Header>
-</Toast>; */
 }
 
 export default withRouter(NavBar);

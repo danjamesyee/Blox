@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 
 class LoginForm extends React.Component {
