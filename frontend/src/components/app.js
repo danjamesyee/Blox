@@ -13,7 +13,8 @@ import Tracks from "./tracks/tracks_container";
 import MainPage from "./main/main_page_container";
 import TracksShowContainer from "./tracks/tracks_show_container";
 import UserProfile from "./user/user_profile_container";
-import GlobalFooter from "./footer/footer"
+import TracksEdit from "./tracks/tracks_edit_container";
+import GlobalFooter from "./footer/footer";
 
 const App = () => (
   <div className="g-layout">
@@ -25,10 +26,11 @@ const App = () => (
       <Route exact path="/track" component={Tracks} />
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
       <Route exact path="/users/:userId" component={UserProfile} />
+      <Route exact path="/tracks/:trackId/edit" component={TracksEdit} />
     </Switch>
     <footer id="global-footer">
       <GlobalFooter />
-    </footer>    
+    </footer>
   </div>
 );
 
