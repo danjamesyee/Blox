@@ -85,7 +85,7 @@ class TracksShowPage extends React.Component {
           <br />
           <div className="outer-track-container">
             <VotesContainer trackId={this.props.match.params.trackId} />
-            <img
+            <img alt=""
               src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
               className="play-button"
               onClick={() => this.playNote(track)}
@@ -104,7 +104,11 @@ class TracksShowPage extends React.Component {
               <br />
             </div>
           </div>
+<<<<<<< HEAD
           {editLink}
+=======
+          <div>{editLink}</div>
+>>>>>>> fb175edfee7ffcd42033cd7a99c8a488faa5ae5f
 
           <CommentsContainer trackId={this.props.match.params.trackId} />
         </div>

@@ -7,7 +7,7 @@
 
 .material-icons.upvote:hover {
   color: rgb(0, 192, 0);
-  transition: 0.2s
+  transition: 0.2s;
 }
 .material-icons.downvote:hover {
   color: red;
@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   width: 5%;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .vote {
@@ -27,5 +27,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 20px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  font-size: 30px;
 }

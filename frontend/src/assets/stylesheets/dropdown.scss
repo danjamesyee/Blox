@@ -1,17 +1,17 @@
 .dropdown-menu.show {
   display: block;
   background-color: steelblue;
+  color: white;
 }
 
 .logout a:hover {
-    color: white;
+    color: #1F3A59;
     text-decoration: none;
     background: orange;
-
 }
 
 #logout-user {
-  color: white;
+    // color: white;
     margin-top: 20px;
     cursor: pointer;
     padding-bottom: 0;
@@ -23,5 +23,9 @@
 }
 
 .dropdown-item {
+  text-indent: 10px;
+}
+
+.dropdown-item:hover {
   text-indent: 10px;
 }
