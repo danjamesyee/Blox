@@ -1,3 +1,8 @@
+.outer-track-container {
+  display: flex;
+  align-items: center;
+}
+
 .notes {
   display: flex;
   align-items: flex-end;
@@ -10,6 +15,7 @@
   background: white;
   overflow: scroll;
 }
+
 .actual-block {
   flex: 1 1 auto;
 }
