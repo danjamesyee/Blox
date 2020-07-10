@@ -107,8 +107,6 @@ class TracksShowPage extends React.Component {
           </div>
           <div>{editLink}</div>
 
-          <VotesContainer trackId={this.props.match.params.trackId} />
-
           <CommentsContainer trackId={this.props.match.params.trackId} />
         </div>
       </div>
