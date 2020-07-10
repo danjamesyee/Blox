@@ -120,6 +120,24 @@ button {
   background: black;
 }
 
+#show-title {
+  margin-left: 95px;
+}
+
+#show-edit {
+  display: inline-block;
+  padding: 5px;
+  color: #FFFCF9;
+  position: relative;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+  float: right;
+  left: 43px;
+  bottom: 76px;
+}
+
 .no-tracks {
   display: flex;
   justify-content: center;
