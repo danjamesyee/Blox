@@ -93,6 +93,22 @@ button {
   font-family: "Raleway", sans-serif;
 }
 
+.save-track {
+  font-weight: 900;
+  background-color: palevioletred;
+  color: white;
+  font-family: "Titillium Web", sans-serif;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}
+ 
+.save-track:hover {
+  color: greenyellow;
+  background-color: plum;
+}
+
+
 .errors {
   color: red;
   font-family: "Titillium Web", sans-serif;

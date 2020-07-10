@@ -88,7 +88,7 @@ export default class Comment extends React.Component {
         <form className="edit-comment-form">
           <input className="comment-box"
             type="text"
-            placeholder="Edit your comment..."
+            placeholder="Edit your comment (at least 2 chars, limit 150). . ."
             value={this.state.text}
             onChange={this.handleChange}
           />

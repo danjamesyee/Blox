@@ -19,8 +19,15 @@
   width: 77.65px;
 }
 
+.comment-content a {
+  color: #210203;
+  font-size: 15px;
+}
+
 .comment-text p {
   margin-bottom: 5px;
+  color: #3D5A6C;
+  font-size: 17px;
 }
 
 .comment-button {
@@ -34,6 +41,10 @@
   top: 0;
   right: 0;
   cursor: pointer;
+}
+
+.comment-button:hover {
+  background-color: skyblue;
 }
 
 .comment-box {
@@ -54,6 +65,14 @@ li {
   width: 100%;
 }
 
+.edit-comment-form {
+  width: 100%;
+}
+
+.edit-comment-form input {
+  font-weight: 900;
+}
+
 .create-comment-form {
   width: 100%;
 }
@@ -66,8 +85,8 @@ li {
   font-weight: 900;
 }
 
-.create-comment-form hr {
-  margin: 2px
+.comments hr {
+  margin: 3px
 }
 
 .circle {
@@ -75,4 +94,5 @@ li {
   height: 30px;
   margin-right: 10px;
   border-radius: 50%;
+  margin-top: 5px;
 }

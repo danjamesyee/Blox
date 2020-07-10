@@ -764,7 +764,7 @@ class Tracks extends React.Component {
             <br />
             <br />
 
-            <input type="submit" value="Save track" />
+            <input className='save-track' type="submit" value="Save track" />
             {blocksError}
           </form>
         </div>

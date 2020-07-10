@@ -55,7 +55,7 @@ export default class CreateComment extends React.Component {
         
         <input className="comment-box"
           type="text"
-          placeholder="Add a comment..."
+          placeholder="Add a comment (at least 2 chars, limit 150). . ."
           value={this.state.text}
           onChange={this.handleChange}
         />

@@ -17,7 +17,6 @@ export const createTrack = (data) => {
 };
 
 export const editTrack = (data) => {
-  debugger;
   return axios.patch(`/api/tracks/${data.id}`, data);
 };
 
