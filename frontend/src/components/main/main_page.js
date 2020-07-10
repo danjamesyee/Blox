@@ -1,6 +1,7 @@
 import React from "react";
 import * as Tone from "tone";
 import { Link } from "react-router-dom";
+import VotesContainer from '../votes/votes_container';
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
@@ -86,6 +87,7 @@ class MainPage extends React.Component {
               </Link>
             </h4>
             <div className="flexer">
+              <VotesContainer trackId={track._id} key={i} />
               <img
                 src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
                 className="play-button"
