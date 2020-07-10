@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as Tone from "tone";
 import * as ReactBootStrap from "react-bootstrap";
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,6 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    debugger;
     console.log(this.props.currentUser.id);
     this.props.fetchUserTracks(this.props.match.params.userId);
     this.props.fetchBlocks();
@@ -61,10 +59,11 @@ class Profile extends React.Component {
       }
     }
     if (this.state.tracks.length === 0) {
-      return <div className="no-tracks">No tracks have been created</div>;
+      return <div>This user has no tracks</div>;
     } else {
       return (
         <div>
+          {" "}
           {this.state.isLoading ? (
             <ReactBootStrap.Spinner animation="border" />
           ) : (
@@ -81,25 +80,12 @@ class Profile extends React.Component {
                     </Link>
                   </h4>
 
-              <div className="flexer">
-                <img alt=""
-                  src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-                  className="play-button"
-                  onClick={() => this.playNote(track)}
-                ></img>
-                <br />
-                <Link className="link-to-track" to={`/tracks/${track._id}`}>
-                  <div className="track">
-                    {track.blocks.map((block, i) => (
-                      <div
-                        style={{
-                          backgroundColor: block.color,
-                          width: block.width,
-                          height: block.height,
-                        }}
-                        key={i}
-                      ></div>
-                    ))}
+                  <div className="flexer">
+                    <img
+                      src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                      className="play-button"
+                      onClick={() => this.playNote(track)}
+                    ></img>
                     <br />
                     <Link className="link-to-track" to={`/tracks/${track._id}`}>
                       <div className="track">
@@ -126,5 +112,4 @@ class Profile extends React.Component {
     }
   }
 }
-
 export default Profile;
