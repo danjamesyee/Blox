@@ -16,8 +16,9 @@ export const createTrack = (data) => {
   return axios.post("/api/tracks", data);
 };
 
-export const editTrack = ({ track }) => {
-  return axios.patch(`/api/tracks/${track.id}`, track.blocks);
+export const editTrack = (data) => {
+  debugger;
+  return axios.patch(`/api/tracks/${data.id}`, data);
 };
 
 export const deleteTrack = (trackId) => {
