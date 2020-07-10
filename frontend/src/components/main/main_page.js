@@ -104,6 +104,7 @@ class MainPage extends React.Component {
                     className="play-button"
                     onClick={() => this.playNote(track)}
                   ></img>
+
                   <br />
                   <Link className="link-to-track" to={`/tracks/${track._id}`}>
                     <div className="track">

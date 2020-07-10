@@ -61,7 +61,7 @@ class Profile extends React.Component {
       }
     }
     if (this.state.tracks.length === 0) {
-      return <div>This user has no tracks</div>;
+      return <div className="no-tracks">No tracks have been created</div>;
     } else {
       return (
         <div>
@@ -81,12 +81,25 @@ class Profile extends React.Component {
                     </Link>
                   </h4>
 
-                  <div className="flexer">
-                    <img
-                      src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-                      className="play-button"
-                      onClick={() => this.playNote(track)}
-                    ></img>
+              <div className="flexer">
+                <img alt=""
+                  src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                  className="play-button"
+                  onClick={() => this.playNote(track)}
+                ></img>
+                <br />
+                <Link className="link-to-track" to={`/tracks/${track._id}`}>
+                  <div className="track">
+                    {track.blocks.map((block, i) => (
+                      <div
+                        style={{
+                          backgroundColor: block.color,
+                          width: block.width,
+                          height: block.height,
+                        }}
+                        key={i}
+                      ></div>
+                    ))}
                     <br />
                     <Link className="link-to-track" to={`/tracks/${track._id}`}>
                       <div className="track">
