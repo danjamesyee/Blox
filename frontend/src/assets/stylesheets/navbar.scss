@@ -23,14 +23,6 @@
   text-align: left;
 }
 
-.logout {
-  height: 100%;
-  display: flex;
-  width: 40%;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .logout .btn {
   margin: 5px;
   padding: 5px;
@@ -85,6 +77,7 @@ strong a:hover {
 
 #create-track-link {
   background-color: transparent;
+  margin-right: 30px;
 }
 
 #create-track-link:hover {
@@ -113,6 +106,19 @@ strong a:hover {
 }
 
 #logged-in-as {
-  font-size: 14px;
+  font-size: 13px;
 }
+
+.outer-links-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
