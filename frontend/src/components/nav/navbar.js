@@ -45,10 +45,14 @@ class NavBar extends React.Component {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                data-offset="10,12"
               >
                 {this.props.currentUser.handle}
               </button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
                 <Link
                   to={`/users/${this.props.currentUser.id}`}
                   className="dropdown-item"

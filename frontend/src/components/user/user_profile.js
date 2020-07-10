@@ -58,7 +58,7 @@ class Profile extends React.Component {
       }
     }
     if (this.state.tracks.length === 0) {
-      return <div>This user has no tracks</div>;
+      return <div className="no-tracks">No tracks have been created</div>;
     } else {
       return (
         <div className="main-page">
