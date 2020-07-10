@@ -1,0 +1,31 @@
+.material-icons {
+  cursor: pointer;
+  font-size: 40px;
+  color: gray;
+  font-weight: bolder;
+}
+
+.material-icons.upvote:hover {
+  color: rgb(0, 192, 0);
+  transition: 0.2s
+}
+.material-icons.downvote:hover {
+  color: red;
+  transition: 0.2s;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+  font-size: 14px;
+}
+
+.vote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
