@@ -121,7 +121,7 @@ button {
 }
 
 #show-title {
-  margin-left: 95px;
+  margin-left: 114px;
 }
 
 #show-edit {
@@ -133,11 +133,11 @@ button {
   text-decoration: none;
   border-radius: 5px;
   background-color: cornflowerblue;
-  float: right;
-  right: 866px;
-  bottom: 37px;
 }
-
+#show-edit:hover {
+  color: black;
+  background: skyblue;
+}
 .no-tracks {
   display: flex;
   justify-content: center;
