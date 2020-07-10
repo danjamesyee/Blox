@@ -12,8 +12,8 @@ router.get('/?', (req,res) => {
     return res.status(400).json("Invalid Query");
   }
 
-  const usersQuery = User.find({ handle: { $regex: query } });
-  const tracksQuery = Track.find({ title: { $regex: query } });
+  const usersQuery = User.find({ handle: { $regex: query, $options: "i" } });
+  const tracksQuery = Track.find({ title: { $regex: query, $options: "i" } });
 
   Promise.all([usersQuery, tracksQuery])
     .then(queryArr => {
