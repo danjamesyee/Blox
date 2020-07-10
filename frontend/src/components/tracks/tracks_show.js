@@ -104,11 +104,7 @@ class TracksShowPage extends React.Component {
               <br />
             </div>
           </div>
-<<<<<<< HEAD
           {editLink}
-=======
-          <div>{editLink}</div>
->>>>>>> fb175edfee7ffcd42033cd7a99c8a488faa5ae5f
 
           <CommentsContainer trackId={this.props.match.params.trackId} />
         </div>
