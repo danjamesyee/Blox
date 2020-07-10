@@ -46,14 +46,16 @@ router.post(
   (req, res) => {
     Vote.findOne({ user: req.user.id, track: req.params.track_id })
       .then((vote) => {
+        // vote exists
         if (vote) {
-          // update vote since it exists
+          // update vote rating
           vote.rating = 1;
           vote.save()
             .then(vote => res.json(vote))
             .catch(err => res.status(400).json(err))
-        } else {
-          // create vote since it does not exist
+        } 
+        // create vote since it does not exist
+        else {
           Vote
             .create({ user: req.user.id, track: req.params.track_id, rating: 1})
             .then(vote => res.json(vote));
@@ -72,12 +74,11 @@ router.post(
     Vote.findOne({ user: req.user.id, track: req.params.track_id })
       .then((vote) => {
         if (vote) {
-          // update vote since it exists
+          // update vote rating
           vote.rating = -1;
-          vote
-            .save()
-            .then((vote) => res.json(vote))
-            .catch((err) => res.status(400).json(err));
+          vote.save()
+            .then(vote => res.json(vote))
+            .catch(err => res.status(400).json(err))
         } else {
           // create vote since it does not exist
           Vote.create({
