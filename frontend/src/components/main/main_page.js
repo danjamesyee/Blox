@@ -51,7 +51,17 @@ class MainPage extends React.Component {
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
 
-    // debugger;
+    if (tracks.length === 0)
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <ReactBootStrap.Spinner animation="border" />
+        </div>
+      );
     for (let i = 0; i < tracks.length; i++) {
       for (let j = 0; j < tracks[i].blocks.length; j++) {
         for (let b = 0; b < blocks.length; b++) {
