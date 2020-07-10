@@ -78,27 +78,26 @@ class MainPage extends React.Component {
               The best rhythm-beat maker in the biz!
             </div>
             <br />
-            <h3 className="top-tracks">Today's Tracks</h3>
+            <h2 className="top-tracks">Top Tracks of All Time</h2>
             {tracks.map((track, i) => (
               <div className="track-outer" key={i}>
-                  <header>
-
-                <h4 id="tt">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={`/tracks/${track._id}`}
-                  >
-                    {track.title}
-                  </Link>
-                </h4>
-                <h4 id="th">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={`/users/${track.user._id}`}
-                  >
-                    by {track.user.handle}
-                  </Link>
-                </h4>
+                <header>
+                  <h4 id="tt">
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={`/tracks/${track._id}`}
+                    >
+                      {track.title}
+                    </Link>
+                  </h4>
+                  <h4 id="th">
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={`/users/${track.user._id}`}
+                    >
+                      by {track.user.handle}
+                    </Link>
+                  </h4>
                 </header>
                 <div className="flexer">
                   <VotesContainer trackId={track._id} key={i} />
@@ -107,7 +106,6 @@ class MainPage extends React.Component {
                     className="play-button"
                     onClick={() => this.playNote(track)}
                   ></img>
-
 
                   <br />
                   <Link className="link-to-track" to={`/tracks/${track._id}`}>
