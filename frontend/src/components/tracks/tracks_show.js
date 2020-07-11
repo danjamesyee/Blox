@@ -128,7 +128,9 @@ class TracksShowPage extends React.Component {
                 </div>
               </div>
               {editLink}
-
+              <div onClick={() => this.props.destroyTrack(track._id)}>
+                Delete
+              </div>
               <CommentsContainer trackId={this.props.match.params.trackId} />
             </div>
           </div>
