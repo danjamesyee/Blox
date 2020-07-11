@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Toast, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import SearchBar from "../search/search_bar";
+import SearchBar from "../search/search_container";
 
 class NavBar extends React.Component {
   constructor(props) {

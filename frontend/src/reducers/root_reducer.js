@@ -5,7 +5,7 @@ import blocks from "./blocks_reducer";
 import tracks from "./tracks_reducer";
 import comments from "./comments_reducer";
 import votes from "./votes_reducer";
-import users from "./users_reducer";
+import search from "./search_reducer";
 
 const RootReducer = combineReducers({
   session,
@@ -14,7 +14,7 @@ const RootReducer = combineReducers({
   tracks,
   comments,
   votes,
-  users
+  search
 });
 
 export default RootReducer;

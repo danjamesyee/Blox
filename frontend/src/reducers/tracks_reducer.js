@@ -6,11 +6,6 @@ import {
   REMOVE_TRACK,
 } from "../actions/track_actions";
 
-import { 
-  RECEIVE_SEARCH,
-  CLEAR_SEARCH
-} from "../actions/search_actions";
-
 const TracksReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
@@ -34,12 +29,6 @@ const TracksReducer = (state = {}, action) => {
       delete newState[action.trackId.data];
       return newState;
 
-    // search cases
-    case RECEIVE_SEARCH: 
-      return action.searchResults.tracks
-
-    case CLEAR_SEARCH:
-      return {};
 
     default:
       return state;

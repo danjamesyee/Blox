@@ -7,8 +7,8 @@ import {
 } from '../../actions/search_actions';
 
 const MSP = (state, ownProps) => ({
-  users: Object.values(state.users),
-  tracks: Object.values(state.tracks)
+  users: Object.values(state.search.users),
+  tracks: Object.values(state.search.tracks)
 });
 
 const MDP = (dispatch) => ({
