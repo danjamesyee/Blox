@@ -1,10 +1,66 @@
-input#search {
-  background-image: url('http://www.clker.com/cliparts/z/1/T/u/9/2/search-icon-hi.png');
-  background-size:contain;
-  background-repeat: no-repeat;
-  text-indent: 20px;
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-input#search:focus {
-  background-image:none;
-  text-indent:0px
+
+#search-icon {
+  font-size: 29px;
+  background: orange;
+  color: #1F3A59
+}
+
+#search-icon:hover {
+  color: white;
+}
+
+#clear-icon {
+  font-size: 15px;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  bottom: 0;
+}
+
+.search-dropdown {
+  position: absolute;
+  z-index: 10000;
+  top: 47px;
+  border: 1px solid gray;
+  background: white;
+  width: 213px;
+  // min-width: 50%
+  transition: 0.5s;
+  color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-indent: 10px;
+}
+
+#search-results {
+  color: black;
+  text-indent: 30px;
+  line-height: 2;
+  font-size: 14px;
+}
+
+#search-results:hover {
+  text-decoration: none;
+  
+}
+
+#search-header {
+  margin-top: 5px;
+  background: rgb(231, 231, 231);
+  border-bottom: 1px solid lightgray
+}
+
+#search-links:hover {
+  text-decoration: none;
+  
+  
+}
+
+#search-li:hover {
+  background: rgb(238, 250, 255);
 }
