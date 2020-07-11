@@ -143,3 +143,15 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+#delete-track-button {
+    display: inline-block;
+    padding: 5px;
+    color: #fffcf9;
+    position: relative;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: palevioletred;
+}

@@ -75,13 +75,19 @@ class TracksShowPage extends React.Component {
 
     if (this.props.currentUser.id === track.user._id) {
       editLink = (
-        <Link id="show-edit" to={`/tracks/${track._id}/edit`}>
-          Edit
-        </Link>
+        <div>
+          <Link id="show-edit" to={`/tracks/${track._id}/edit`}>
+            Edit
+          </Link>
+          <div id="delete-track-button" onClick={() => this.props.destroyTrack(track._id).then(this.props.history.push(`/users/${track.user._id}`)).then(() => window.location.reload())}>
+            Delete
+          </div>
+        </div>
       );
     } else {
       editLink = <div></div>;
     }
+
     return (
       <div>
         {this.state.isLoading ? (
@@ -128,9 +134,7 @@ class TracksShowPage extends React.Component {
                 </div>
               </div>
               {editLink}
-              <div onClick={() => this.props.destroyTrack(track._id)}>
-                Delete
-              </div>
+              
               <CommentsContainer trackId={this.props.match.params.trackId} />
             </div>
           </div>
