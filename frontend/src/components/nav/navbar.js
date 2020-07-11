@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Toast, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import SearchBar from "../search/search_container";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -96,6 +97,10 @@ class NavBar extends React.Component {
   }
 
   render() {
+    let searchbar = (this.props.location.pathname === '/') ? 
+      (<SearchBar /> ): 
+      (<></>)
+
     return (
       <div id="navbar">
         <div className="navbar-inner">
@@ -111,6 +116,7 @@ class NavBar extends React.Component {
               </Toast.Header>
             </Toast>
           </div>
+          {searchbar}
           {this.getLinks()}
         </div>
       </div>

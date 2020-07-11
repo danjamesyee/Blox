@@ -15,6 +15,7 @@ import TracksShowContainer from "./tracks/tracks_show_container";
 import UserProfile from "./user/user_profile_container";
 import TracksEdit from "./tracks/tracks_edit_container";
 import GlobalFooter from "./footer/footer";
+import SearchContainer from "./search/search_container";
 
 const App = () => (
   <div className="g-layout">
@@ -27,6 +28,7 @@ const App = () => (
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
       <Route exact path="/users/:userId" component={UserProfile} />
       <Route exact path="/tracks/:trackId/edit" component={TracksEdit} />
+      <Route exact path="/search/:query" component={SearchContainer} />
     </Switch>
     <footer id="global-footer">
       <GlobalFooter />

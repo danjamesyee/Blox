@@ -4,19 +4,16 @@ const Track = require("../../models/Track");
 const User = require("../../models/User");
 const validText = require("../../validation/valid-text");
 
-// test
-router.get('/test', (req,res) => res.json("This is the search route"));
-
 // search
-router.get('/', (req,res) => {
-  const query = req.body.query;
+router.get('/?', (req,res) => {
+  const query = req.query.search;
 
   if (!validText(query)) {
     return res.status(400).json("Invalid Query");
   }
 
-  const usersQuery = User.find({ handle: { $regex: query } });
-  const tracksQuery = Track.find({ title: { $regex: query } });
+  const usersQuery = User.find({ handle: { $regex: query, $options: "i" } });
+  const tracksQuery = Track.find({ title: { $regex: query, $options: "i" } });
 
   Promise.all([usersQuery, tracksQuery])
     .then(queryArr => {
