@@ -19,7 +19,7 @@ import SearchContainer from "./search/search_container";
 
 const App = () => (
   <div className="g-layout">
-    {/* <NavBarContainer />
+    <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -28,11 +28,11 @@ const App = () => (
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
       <Route exact path="/users/:userId" component={UserProfile} />
       <Route exact path="/tracks/:trackId/edit" component={TracksEdit} />
+      <Route exact path="/search/:query" component={SearchContainer} />
     </Switch>
     <footer id="global-footer">
       <GlobalFooter />
-    </footer> */}
-    <SearchContainer />
+    </footer>
   </div>
 );
 

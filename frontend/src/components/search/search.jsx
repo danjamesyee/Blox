@@ -1,18 +1,19 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchField: ""
+      searchField: this.props.match.params.query
     }
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount () {
-    this.props.clearSearch();
+    this.props.fetchSearch(this.state.searchField);
   }
 
   handleChange (e) {
@@ -28,8 +29,8 @@ export default class Search extends React.Component {
   }
 
   render() {
-    let users = this.props.users.map(user => <li>{user.handle}</li>)
-    let tracks = this.props.tracks.map(track => <li>{track.title}</li>)
+    let users = this.props.users.map((user, i) => <li key={"searchUser" + i}> <Link to={`users/${user._id}`}>{user.handle}</Link> </li>)
+    let tracks = this.props.tracks.map((track, i) => <li key={"searchTrack" + i}> <Link to={`tracks/${track._id}`}>{track.title}</Link> </li>)
     debugger;
     return (
       <div className="search-bar">
