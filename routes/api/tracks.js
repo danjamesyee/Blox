@@ -110,10 +110,12 @@ router.get("/:id", (req, res) => {
 // update track rating
 router.patch("/:id/rating", (req, res) => {
   Track.findById(req.params.id)
-    .then( track => {
+    .then((track) => {
       track.rating = req.body.rating;
-      track.save()
-        .then(() => res.json(req.body.rating));
+      track.save().then(() => res.json(req.body.rating));
     })
+    .catch((err) =>
+      res.status(404).json({ msg: "Couldn't update track rating" })
+    );
 });
 module.exports = router;

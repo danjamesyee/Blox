@@ -1,0 +1,93 @@
+.name-cards {
+  display: flex;
+  font-family: "Raleway", monospace;
+  font-weight: 900;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.name-cards > h3 {
+  background: cornflowerblue;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  height: 180px;
+  width: 280px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.name-cards > h3 > a {
+  margin-right: 245px;
+  position: relative;
+  bottom: 36px;
+}
+
+#chau {
+  position: relative;
+  color: white;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("https://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/004/981/medium/daniel_chau.jpg?1587762421");
+}
+#creppel {
+  position: relative;
+  color: white;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("DSC_0971.jpeg");
+}
+
+#yee {
+  position: relative;
+  color: white;
+  background-size: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("https://dimcooking-dev.s3-us-west-1.amazonaws.com/DSC_0125.jpeg");
+}
+
+#alex {
+  position: relative;
+  color: white;
+  background-size: 100% 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("Alex-Profile.jpg");
+}
+.name-cards > h3:hover {
+  box-shadow: 0 8px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.about-img {
+  margin: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+.about-container {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+.title-dev {
+  font-family: Raleway, sans-serif;
+  font-weight: 900;
+  padding: 15px;
+}
