@@ -56,24 +56,24 @@ export default class Search extends React.Component {
   }
 
   render() {
-    let users = this.props.users.map((user, i) => <li key={"searchUser" + i}> <Link to={`users/${user._id}`}>{user.handle}</Link> </li>)
-    let tracks = this.props.tracks.map((track, i) => <li key={"searchTrack" + i}> <Link to={`tracks/${track._id}`}>{track.title}</Link> </li>)
+    let users = this.props.users.map((user, i) => <li id="search-li" key={"searchUser" + i}> <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> </li>)
+    let tracks = this.props.tracks.map((track, i) => <li id="search-li" key={"searchTrack" + i}> <Link id="search-links" to={`tracks/${track._id}`}>{track.title}</Link> </li>)
 
 
     let usersHeader;
     if (users.length > 0) {
-      usersHeader = <h6 className="search-categories">Users:</h6>;
+      usersHeader = <h6 id="search-header" className="search-categories">Users:</h6>;
     } 
     else if (!this.state.searching){
-      usersHeader = <h6 className="search-errors">Users Not Found</h6>
+      usersHeader = <h6 id="search-header" className="search-errors">No users found</h6>
     }
     
     let tracksHeader;
     if (tracks.length > 0) {
-      tracksHeader = <h6 className="search-categories">Tracks:</h6>
+      tracksHeader = <h6 id="search-header" className="search-categories">Tracks:</h6>
     } 
     else if (!this.state.searching) {
-      tracksHeader = <h6 className="search-errors">Tracks Not Found</h6>
+      tracksHeader = <h6 id="search-header" className="search-errors">No tracks found</h6>
     }
 
     let hidden = " hidden"
@@ -81,11 +81,11 @@ export default class Search extends React.Component {
 
     return (
       <div className="search-bar">
-        <span onClick={this.handleSearch} className="material-icons">
+        <span id="search-icon" onClick={this.handleSearch} className="material-icons">
           search
-          </span>
+        </span>
         <input
-          // id="search"
+          id="search"
           className="search-bar-input"
           type="text"
           value={this.state.searchField}
@@ -93,15 +93,16 @@ export default class Search extends React.Component {
           onKeyDown={this.handleEnter}
           placeholder="Search..."
         />
-        <span onClick={this.handleReset} className="material-icons">
+        <span id="clear-icon" onClick={this.handleReset} className="material-icons">
           close
-          </span>
+        </span>
 
         <div className={`search-dropdown` + hidden}>
           {usersHeader}
-          {users}
+          <div id="search-results">{users}</div>
+          
           {tracksHeader}
-          {tracks}
+          <div id="search-results">{tracks}</div>
         </div>
 
       </div>
