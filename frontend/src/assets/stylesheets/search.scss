@@ -75,10 +75,12 @@
 
 #search-links:hover {
   text-decoration: none;
-  
-  
 }
 
 #search-li:hover {
   background: rgb(238, 250, 255);
+}
+
+.search-dropdown.hidden {
+  border: none;
 }
