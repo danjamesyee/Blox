@@ -4,7 +4,6 @@ import { fetchBlocks } from "../../actions/block_actions";
 import UserProfile from "./user_profile";
 
 const mapStateToProps = (state, ownProps) => {
-  //   debugger;
   return {
     currentUser: state.session.user,
     trackUserId: ownProps.match.params.userId,

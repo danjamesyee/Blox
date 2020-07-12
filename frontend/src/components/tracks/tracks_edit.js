@@ -32,14 +32,12 @@ class TracksEdit extends React.Component {
 
     blocks.splice(source.index, 1);
     blocks.splice(destination.index, 0, droppedBlock);
-    // debugger;
     this.setState({ track: blocks });
   };
 
   componentDidMount() {
     this.props.fetchBlocks();
     this.props.fetchTrack(this.props.match.params.trackId);
-    // debugger;
     if (this.props.tracks.track) this.testFunc();
   }
 
@@ -52,7 +50,6 @@ class TracksEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger;
     this.props
       .updateTrack({
         title: this.state.title,
@@ -80,7 +77,6 @@ class TracksEdit extends React.Component {
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
     for (let i = 0; i < this.state.track.length; i++) {
-      // debugger;
 
       synth.triggerAttackRelease(
         this.state.track[i].note,
@@ -109,7 +105,6 @@ class TracksEdit extends React.Component {
   }
   render() {
     const synth = new Tone.Synth().toMaster();
-    // debugger;
     let titleError;
     if (this.props.errors.title === undefined) {
       titleError = <div className="errors"></div>;
@@ -136,9 +131,6 @@ class TracksEdit extends React.Component {
       Object.values(this.props.blocks).sort(function (a, b) {
         return a.idx - b.idx;
       }) || [];
-    // if (!this.props.tracks.track) return null;
-    // this.state.track = this.props.tracks.track.blocks || [];
-    // debugger;
     let trackTitle = this.state.title;
     if (blocks.length === 0) {
       return null;
@@ -146,13 +138,11 @@ class TracksEdit extends React.Component {
       for (let j = 0; j < this.state.track.length; j++) {
         for (let b = 0; b < blocks.length; b++) {
           if (blocks[b]._id === this.state.track[j]) {
-            // debugger;
             this.state.track[j] = blocks[b];
           }
         }
       }
     }
-    // debugger;
     return (
       <div className="tracks-container">
         <h2 className="tracks-title">Unleash your inner musical genius</h2>

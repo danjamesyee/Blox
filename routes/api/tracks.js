@@ -20,7 +20,6 @@ router.get("/", (req, res) => {
 
 // show tracks for a specific user
 router.get("/user/:user_id", (req, res) => {
-  // debugger;
   Track.find({ user: req.params.user_id })
     .populate("user", "_id handle")
     .sort({ createdAt: -1 })
@@ -34,7 +33,6 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateTracksInput(req.body);
-    // debugger;
     if (!isValid) {
       res.status(400).json(errors);
     }

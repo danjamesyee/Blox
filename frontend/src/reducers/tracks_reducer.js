@@ -15,21 +15,15 @@ const TracksReducer = (state = {}, action) => {
       return action.tracks.data;
     case RECEIVE_USER_TRACKS:
       return action.tracks.data;
-    // debugger;
-
     case RECEIVE_NEW_TRACK:
       newState.track = action.track.data;
       return newState;
     case RECEIVE_TRACK:
-      // debugger;
-      // newState[action.track.id] = action.track;
       newState.track = action.track.data;
       return newState;
     case REMOVE_TRACK:
       delete newState[action.trackId.data];
       return newState;
-
-
     default:
       return state;
   }

@@ -39,7 +39,6 @@
 //     this.setState({ searchField: '' });
 //   }
 
-
 //   render() {
 //     let searches = <></>;
 //     debugger;
@@ -65,11 +64,9 @@
 //           <span onClick={this.handleReset} className="material-icons">
 //             close
 //           </span>
-          
+
 //           {searches}
 
-         
-          
 //         </div>
 //       )
 //   }

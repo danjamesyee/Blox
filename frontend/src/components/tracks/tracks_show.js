@@ -16,7 +16,6 @@ class TracksShowPage extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchBlocks();
     this.props.fetchTrack(this.props.match.params.trackId);
     this.setState({ isLoading: false });
@@ -49,9 +48,7 @@ class TracksShowPage extends React.Component {
   render() {
     let blocks = Object.values(this.props.blocks) || [];
     let track = this.props.tracks.track || [];
-    // debugger;
     if (blocks.length === 0 || track.length === 0) {
-      // debugger;
       return (
         <div
           style={{

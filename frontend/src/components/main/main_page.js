@@ -140,7 +140,6 @@ class MainPage extends React.Component {
         )}
       </div>
     );
-    // debugger;
     return;
   }
 }
