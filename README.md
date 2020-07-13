@@ -1,5 +1,7 @@
-# Blox
+![logo](https://raw.githubusercontent.com/danjamesyee/MERNblocks/master/logoblox.gif)
+
 [Live Website](https://morning-plains-24273.herokuapp.com/#/)
+
 
 # Blox 
 
