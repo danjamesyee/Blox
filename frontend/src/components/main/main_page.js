@@ -3,6 +3,11 @@ import * as Tone from "tone";
 import { Link } from "react-router-dom";
 import VotesContainer from "../votes/votes_container";
 import * as ReactBootStrap from "react-bootstrap";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 //what users will see when they land on the home page
 class MainPage extends React.Component {
@@ -13,15 +18,31 @@ class MainPage extends React.Component {
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
     this.unload = this.unload.bind(this);
+    this.createNotification = this.createNotification.bind(this);
   }
 
   componentDidMount() {
+    // this.createNotification();
+
     this.props.fetchBlocks();
     this.props.fetchTracks();
+
     this.setState({ isLoading: false });
+  }
+  createNotification(track) {
+    NotificationManager.warning(
+      "Music can take up to 1 minute to play",
+      "Please be patient",
+      3000
+    );
+    console.log("end of first");
+    // this.sleep(8000);
+    // setTimeout(this.playNote(track), 100000000);
   }
 
   playNote(track) {
+    // debugger;
+    // this.createNotification();
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
     for (let i = 0; i < track.blocks.length; i++) {
@@ -114,7 +135,10 @@ class MainPage extends React.Component {
                   <img
                     src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
                     className="play-button"
-                    onClick={() => this.playNote(track)}
+                    onMouseEnter={this.createNotification}
+                    onClick={() => {
+                      this.playNote(track);
+                    }}
                   ></img>
 
                   <br />
@@ -136,6 +160,7 @@ class MainPage extends React.Component {
                 </div>
               </div>
             ))}
+            <NotificationContainer />
           </div>
         )}
       </div>

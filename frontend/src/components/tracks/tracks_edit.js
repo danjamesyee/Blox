@@ -1,6 +1,10 @@
 import React from "react";
 import * as Tone from "tone";
-
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 class TracksEdit extends React.Component {
@@ -72,12 +76,21 @@ class TracksEdit extends React.Component {
       id: this.props.tracks.track._id,
     });
   }
+  createNotification(track) {
+    NotificationManager.warning(
+      "Music can take up to 1 minute to play",
+      "Please be patient",
+      3000
+    );
+    console.log("end of first");
+    // this.sleep(8000);
+    // setTimeout(this.playNote(track), 100000000);
+  }
 
   playNote(part) {
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
     for (let i = 0; i < this.state.track.length; i++) {
-
       synth.triggerAttackRelease(
         this.state.track[i].note,
         this.state.track[i].duration
@@ -199,6 +212,7 @@ class TracksEdit extends React.Component {
             <button
               className="play-button"
               type="button"
+              onMouseEnter={this.createNotification}
               onClick={() => this.playNote()}
             >
               Play
@@ -281,6 +295,7 @@ class TracksEdit extends React.Component {
             {blocksError}
           </form>
         </DragDropContext>
+        <NotificationContainer />
       </div>
     );
   }
