@@ -66,7 +66,34 @@ The challenge involved with collecting musical data is knowing what kind of data
 # Features
 
 ### Tracks: create, edit, and view tracks.
-A track is a collection of musical blocks.  These blocks exist in the backend and act a musical templates to create a track.  After a user adds a collection of blocks on to a track, they can save the track and it is sent to the backend to be stored.
+A track is a collection of musical blocks.  These blocks exist in the backend and act a musical templates to create a track.  After a user adds a collection of blocks on to a track, they can save the track and it is sent to the backend to be stored. On the frontend, creating a track involves maintaining the right blocks for the track in the state, so that it will re-render upon a new block being added. In addition, the drag and drop functionality is integrated into this system by wrapping the whole displayed array of blocks in the drag and drop context and then causing the change of state each time the user moves a block. All this data is then saved into a track as a collection of blocks which can later be retrieved and played again. In order to play the track, we had to overcome the issue of all a track's notes playing at once when iterated over. Our solution, was to create a sleep function that would pause the program for a certain amount of time depending on the note's duration in order to maintain correct timing on playback.
+
+``` Javascript
+  playNote() {
+    Tone.Transport.start();
+    const synth = new Tone.Synth().toMaster();
+    for (let i = 0; i < this.state.track.length; i++) {
+      synth.triggerAttackRelease(
+        this.state.track[i].note,
+        this.state.track[i].duration
+      );
+      if (this.state.track[i].duration === "16n") {
+        this.sleep(200);
+      } else if (this.state.track[i].duration === "8n") {
+        this.sleep(400);
+      } else if (this.state.track[i].duration === "4n") {
+        this.sleep(800);
+      }
+    }
+  }
+
+  sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+
+    while (currentTime + miliseconds >= new Date().getTime()) {}
+  }
+
+```
 <!-- !YEE -->
 
 ### Votes: allow users to upvote or downvote tracks.
