@@ -50,7 +50,7 @@ Tone.js, a framework for creating interactive music in the browser, gives us the
 
 #### CSS with Bootstrap
 
-<!-- ! CHAU -->
+Bootstrap is a popular framework that includes HTML and CSS based design templates which helps us implement simple and responsive components. Using Bootstrap, we are able to provide consistent and effective styling for our forms, buttons, and dropdown menus.
 
 #### Drag and Drop with React-beautiful-dnd
 
