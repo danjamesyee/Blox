@@ -3,7 +3,7 @@
 
 # Blox 
 
-#### Blox is a music production application that allows people with no musical background or experience to create music.
+#### Blox is a music production application and community that allows people with no musical background or experience to create music and share it with the world.
 
 ![homepage](https://raw.githubusercontent.com/danjamesyee/MERNblocks/master/homepage.png)
 
