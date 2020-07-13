@@ -20,13 +20,13 @@ Many people are interested in music, however they lack any musical experience an
 
 #### Functionality and MVPS:
 
-  - [ ] Website with index of selected music and buttons for modal login/signup
-  - [ ] User authentication: sign up and log in functionality
-  - [ ] Creation/editing/deletion of musical tracks
-  - [ ] Comment CRUD feature on each musical track
-  - [ ] Upvote system for each musical track
-  - [ ] Search functionality by title/username
-  - [ ] Production README
+  - [x] Website with index of selected music and buttons for login/signup
+  - [x] User authentication: sign up and log in functionality
+  - [x] Creation/editing/deletion of musical tracks
+  - [x] Comment CRUD feature on each musical track
+  - [x] Upvote system for each musical track
+  - [x] Search functionality by title/username
+  - [x] Production README
   
 ####  Bonus Features:
   
