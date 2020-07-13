@@ -4,6 +4,11 @@ import CommentsContainer from "../comments/comments_container";
 import { Link } from "react-router-dom";
 import VotesContainer from "../votes/votes_container";
 import * as ReactBootStrap from "react-bootstrap";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 //what users will see when they land on the home page
 class TracksShowPage extends React.Component {
@@ -21,6 +26,16 @@ class TracksShowPage extends React.Component {
     this.setState({ isLoading: false });
   }
 
+  createNotification(track) {
+    NotificationManager.warning(
+      "Music can take up to 1 minute to play",
+      "Please be patient",
+      3000
+    );
+    console.log("end of first");
+    // this.sleep(8000);
+    // setTimeout(this.playNote(track), 100000000);
+  }
   playNote(track) {
     Tone.Transport.start();
     const synth = new Tone.Synth().toMaster();
@@ -76,7 +91,15 @@ class TracksShowPage extends React.Component {
           <Link id="show-edit" to={`/tracks/${track._id}/edit`}>
             Edit
           </Link>
-          <div id="delete-track-button" onClick={() => this.props.destroyTrack(track._id).then(this.props.history.push(`/users/${track.user._id}`)).then(() => window.location.reload())}>
+          <div
+            id="delete-track-button"
+            onClick={() =>
+              this.props
+                .destroyTrack(track._id)
+                .then(this.props.history.push(`/users/${track.user._id}`))
+                .then(() => window.location.reload())
+            }
+          >
             Delete
           </div>
         </div>
@@ -114,9 +137,14 @@ class TracksShowPage extends React.Component {
                   alt=""
                   src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
                   className="play-button"
+                  onMouseEnter={this.createNotification}
                   onClick={() => this.playNote(track)}
                 ></img>
-                <div className="track" onClick={() => this.playNote(track)}>
+                <div
+                  className="track"
+                  onMouseEnter={this.createNotification}
+                  onClick={() => this.playNote(track)}
+                >
                   {track.blocks.map((block, i) => (
                     <div
                       style={{
@@ -131,11 +159,12 @@ class TracksShowPage extends React.Component {
                 </div>
               </div>
               {editLink}
-              
+
               <CommentsContainer trackId={this.props.match.params.trackId} />
             </div>
           </div>
         )}
+        <NotificationContainer />
       </div>
     );
   }
