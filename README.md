@@ -42,7 +42,7 @@ React provides our team an organized way of structuring our website using compon
 
 #### Audio with [Tone.js](https://tonejs.github.io/)
 
-<!-- ! YEE -->
+Tone.js, a framework for creating interactive music in the browser, gives us the ability to create our own tracks, play them back and edit them. The built in synth instrument gives us our whole library of sounds.
 
 #### CSS with Bootstrap
 
@@ -50,8 +50,7 @@ React provides our team an organized way of structuring our website using compon
 
 #### Drag and Drop with React-beautiful-dnd
 
-Allows us to rearrange musical blocks on the tracks, allowing the user added freedom in the music creation process.
-<!-- ! YEE -->
+Allows us to rearrange musical blocks on the tracks, allowing the user added freedom and interaction in the music creation process.
 
 #### Challenges
 
