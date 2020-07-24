@@ -31,7 +31,24 @@
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
+.name-cards > a {
+  background: cornflowerblue;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  height: 180px;
+  width: 280px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
 .name-cards > h3 > a {
+  margin-right: 245px;
+  position: relative;
+  bottom: 36px;
+}
+
+#yee > h3 > a {
   margin-right: 245px;
   position: relative;
   bottom: 36px;
@@ -90,4 +107,8 @@
   font-family: Raleway, sans-serif;
   font-weight: 900;
   padding: 15px;
+}
+
+#yee:hover {
+  text-decoration: none;
 }

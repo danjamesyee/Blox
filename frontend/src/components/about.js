@@ -16,17 +16,19 @@ const About = () => (
         </a>
         <div></div>
       </h3>
-      <h3 id="yee">
-        Daniel Yee
-        <br />
-        <a href="https://github.com/danjamesyee/">
-          <img
-            alt=""
-            id="git-icon"
-            src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
-          />
-        </a>
-      </h3>
+      <a id="yee" href="https://www.danielyee.dev/dist/index.html">
+        <h3>
+          Daniel Yee
+          <br />
+          <a href="https://github.com/danjamesyee/">
+            <img
+              alt=""
+              id="git-icon"
+              src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
+            />
+          </a>
+        </h3>
+      </a>
       <h3 id="creppel">
         Daniel Creppel
         <br />
