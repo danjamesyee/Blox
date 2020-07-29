@@ -24,6 +24,7 @@ export const deleteTrack = (trackId) => {
   return axios.delete(`/api/tracks/${trackId}`);
 };
 
-export const patchTrackRating = (trackId, rating) => {
-  return axios.patch(`/api/tracks/${trackId}/rating`, { rating })
-};
+// * Deprecated
+// export const patchTrackRating = (trackId, rating) => {
+//   return axios.patch(`/api/tracks/${trackId}/rating`, { rating })
+// };
