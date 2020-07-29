@@ -35,11 +35,13 @@ export const receiveTrack = (track) => ({
   track,
 });
 
-export const receiveTrackRating = (trackId, rating) => ({
-  type: RECEIVE_TRACK_RATING,
-  trackId,
-  rating
-});
+export const receiveTrackRating = (trackId, rating) => {
+  return {
+    type: RECEIVE_TRACK_RATING,
+    trackId,
+    rating,
+  };
+};
 
 export const removeTrack = (trackId) => ({
   type: REMOVE_TRACK,
