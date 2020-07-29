@@ -8,7 +8,9 @@ const mapStateToProps = (state) => {
     currentUser: state.session.user,
     newTrack: {},
     blocks: Object.values(state.blocks),
-    tracks: Object.values(state.tracks),
+    tracks: Object.values(state.tracks).sort((a, b) => {
+      return b.rating - a.rating;
+    }),
     errors: state.errors.tracks,
   };
 };
