@@ -10,7 +10,6 @@ import {
 const TracksReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
-  // let receiveTracksState = {};
 
   switch (action.type) {
     case RECEIVE_TRACKS:
@@ -23,12 +22,11 @@ const TracksReducer = (state = {}, action) => {
         newState[track._id] = track;
       });
       return newState;
-      // return action.tracks.data;
     case RECEIVE_NEW_TRACK:
       newState[action.track.data._id] = action.track.data;
       return newState;
     case RECEIVE_TRACK:
-      newState.track = action.track.data;
+      newState[action.track.data._id] = action.track.data;
       return newState;
     case RECEIVE_TRACK_RATING:
       newState[action.trackId].rating = action.rating;
