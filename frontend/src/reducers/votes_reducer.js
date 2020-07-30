@@ -15,7 +15,8 @@ export default (state={}, action) => {
       });
       return newState;
     case RECEIVE_VOTE:
-      newState[action.vote._id] = action.vote;
+      // res returns data: { vote, track }
+      newState[action.res.data.vote._id] = action.res.data.vote;
       return newState;
     default:
       return state;
