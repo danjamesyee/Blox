@@ -3,10 +3,14 @@ import { fetchTrack, fetchTracks, destroyTrack } from "../../actions/track_actio
 import { fetchBlocks } from "../../actions/block_actions";
 import TracksShow from "./tracks_show";
 
+function findTrack (trackId, tracks) {
+  return tracks.find(track => track._id === trackId)
+}
+
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.user,
-    tracks: state.tracks,
+    track: findTrack(ownProps.match.params.trackId, Object.values(state.tracks)),
     blocks: state.blocks,
     errors: state.errors.tracks,
   };
