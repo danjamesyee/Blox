@@ -17,17 +17,18 @@ export default class Votes extends React.Component {
     let upvoted = "";
     let downvoted = "";
 
-
-    Object.values(votes).forEach(vote => {
-      if (vote.user === currentUser.id && vote.track === trackId && vote.rating === 1) {
-        upvoted = " upvoted";
-        downvoted = "";
-      } else if (vote.user === currentUser.id && vote.track === trackId && vote.rating === -1) {
-        downvoted = " downvoted";
-        upvoted = "";
-      }
-    })
-    
+    // current user exists
+    if (currentUser) {
+      Object.values(votes).forEach(vote => {
+        if (vote.user === currentUser.id && vote.track === trackId && vote.rating === 1) {
+          upvoted = " upvoted";
+          downvoted = "";
+        } else if (vote.user === currentUser.id && vote.track === trackId && vote.rating === -1) {
+          downvoted = " downvoted";
+          upvoted = "";
+        }
+      })
+    }
     return (
       <div className="vote">
         <div onClick={() => upvote(trackId)} className={"material-icons upvote" + upvoted}>
