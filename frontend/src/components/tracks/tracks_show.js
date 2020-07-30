@@ -32,7 +32,6 @@ class TracksShowPage extends React.Component {
       "Please be patient",
       3000
     );
-    console.log("end of first");
     // this.sleep(8000);
     // setTimeout(this.playNote(track), 100000000);
   }
@@ -62,7 +61,7 @@ class TracksShowPage extends React.Component {
 
   render() {
     let blocks = Object.values(this.props.blocks) || [];
-    let track = this.props.tracks.track || [];
+    let track = this.props.track || [];
     if (blocks.length === 0 || track.length === 0) {
       return (
         <div

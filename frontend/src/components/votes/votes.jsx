@@ -3,6 +3,9 @@ import React from "react";
 export default class Votes extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { rating: this.props.rating };
+    this.calcRating = this.calcRating.bind(this);
+    this.handleVote = this.handleVote.bind(this);
   }
 
   componentDidMount() {
@@ -31,14 +34,14 @@ export default class Votes extends React.Component {
     }
     return (
       <div className="vote">
-        <div onClick={() => upvote(trackId)} className={"material-icons upvote" + upvoted}>
+        <div onClick={() => this.handleVote('up')} className={"material-icons upvote" + upvoted}>
           keyboard_arrow_up
         </div>
 
         <div className="rating">{this.props.rating}</div>
 
         <div
-          onClick={() => downvote(trackId)}
+          onClick={() => () => this.handleVote('down')}
           className={"material-icons downvote" + downvoted}
         >
           keyboard_arrow_down

@@ -7,7 +7,7 @@ import { fetchTrackVotes, upvote, downvote } from "../../actions/votes_actions";
 const MSP = (state, ownProps) => {
   return {
     rating: state.tracks[ownProps.trackId].rating,
-    votes: state.votes,
+    votes: Object.values(state.votes),
     trackId: ownProps.trackId,
     currentUser: state.session.user,
   };
