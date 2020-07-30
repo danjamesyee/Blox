@@ -12,7 +12,6 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.currentUser.id);
     this.props.fetchUserTracks(this.props.match.params.userId);
     this.props.fetchBlocks();
     this.setState({ isLoading: false });
