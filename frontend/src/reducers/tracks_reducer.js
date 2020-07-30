@@ -10,16 +10,20 @@ import {
 const TracksReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
+  let receiveTracksState = {};
 
   switch (action.type) {
     case RECEIVE_TRACKS:
-      let receiveTracksState = {};
       action.tracks.data.forEach((track) => {
         receiveTracksState[track._id] = track;
       });
       return receiveTracksState;
     case RECEIVE_USER_TRACKS:
-      return action.tracks.data;
+      action.tracks.data.forEach((track) => {
+        receiveTracksState[track._id] = track;
+      });
+      return receiveTracksState;
+      // return action.tracks.data;
     case RECEIVE_NEW_TRACK:
       newState.track = action.track.data;
       return newState;
