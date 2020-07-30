@@ -62,7 +62,7 @@ class TracksShowPage extends React.Component {
 
   render() {
     let blocks = Object.values(this.props.blocks) || [];
-    let track = this.props.tracks.track || [];
+    let track = this.props.track || [];
     if (blocks.length === 0 || track.length === 0) {
       return (
         <div
