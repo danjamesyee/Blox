@@ -25,6 +25,7 @@ const trackRating = (trackId, votes) => {
 // make sure to pass VotesContainer the trackId
 // like this <VotesContainer trackId={trackId}
 const MSP = (state, ownProps) => ({
+  votes: Object.values(state.votes),
   rating: trackRating(ownProps.trackId, state.votes),
   trackId: ownProps.trackId,
   currentUser: state.session.user
@@ -34,6 +35,7 @@ const MDP = (dispatch) => ({
   fetchTrackVotes: trackId => dispatch(fetchTrackVotes(trackId)),
   upvote: trackId => dispatch(upvote(trackId)),
   downvote: trackId => dispatch(downvote(trackId)),
+  // currentUserVote: (votes, currentUserId) => dispatch(currentUserVote(votes, currentUserId))
 });
 
 export default connect(MSP, MDP)(Votes);

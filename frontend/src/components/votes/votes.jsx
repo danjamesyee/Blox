@@ -6,13 +6,16 @@ export default class Votes extends React.Component {
   }
 
   componentDidMount () {
-    const { fetchTrackVotes, trackId } = this.props;
+    const { fetchTrackVotes, trackId, votes, currentUser } = this.props;
     // ! N + 1 queries
     fetchTrackVotes(trackId);
+    // currentUserVote(votes, currentUser._id);
   }
 
   render () {
-    const { upvote, downvote, trackId } = this.props;
+    const { upvote, downvote, trackId, votes } = this.props;
+    // let wantedVotes = currentUserVote(votes, currentUserId);
+    
     return (
       <div className="vote">
         <div onClick={() => upvote(trackId)} className="material-icons upvote">
