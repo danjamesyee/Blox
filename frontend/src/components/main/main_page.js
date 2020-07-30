@@ -24,8 +24,8 @@ class MainPage extends React.Component {
   componentDidMount() {
     // this.createNotification();
 
-    this.props.fetchBlocks();
-    this.props.fetchTracks();
+    this.props.fetchBlocks()
+    .then(() => this.props.fetchTracks());
 
     this.setState({ isLoading: false });
   }

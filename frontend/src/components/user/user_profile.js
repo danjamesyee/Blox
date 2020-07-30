@@ -45,6 +45,7 @@ class Profile extends React.Component {
     while (currentTime + miliseconds >= new Date().getTime()) {}
   }
   render() {
+
     let blocks = this.props.blocks || {};
     let tracks = this.state.tracks || [];
     let user = tracks[0] || {};

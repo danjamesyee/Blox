@@ -10,10 +10,13 @@ export default class Votes extends React.Component {
     const { fetchTrackVotes, trackId } = this.props;
 
     fetchTrackVotes(trackId);
+    // currentUserVote(votes, currentUser._id);
   }
 
   render() {
-    const { upvote, downvote, trackId } = this.props;
+     
+
+    const { upvote, downvote, trackId, currentUser } = this.props;
     const { votes, receiveRatings } = this.props;
     if (Object.keys(votes).length > 0) {
       const votesArr = Object.values(votes);
@@ -24,13 +27,27 @@ export default class Votes extends React.Component {
           rating += vote.rating;
         }
       });
-      debugger;
+      
       receiveRatings(trackId, rating);
     }
 
+    let upvoted = "";
+    let downvoted = "";
+
+
+    Object.values(votes).forEach(vote => {
+      if (vote.user === currentUser.id && vote.track === trackId && vote.rating === 1) {
+        upvoted = " upvoted";
+        downvoted = "";
+      } else if (vote.user === currentUser.id && vote.track === trackId && vote.rating === -1) {
+        downvoted = " downvoted";
+        upvoted = "";
+      }
+    })
+    
     return (
       <div className="vote">
-        <div onClick={() => upvote(trackId)} className="material-icons upvote">
+        <div onClick={() => upvote(trackId)} className={"material-icons upvote" + upvoted}>
           keyboard_arrow_up
         </div>
 
@@ -38,7 +55,7 @@ export default class Votes extends React.Component {
 
         <div
           onClick={() => downvote(trackId)}
-          className="material-icons downvote"
+          className={"material-icons downvote" + downvoted}
         >
           keyboard_arrow_down
         </div>

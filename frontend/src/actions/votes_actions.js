@@ -48,3 +48,4 @@ export const downvote = (trackId) => dispatch => {
     .then((vote) => dispatch(receiveVote(vote.data)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
+
