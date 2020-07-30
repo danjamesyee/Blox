@@ -13,6 +13,7 @@ export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_TRACK_RATING = "RECEIVE_TRACK_RATING";
 
 export const receiveTracks = (tracks) => ({
   type: RECEIVE_TRACKS,
@@ -33,6 +34,14 @@ export const receiveTrack = (track) => ({
   type: RECEIVE_TRACK,
   track,
 });
+
+export const receiveTrackRating = (trackId, rating) => {
+  return {
+    type: RECEIVE_TRACK_RATING,
+    trackId,
+    rating,
+  };
+};
 
 export const removeTrack = (trackId) => ({
   type: REMOVE_TRACK,

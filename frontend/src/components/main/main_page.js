@@ -71,7 +71,6 @@ class MainPage extends React.Component {
   render() {
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
-
     if (tracks.length === 0)
       return (
         <div
