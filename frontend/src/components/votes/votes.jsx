@@ -10,26 +10,10 @@ export default class Votes extends React.Component {
     const { fetchTrackVotes, trackId } = this.props;
 
     fetchTrackVotes(trackId);
-    // currentUserVote(votes, currentUser._id);
   }
 
   render() {
-     
-
-    const { upvote, downvote, trackId, currentUser } = this.props;
-    const { votes, receiveRatings } = this.props;
-    if (Object.keys(votes).length > 0) {
-      const votesArr = Object.values(votes);
-      let rating = 0;
-
-      votesArr.forEach((vote) => {
-        if (vote.track == trackId) {
-          rating += vote.rating;
-        }
-      });
-      
-      receiveRatings(trackId, rating);
-    }
+    const { upvote, downvote, trackId, currentUser, votes } = this.props;
 
     let upvoted = "";
     let downvoted = "";
