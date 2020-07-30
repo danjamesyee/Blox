@@ -6,7 +6,6 @@ export default class Votes extends React.Component {
   }
 
   componentDidMount() {
-    // ! N + 1 queries (FIXED)
     const { fetchTrackVotes, trackId } = this.props;
 
     fetchTrackVotes(trackId);
