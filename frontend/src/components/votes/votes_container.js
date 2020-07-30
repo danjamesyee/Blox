@@ -36,7 +36,7 @@ const MDP = (dispatch) => ({
   upvote: (trackId) => dispatch(upvote(trackId)),
   downvote: (trackId) => dispatch(downvote(trackId)),
   receiveRatings: (trackId, rating) =>
-    dispatch(receiveTrackRating(trackId, rating)),
+  dispatch(receiveTrackRating(trackId, rating)),
 });
 
 export default connect(MSP, MDP)(Votes);
