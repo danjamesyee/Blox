@@ -128,8 +128,15 @@ class TracksShowPage extends React.Component {
 
             <div className="track-outer">
               <h4 id="show-title">{track.title}</h4>
+              <h4 id="show-handle">
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to={`/users/${track.user._id}`}
+                >
+                  by {track.user.handle}
+                </Link>
+              </h4>{" "}
               <br />
-
               <br />
               <div className="outer-track-container">
                 <VotesContainer trackId={this.props.match.params.trackId} />
@@ -159,7 +166,6 @@ class TracksShowPage extends React.Component {
                 </div>
               </div>
               {editLink}
-
               <CommentsContainer trackId={this.props.match.params.trackId} />
             </div>
           </div>

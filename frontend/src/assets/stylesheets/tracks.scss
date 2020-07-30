@@ -145,17 +145,23 @@ button {
 }
 
 #delete-track-button {
-    display: inline-block;
-    padding: 5px;
-    color: #fffcf9;
-    position: relative;
-    border: none;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: palevioletred;
+  display: inline-block;
+  padding: 5px;
+  color: #fffcf9;
+  position: relative;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: palevioletred;
 }
 
 #delete-track-button:hover {
   background: rgb(255, 75, 75);
+}
+
+#show-handle {
+  position: relative;
+  left: 12%;
+  top: 15px;
 }
