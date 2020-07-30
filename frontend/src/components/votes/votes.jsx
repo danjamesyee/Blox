@@ -3,9 +3,6 @@ import React from "react";
 export default class Votes extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rating: this.props.rating };
-    this.calcRating = this.calcRating.bind(this);
-    this.handleVote = this.handleVote.bind(this);
   }
 
   componentDidMount() {
