@@ -49,15 +49,3 @@ export const downvote = (trackId) => dispatch => {
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
 
-// export const currentUserVote = (votes, currentUserId) => {
-//   const upVoted = document.getElementsByClassName('material-icons upvote');
-//   const downVoted = document.getElementsByClassName('material-icons downvote');
-
-//   votes.forEach( vote => {
-//     if ( vote.user === currentUserId && vote.rating === 1) {
-//       return upVoted.classList.add('upvoted');
-//     } else if ( vote.user === currentUserId && vote.rating === -1) {
-//       return downVoted.classList.add('downvoted');
-//     }
-//   })
-// }

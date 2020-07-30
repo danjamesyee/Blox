@@ -23,6 +23,7 @@ import { receiveTrackRating } from "../../actions/track_actions";
 // make sure to pass VotesContainer the trackId
 // like this <VotesContainer trackId={trackId}
 const MSP = (state, ownProps) => {
+  // debugger
   return {
     rating: state.tracks[ownProps.trackId].rating,
     votes: state.votes,

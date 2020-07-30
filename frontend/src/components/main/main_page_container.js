@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     makeTrack: (track) => dispatch(makeTrack(track)),
     fetchBlocks: (blocks) => dispatch(fetchBlocks(blocks)),
-    fetchTracks: (tracks) => dispatch(fetchTracks(tracks)),
+    fetchTracks: () => dispatch(fetchTracks()),
   };
 };
 
