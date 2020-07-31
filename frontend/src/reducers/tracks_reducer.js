@@ -2,7 +2,6 @@ import {
   RECEIVE_TRACKS,
   RECEIVE_USER_TRACKS,
   RECEIVE_TRACK,
-  RECEIVE_TRACK_RATING,
   RECEIVE_NEW_TRACK,
   REMOVE_TRACK,
 } from "../actions/track_actions";

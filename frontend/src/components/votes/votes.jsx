@@ -1,10 +1,6 @@
 import React from "react";
 
 export default class Votes extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { fetchTrackVotes, trackId } = this.props;
 
@@ -31,14 +27,14 @@ export default class Votes extends React.Component {
     }
     return (
       <div className="vote">
-        <div onClick={() => this.handleVote('up')} className={"material-icons upvote" + upvoted}>
+        <div onClick={() => upvote(trackId)} className={"material-icons upvote" + upvoted}>
           keyboard_arrow_up
         </div>
 
         <div className="rating">{this.props.rating}</div>
 
         <div
-          onClick={() => () => this.handleVote('down')}
+          onClick={() => downvote(trackId)}
           className={"material-icons downvote" + downvoted}
         >
           keyboard_arrow_down
