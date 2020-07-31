@@ -60,14 +60,11 @@ class NavBar extends React.Component {
                 >
                   My Tracks
                 </Link>
-                <a className="dropdown-item" href="#">
-                  Placeholder
-                </a>
 
                 <a
                   className="dropdown-item"
                   id="logout-user"
-                  href="#"
+                  href="#/"
                   onClick={this.logoutUser}
                 >
                   <Link to="/">Logout</Link>

@@ -93,6 +93,7 @@ class Profile extends React.Component {
                   <div className="flexer">
                     <img
                       src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                      alt="play-button"
                       className="play-button"
                       onClick={() => this.playNote(track)}
                     ></img>

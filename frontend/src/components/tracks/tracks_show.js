@@ -83,8 +83,7 @@ class TracksShowPage extends React.Component {
       }
     }
     let editLink;
-
-    if (this.props.currentUser.id === track.user._id) {
+    if (this.props.currentUser && this.props.currentUser.id === track.user._id) {
       editLink = (
         <div>
           <Link id="show-edit" to={`/tracks/${track._id}/edit`}>

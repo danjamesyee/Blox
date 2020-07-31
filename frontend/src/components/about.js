@@ -9,7 +9,7 @@ const About = () => (
         <br />
         <a href="https://github.com/danchau88">
           <img
-            alt=""
+            alt="chau"
             id="git-icon"
             src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
           />
@@ -22,7 +22,7 @@ const About = () => (
           <br />
           <a href="https://github.com/danjamesyee/">
             <img
-              alt=""
+              alt="yee"
               id="git-icon"
               src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
             />
@@ -34,7 +34,7 @@ const About = () => (
         <br />
         <a href="https://github.com/dancreppel">
           <img
-            alt=""
+            alt="crep"
             id="git-icon"
             src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
           />
@@ -45,7 +45,7 @@ const About = () => (
         <br />
         <a href="https://github.com/alexbpbdroid">
           <img
-            alt=""
+            alt="dawg"
             id="git-icon"
             src="https://active-storage-blox-seed.s3-us-west-1.amazonaws.com/icons/github.png"
           />

@@ -11,10 +11,11 @@ const receiveVotes = (votes) => {
   }
 }
 
-const receiveVote = (vote) => {
+// shared with track
+const receiveVote = (res) => {
   return {
     type: RECEIVE_VOTE,
-    vote
+    res
   }
 }
 
@@ -37,15 +38,17 @@ export const fetchAllVotes = () => dispatch => {
     .catch(err => dispatch(receiveVoteErrors(err.response.data)))
 }
 
+// Destructure to get vote
 export const upvote = (trackId) => dispatch => {
   return postUpvote(trackId)
-    .then((vote) => dispatch(receiveVote(vote.data)))
-    .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
+  .then((res) => dispatch(receiveVote(res)))
+  .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
 
+// Destructure to get vote
 export const downvote = (trackId) => dispatch => {
   return postDownvote(trackId)
-    .then((vote) => dispatch(receiveVote(vote.data)))
+    .then((res) => dispatch(receiveVote(res)))
     .catch((err) => dispatch(receiveVoteErrors(err.response.data)));
 }
 

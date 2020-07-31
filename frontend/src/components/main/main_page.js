@@ -25,9 +25,8 @@ class MainPage extends React.Component {
     // this.createNotification();
 
     this.props.fetchBlocks()
-    .then(() => this.props.fetchTracks());
-
-    this.setState({ isLoading: false });
+    .then(() => this.props.fetchTracks())
+    .then(() => this.setState({ isLoading: false }));
   }
   createNotification(track) {
     NotificationManager.warning(
@@ -35,7 +34,6 @@ class MainPage extends React.Component {
       "Please be patient",
       3000
     );
-    console.log("end of first");
     // this.sleep(8000);
     // setTimeout(this.playNote(track), 100000000);
   }
@@ -133,6 +131,7 @@ class MainPage extends React.Component {
                   <VotesContainer trackId={track._id} key={i} />
                   <img
                     src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
+                    alt="play-button"
                     className="play-button"
                     onMouseEnter={this.createNotification}
                     onClick={() => {
@@ -164,7 +163,6 @@ class MainPage extends React.Component {
         )}
       </div>
     );
-    return;
   }
 }
 
