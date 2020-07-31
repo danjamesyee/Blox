@@ -3,6 +3,7 @@
   font-size: 40px;
   color: gray;
   font-weight: bolder;
+  transition: all 0.5s;
 }
 
 .material-icons.upvote:hover {
@@ -20,6 +21,7 @@
   align-items: center;
   width: 5%;
   font-size: 20px;
+  transition: all 1s;
 }
 
 .vote {
@@ -31,6 +33,7 @@
   font-family: "Raleway", sans-serif;
   font-weight: 900;
   font-size: 30px;
+  transition: all 1s;
 }
 
 .upvoted {
