@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import * as Tone from "tone";
 import { Link } from "react-router-dom";
 import VotesContainer from "../votes/votes_container";
@@ -24,9 +25,10 @@ class MainPage extends React.Component {
   componentDidMount() {
     // this.createNotification();
 
-    this.props.fetchBlocks()
-    .then(() => this.props.fetchTracks())
-    .then(() => this.setState({ isLoading: false }));
+    this.props
+      .fetchBlocks()
+      .then(() => this.props.fetchTracks())
+      .then(() => this.setState({ isLoading: false }));
   }
   createNotification(track) {
     NotificationManager.warning(
