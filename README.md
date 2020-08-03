@@ -10,7 +10,7 @@
 
 # Background and Overview
 
-Many people are interested in music, however they lack any musical experience and believe themselves to be musically inept. Enter Blox, a simple and easy way to create music. Blox are the new notes in our new world of music and users can intuitively select the right blox which vary in size, shape and color based on their length and pitch. Put enough blox together and you will have created a whole song!
+Many people are interested in music, however they lack any musical experience and believe themselves to be musically inept. Enter Blox, a simple and easy way to create music. Blox are the new notes in our new world of music and users can intuitively select the right blox which vary in size, shape and color based on their length and pitch. Put enough blox together and you will have created a whole song! Just by creating a song you join our community of musicians, and your song will be ranked based on user votes. You can also vote on other people's tracks and watch as tracks go up the ranks. 
 
 #### We will need to:
 
