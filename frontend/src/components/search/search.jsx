@@ -25,9 +25,9 @@ export default class Search extends React.Component {
 
   componentWillUnmount () {
     // remove eventlistener after compoment unmounts
-    document.body.removeEventListener('click', (e) => {
-      if (!e.target.className.includes("search")) this.handleReset();
-    });
+    // document.body.removeEventListener('click', (e) => {
+    //   if (!e.target.className.includes("search")) this.handleReset();
+    // });
   }
 
   handleChange (e) {
@@ -65,17 +65,18 @@ export default class Search extends React.Component {
     this.setState({ searchField: '', searching: true });
   }
 
+  // <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> 
   render() {
     let users = this.props.users.map((user, i) => 
-      <li id="search-li" key={"searchUser" + i}> 
-        <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> 
-      </li>
+    <Link to={`users/${user._id}`} id="search-li" key={"searchUser" + i}> 
+      {user.handle} 
+    </Link>
     );
 
     let tracks = this.props.tracks.map((track, i) => 
-      <li id="search-li" key={"searchTrack" + i}> 
-        <Link id="search-links" to={`tracks/${track._id}`}>{track.title}</Link> 
-      </li>
+      <Link id="search-li" key={"searchTrack" + i} to={`tracks/${track._id}`}> 
+        {track.title}
+      </Link>
     );
 
 
