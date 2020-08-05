@@ -14,27 +14,37 @@ export default class Search extends React.Component {
     this.handleEnter = this.handleEnter.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleExitSearch = document.body.addEventListener('click', (e) => {
+      if (!e.target.className.includes("search")) this.handleReset();
+    });
   }
 
   componentDidMount () {
     this.props.clearSearch();
   }
 
-  // handleChange (e) {
-  //   let query = e.currentTarget.value;
-  //   if (query === "") {
-  //     this.props.clearSearch();
-  //     this.setState({ searchField: "" });
-  //   }
-  //   else {
-  //     this.props.fetchSearch(query)
-  //       .then(() => this.setState({ searchField: query }))
-  //   }
-  // }
-
-  handleChange(e) {
-    this.setState({ searchField: e.currentTarget.value })
+  componentWillUnmount () {
+    // remove eventlistener after compoment unmounts
+    document.body.removeEventListener('click', (e) => {
+      if (!e.target.className.includes("search")) this.handleReset();
+    });
   }
+
+  handleChange (e) {
+    let query = e.currentTarget.value;
+    if (query === "") {
+      this.props.clearSearch();
+      this.setState({ searchField: "" });
+    }
+    else {
+      this.props.fetchSearch(query)
+        .then(() => this.setState({ searchField: query }))
+    }
+  }
+
+  // handleChange(e) {
+  //   this.setState({ searchField: e.currentTarget.value })
+  // }
 
   handleEnter(e) {
     let query = this.state.searchField;
@@ -56,8 +66,17 @@ export default class Search extends React.Component {
   }
 
   render() {
-    let users = this.props.users.map((user, i) => <li id="search-li" key={"searchUser" + i}> <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> </li>)
-    let tracks = this.props.tracks.map((track, i) => <li id="search-li" key={"searchTrack" + i}> <Link id="search-links" to={`tracks/${track._id}`}>{track.title}</Link> </li>)
+    let users = this.props.users.map((user, i) => 
+      <li id="search-li" key={"searchUser" + i}> 
+        <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> 
+      </li>
+    );
+
+    let tracks = this.props.tracks.map((track, i) => 
+      <li id="search-li" key={"searchTrack" + i}> 
+        <Link id="search-links" to={`tracks/${track._id}`}>{track.title}</Link> 
+      </li>
+    );
 
 
     let usersHeader;
@@ -81,10 +100,15 @@ export default class Search extends React.Component {
 
     return (
       <div className="search-bar">
-        <span id="search-icon" onClick={this.handleSearch} className="material-icons">
+        <span
+          id="search-icon"
+          // onClick={this.handleSearch}
+          className="search material-icons"
+        >
           search
         </span>
         <input
+          autocomplete="off"
           id="search"
           className="search-bar-input"
           type="text"
@@ -93,19 +117,22 @@ export default class Search extends React.Component {
           onKeyDown={this.handleEnter}
           placeholder="Search..."
         />
-        <span id="clear-icon" onClick={this.handleReset} className="material-icons">
+        <span
+          id="clear-icon"
+          onClick={this.handleReset}
+          className="material-icons"
+        >
           close
         </span>
 
         <div className={`search-dropdown` + hidden}>
           {usersHeader}
           <div id="search-results">{users}</div>
-          
+
           {tracksHeader}
           <div id="search-results">{tracks}</div>
         </div>
-
       </div>
-    )
+    );
   }
 }
