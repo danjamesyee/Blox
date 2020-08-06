@@ -40,6 +40,7 @@ class Tracks extends React.Component {
   };
   componentDidMount() {
     this.props.fetchBlocks();
+    console.clear();
   }
 
   update(field) {
@@ -68,7 +69,6 @@ class Tracks extends React.Component {
   playNote() {
     let track = this.state.track;
 
-    console.log(track);
     const synth = new Tone.Synth().toMaster();
     // synth.oscillator.type = "sine";
     let newPart = [];
@@ -82,10 +82,8 @@ class Tracks extends React.Component {
     });
     newPart.push([dur + 1, "C4"]);
     this.setState({ playing: true });
-    console.log(newPart);
 
     let note = 0;
-    console.log(Tone.Transport);
     Tone.Transport.cancel();
 
     let part = new Tone.Part((time, pitch) => {

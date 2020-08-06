@@ -24,10 +24,10 @@ class TracksShowPage extends React.Component {
     this.props.fetchBlocks();
     this.props.fetchTrack(this.props.match.params.trackId);
     this.setState({ isLoading: false });
+    console.clear();
   }
 
   playNote(track) {
-    console.log(track.blocks);
     const synth = new Tone.Synth().toMaster();
     // synth.oscillator.type = "sine";
     let newPart = [];
@@ -41,10 +41,8 @@ class TracksShowPage extends React.Component {
     });
     newPart.push([dur + 1, "C4"]);
     this.setState({ playing: track._id });
-    console.log(newPart);
 
     let note = 0;
-    console.log(Tone.Transport);
     Tone.Transport.cancel();
 
     let part = new Tone.Part((time, pitch) => {
