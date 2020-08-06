@@ -26,10 +26,12 @@ class Profile extends React.Component {
     // synth.oscillator.type = "sine";
     let newPart = [];
     let dur = 0;
-    track.blocks.forEach((block) => {
-      if (block.duration === "4n") dur += 0.5;
-      if (block.duration === "8n") dur += 0.25;
-      if (block.duration === "16n") dur += 0.125;
+    track.blocks.forEach((block, idx) => {
+      if (idx !== 0) {
+        if (track.blocks[idx - 1].duration === "4n") dur += 0.5;
+        if (track.blocks[idx - 1].duration === "8n") dur += 0.25;
+        if (track.blocks[idx - 1].duration === "16n") dur += 0.125;
+      }
 
       newPart.push([dur, block.note]);
     });

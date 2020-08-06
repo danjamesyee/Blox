@@ -73,11 +73,13 @@ class Tracks extends React.Component {
     // synth.oscillator.type = "sine";
     let newPart = [];
     let dur = 0;
-    track.forEach((block) => {
-      if (block.duration === "4n") dur += 0.5;
-      if (block.duration === "8n") dur += 0.25;
-      if (block.duration === "16n") dur += 0.125;
-
+    track.forEach((block, idx) => {
+      if (idx !== 0) {
+        if (track[idx - 1].duration === "4n") dur += 0.5;
+        if (track[idx - 1].duration === "8n") dur += 0.25;
+        if (track[idx - 1].duration === "16n") dur += 0.125;
+      }
+      
       newPart.push([dur, block.note]);
     });
     newPart.push([dur + 1, "C4"]);
@@ -102,7 +104,6 @@ class Tracks extends React.Component {
 
     part.start();
     Tone.Transport.start();
-   
   }
 
   pause(synth) {
