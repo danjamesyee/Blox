@@ -85,7 +85,7 @@ class Tracks extends React.Component {
         synth.triggerAttack(track[note].note, track[note].duration, time, 1);
       }
       note++;
-    }, 0);
+    }, track[note].duration);
 
     Tone.Transport.start();
   }
