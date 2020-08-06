@@ -44,11 +44,8 @@ class TracksEdit extends React.Component {
     this.props.fetchTracks();
     this.props.fetchTrack(this.props.match.params.trackId);
 
-    // debugger;
-    console.log(Object.values(this.props.tracks).length > 0);
     if (Object.values(this.props.tracks).length > 0) this.testFunc();
 
-    // console.clear();
     window.scrollTo(0, 0);
   }
 
