@@ -30,7 +30,7 @@ class MainPage extends React.Component {
       .then(() => this.props.fetchTracks())
       .then(() => this.setState({ isLoading: false }));
 
-    console.clear();
+    // console.clear();
   }
 
   createNotification(track) {

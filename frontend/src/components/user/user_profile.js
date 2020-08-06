@@ -15,7 +15,7 @@ class Profile extends React.Component {
     this.props.fetchUserTracks(this.props.match.params.userId);
     this.props.fetchBlocks();
     this.setState({ isLoading: false });
-    console.clear();
+    // console.clear();
   }
 
   componentWillReceiveProps(newState) {

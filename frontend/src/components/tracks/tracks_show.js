@@ -24,7 +24,7 @@ class TracksShowPage extends React.Component {
     this.props.fetchBlocks();
     this.props.fetchTrack(this.props.match.params.trackId);
     this.setState({ isLoading: false });
-    console.clear();
+    // console.clear();
   }
 
   playNote(track) {

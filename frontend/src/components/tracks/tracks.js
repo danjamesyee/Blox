@@ -40,7 +40,7 @@ class Tracks extends React.Component {
   };
   componentDidMount() {
     this.props.fetchBlocks();
-    console.clear();
+    // console.clear();
   }
 
   update(field) {
