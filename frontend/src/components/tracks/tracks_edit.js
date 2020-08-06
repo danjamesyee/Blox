@@ -14,7 +14,7 @@ class TracksEdit extends React.Component {
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { track: [] };
+    this.state = { track: [], playing: false };
     this.testFunc = this.testFunc.bind(this);
     this.clear = this.clear.bind(this);
   }
@@ -42,7 +42,8 @@ class TracksEdit extends React.Component {
   componentDidMount() {
     this.props.fetchBlocks();
     this.props.fetchTrack(this.props.match.params.trackId);
-    if (this.props.tracks.track) this.testFunc();
+    if (this.props.tracks) this.testFunc();
+    // console.log(this.props);
   }
 
   update(field) {
@@ -71,9 +72,9 @@ class TracksEdit extends React.Component {
 
   testFunc() {
     this.setState({
-      track: this.props.tracks.track.blocks,
-      title: this.props.tracks.track.title,
-      id: this.props.tracks.track._id,
+      track: this.props.tracks[this.props.match.params.trackId].blocks,
+      title: this.props.tracks[this.props.match.params.trackId].title,
+      id: this.props.match.params.trackId,
     });
   }
   createNotification(track) {
@@ -88,21 +89,47 @@ class TracksEdit extends React.Component {
   }
 
   playNote(part) {
-    Tone.Transport.start();
+    this.setState({ playing: true });
     const synth = new Tone.Synth().toMaster();
-    for (let i = 0; i < this.state.track.length; i++) {
-      synth.triggerAttackRelease(
-        this.state.track[i].note,
-        this.state.track[i].duration
-      );
-      if (this.state.track[i].duration === "16n") {
-        this.sleep(200);
-      } else if (this.state.track[i].duration === "8n") {
-        this.sleep(400);
-      } else if (this.state.track[i].duration === "4n") {
-        this.sleep(800);
+    let track = this.state.track;
+
+    let note = 0;
+    synth.setNote(track[note].note);
+
+    Tone.Transport.scheduleRepeat((time) => {
+      if (note >= track.length || this.state.playing === false) {
+        this.setState({ playing: false });
+
+        synth.triggerRelease(time);
+        Tone.Transport.cancel();
+      } else {
+        synth.setNote(track[note].note);
+
+        synth.triggerAttackRelease(
+          track[note].note,
+          track[note].duration,
+          time
+        );
       }
-    }
+      note++;
+    }, track[note].duration);
+
+    Tone.Transport.start();
+    // Tone.Transport.start();
+    // const synth = new Tone.Synth().toMaster();
+    // for (let i = 0; i < this.state.track.length; i++) {
+    //   synth.triggerAttackRelease(
+    //     this.state.track[i].note,
+    //     this.state.track[i].duration
+    //   );
+    //   if (this.state.track[i].duration === "16n") {
+    //     this.sleep(200);
+    //   } else if (this.state.track[i].duration === "8n") {
+    //     this.sleep(400);
+    //   } else if (this.state.track[i].duration === "4n") {
+    //     this.sleep(800);
+    //   }
+    // }
   }
 
   sleep(miliseconds) {
@@ -117,6 +144,19 @@ class TracksEdit extends React.Component {
     });
   }
   render() {
+    // debugger;
+    let pause = (
+      <button
+        className="play-button pause"
+        type="button"
+        onClick={() => this.setState({ playing: false })}
+        style={{
+          backgroundColor: "red",
+        }}
+      >
+        Stop
+      </button>
+    );
     const synth = new Tone.Synth().toMaster();
     let titleError;
     if (this.props.errors.title === undefined) {
@@ -209,14 +249,18 @@ class TracksEdit extends React.Component {
             <p className="begin">
               Press play to begin or to hear your track once you've made it
             </p>
-            <button
-              className="play-button"
-              type="button"
-              onMouseEnter={this.createNotification}
-              onClick={() => this.playNote()}
-            >
-              Play
-            </button>
+            {this.state.playing ? (
+              pause
+            ) : (
+              <button
+                className="play-button"
+                type="button"
+                onMouseEnter={this.createNotification}
+                onClick={() => this.playNote()}
+              >
+                Play
+              </button>
+            )}
             <button className="play-button" type="button" onClick={this.clear}>
               Clear
             </button>
