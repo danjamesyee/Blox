@@ -82,14 +82,10 @@ class Tracks extends React.Component {
       } else {
         synth.setNote(track[note].note);
 
-        synth.triggerAttackRelease(
-          track[note].note,
-          track[note].duration,
-          time
-        );
+        synth.triggerAttack(track[note].note, track[note].duration, time, 1);
       }
       note++;
-    }, track[note].duration);
+    }, 0);
 
     Tone.Transport.start();
   }
