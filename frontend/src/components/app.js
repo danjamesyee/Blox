@@ -23,8 +23,8 @@ const App = () => (
     <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route exact path="/login" component={LoginFormContainer} />
+      <Route exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/track" component={Tracks} />
       <Route exact path="/tracks/:trackId" component={TracksShowContainer} />
       <Route exact path="/users/:userId" component={UserProfile} />
