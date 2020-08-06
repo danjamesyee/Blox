@@ -27,6 +27,9 @@ class TracksShowPage extends React.Component {
   }
 
   playNote(track) {
+    if (Tone.context.state !== "running") {
+      Tone.context.resume();
+    }
     this.setState({ playing: track._id });
     const synth = new Tone.Synth().toMaster();
 

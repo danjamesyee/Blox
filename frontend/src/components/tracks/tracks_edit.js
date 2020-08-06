@@ -79,6 +79,9 @@ class TracksEdit extends React.Component {
   }
 
   playNote(part) {
+    if (Tone.context.state !== "running") {
+      Tone.context.resume();
+    }
     this.setState({ playing: true });
     const synth = new Tone.Synth().toMaster();
     let track = this.state.track;
