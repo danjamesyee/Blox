@@ -1,5 +1,9 @@
 import { connect } from "react-redux";
-import { updateTrack, fetchTrack } from "../../actions/track_actions";
+import {
+  updateTrack,
+  fetchTrack,
+  fetchTracks,
+} from "../../actions/track_actions";
 import { fetchBlocks } from "../../actions/block_actions";
 import TracksEdit from "./tracks_edit";
 
@@ -17,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     updateTrack: (track) => dispatch(updateTrack(track)),
     fetchBlocks: (blocks) => dispatch(fetchBlocks(blocks)),
     fetchTrack: (id) => dispatch(fetchTrack(id)),
+    fetchTracks: () => dispatch(fetchTracks()),
   };
 };
 

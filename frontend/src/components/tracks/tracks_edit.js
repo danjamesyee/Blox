@@ -41,9 +41,15 @@ class TracksEdit extends React.Component {
 
   componentDidMount() {
     this.props.fetchBlocks();
+    this.props.fetchTracks();
     this.props.fetchTrack(this.props.match.params.trackId);
-    if (this.props.tracks) this.testFunc();
-    console.clear();
+
+    // debugger;
+    console.log(Object.values(this.props.tracks).length > 0);
+    if (Object.values(this.props.tracks).length > 0) this.testFunc();
+
+    // console.clear();
+    window.scrollTo(0, 0);
   }
 
   update(field) {
@@ -71,6 +77,7 @@ class TracksEdit extends React.Component {
   }
 
   testFunc() {
+    // debugger;
     this.setState({
       track: this.props.tracks[this.props.match.params.trackId].blocks,
       title: this.props.tracks[this.props.match.params.trackId].title,
@@ -215,6 +222,13 @@ class TracksEdit extends React.Component {
                           key={i}
                         >
                           <div
+                            onClick={() =>
+                              this.setState({
+                                track: this.state.track
+                                  .slice(0, i)
+                                  .concat(this.state.track.slice(i + 1)),
+                              })
+                            }
                             className="actual-block"
                             style={{
                               backgroundColor: block.color,
@@ -249,8 +263,11 @@ class TracksEdit extends React.Component {
             <button className="play-button" type="button" onClick={this.clear}>
               Clear
             </button>
-
-            <h3>Click the note buttons to add them to the track</h3>
+            <ul>
+              <li>Click the note buttons to add them to the track</li>
+              <li>Click the notes on the track to delete</li>
+              <li>Drag and drop to move the notes</li>
+            </ul>
             <h4>Quarter Notes</h4>
             {blocks
               .slice(0, 15)

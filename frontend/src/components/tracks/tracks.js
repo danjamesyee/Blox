@@ -79,7 +79,7 @@ class Tracks extends React.Component {
         if (track[idx - 1].duration === "8n") dur += 0.25;
         if (track[idx - 1].duration === "16n") dur += 0.125;
       }
-      
+
       newPart.push([dur, block.note]);
     });
     newPart.push([dur + 1, "C4"]);
@@ -198,6 +198,13 @@ class Tracks extends React.Component {
                           key={i}
                         >
                           <div
+                            onClick={() =>
+                              this.setState({
+                                track: track
+                                  .slice(0, i)
+                                  .concat(track.slice(i + 1)),
+                              })
+                            }
                             className="actual-block"
                             style={{
                               backgroundColor: block.color,
@@ -239,10 +246,12 @@ class Tracks extends React.Component {
               Clear
             </button>
 
-            <h3>
-              Click the note buttons to add them to the track then click and
-              drag the blocks to move them around the timeline
-            </h3>
+            <ul>
+              <li>Click the note buttons to add them to the track</li>
+              <li>Click the notes on the track to delete</li>
+              <li>Drag and drop to move the notes</li>
+            </ul>
+
             <h4>Quarter Notes</h4>
             {blocks
               .slice(0, 15)
