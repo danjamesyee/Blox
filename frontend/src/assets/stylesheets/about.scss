@@ -30,6 +30,7 @@
   border-radius: 4px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  font-weight: bold;
 }
 .name-cards > a {
   background: cornflowerblue;
@@ -41,6 +42,7 @@
   border-radius: 4px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  font-weight: bold;
 }
 .name-cards > h3 > a {
   margin-right: 245px;
@@ -48,10 +50,16 @@
   bottom: 36px;
 }
 
+.name-cards > a > h3 {
+  font-weight: bold;
+  
+}
+
 #yee > h3 > a {
   margin-right: 245px;
   position: relative;
   bottom: 36px;
+  font-weight: bold;
 }
 
 #chau {

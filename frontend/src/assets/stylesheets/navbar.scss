@@ -75,11 +75,11 @@
 }
 .nav-btn {
   height: 100%;
-  width: 30%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   min-width: 290px;
+  margin-right: 15px;
 }
 
 .nav-btn .btn {
@@ -155,6 +155,7 @@ strong a:hover {
   justify-content: space-between;
   align-items: center;
   min-width: 350px;
+  margin-right: 25px;
 }
 
 
