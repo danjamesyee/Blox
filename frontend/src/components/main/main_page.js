@@ -14,8 +14,8 @@ import "react-notifications/lib/notifications.css";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, playing: -1 };
-    this.state.track = [];
+    this.state = { isLoading: true, playing: -1, track: [] };
+    // this.state.track = [];
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
     this.unload = this.unload.bind(this);
@@ -25,12 +25,12 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    this.createNotification();
-    // debugger;
     this.props
       .fetchBlocks()
       .then(() => this.props.fetchTracks())
       .then(() => this.setState({ isLoading: false }));
+
+    console.clear();
   }
 
   createNotification(track) {
@@ -48,32 +48,72 @@ class MainPage extends React.Component {
   }
 
   playNote(track) {
-    this.setState({ playing: track._id });
+    // Tone.Transport.cancel(0);
+
+    console.log(track.blocks);
     const synth = new Tone.Synth().toMaster();
+    // synth.oscillator.type = "sine";
+    let newPart = [];
+    let dur = 0;
+    track.blocks.forEach((block) => {
+      if (block.duration === "4n") dur += 0.5;
+      if (block.duration === "8n") dur += 0.25;
+      if (block.duration === "16n") dur += 0.125;
+
+      newPart.push([dur, block.note]);
+    });
+    newPart.push([dur + 1, "C4"]);
+    this.setState({ playing: track._id });
+    console.log(newPart);
 
     let note = 0;
-    // debugger;
-    synth.setNote(track.blocks[note].note);
+    console.log(Tone.Transport);
+    Tone.Transport.cancel();
 
-    Tone.Transport.scheduleRepeat((time) => {
-      if (note >= track.blocks.length || this.state.playing === -1) {
+    let part = new Tone.Part((time, pitch) => {
+      if (note >= newPart.length - 1 || this.state.playing === -1) {
         this.setState({ playing: -1 });
 
-        synth.triggerRelease(time);
         Tone.Transport.cancel();
       } else {
-        synth.setNote(track.blocks[note].note);
-
-        synth.triggerAttackRelease(
-          track.blocks[note].note,
-          track.blocks[note].duration,
-          time
-        );
+        synth.triggerAttackRelease(pitch, "4n", time);
       }
-      note++;
-    }, track.blocks[note].duration);
+      // console.log(pitch);
+      // console.log(note);
 
+      note++;
+    }, newPart);
+
+    part.start();
     Tone.Transport.start();
+
+    // console.log(note);
+    // if (note >= newPart.length) this.setState({ playing: -1 });
+    // part.stop(dur + 1);
+
+    // let note = 0;
+    // // debugger;
+    // synth.setNote(track.blocks[note].note);
+
+    // Tone.Transport.scheduleRepeat((time) => {
+    //   if (note >= track.blocks.length || this.state.playing === -1) {
+    //     this.setState({ playing: -1 });
+
+    //     synth.triggerRelease(time);
+    //     Tone.Transport.cancel();
+    //   } else {
+    //     synth.setNote(track.blocks[note].note);
+
+    //     synth.triggerAttackRelease(
+    //       track.blocks[note].note,
+    //       track.blocks[note].duration,
+    //       time
+    //     );
+    //   }
+    //   note++;
+    // }, track.blocks[note].duration);
+
+    // Tone.Transport.start();
     // debugger;
     // Tone.Transport.start();
     // this.setState({ playing: true });
@@ -114,6 +154,7 @@ class MainPage extends React.Component {
   unload() {}
 
   render() {
+    // debugger;
     let pause = (
       <img
         src={require("../../assets/stylesheets/stop.png")}
@@ -147,6 +188,7 @@ class MainPage extends React.Component {
         }
       }
     }
+
     return (
       <div>
         {this.state.isLoading ? (

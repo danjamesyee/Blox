@@ -78,51 +78,45 @@ class TracksEdit extends React.Component {
     });
   }
 
-  playNote(part) {
-    if (Tone.context.state !== "running") {
-      Tone.context.resume();
-    }
-    this.setState({ playing: true });
-    const synth = new Tone.Synth().toMaster();
+  playNote() {
     let track = this.state.track;
 
-    let note = 0;
-    synth.setNote(track[note].note);
+    console.log(track);
+    const synth = new Tone.Synth().toMaster();
+    // synth.oscillator.type = "sine2";
+    let newPart = [];
+    let dur = 0;
+    track.forEach((block) => {
+      if (block.duration === "4n") dur += 0.5;
+      if (block.duration === "8n") dur += 0.25;
+      if (block.duration === "16n") dur += 0.125;
 
-    Tone.Transport.scheduleRepeat((time) => {
-      if (note >= track.length || this.state.playing === false) {
+      newPart.push([dur, block.note]);
+    });
+    newPart.push([dur + 1, "C4"]);
+    this.setState({ playing: true });
+    console.log(newPart);
+
+    let note = 0;
+    console.log(Tone.Transport);
+    Tone.Transport.cancel();
+
+    let part = new Tone.Part((time, pitch) => {
+      if (note >= newPart.length - 1 || this.state.playing === false) {
         this.setState({ playing: false });
 
-        synth.triggerRelease(time);
         Tone.Transport.cancel();
       } else {
-        synth.setNote(track[note].note);
-
-        synth.triggerAttackRelease(
-          track[note].note,
-          track[note].duration,
-          time
-        );
+        synth.triggerAttackRelease(pitch, "4n", time);
       }
-      note++;
-    }, track[note].duration);
+      // console.log(pitch);
+      // console.log(note);
 
+      note++;
+    }, newPart);
+
+    part.start();
     Tone.Transport.start();
-    // Tone.Transport.start();
-    // const synth = new Tone.Synth().toMaster();
-    // for (let i = 0; i < this.state.track.length; i++) {
-    //   synth.triggerAttackRelease(
-    //     this.state.track[i].note,
-    //     this.state.track[i].duration
-    //   );
-    //   if (this.state.track[i].duration === "16n") {
-    //     this.sleep(200);
-    //   } else if (this.state.track[i].duration === "8n") {
-    //     this.sleep(400);
-    //   } else if (this.state.track[i].duration === "4n") {
-    //     this.sleep(800);
-    //   }
-    // }
   }
 
   sleep(miliseconds) {
