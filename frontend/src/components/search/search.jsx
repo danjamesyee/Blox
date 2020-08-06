@@ -23,13 +23,6 @@ export default class Search extends React.Component {
     this.props.clearSearch();
   }
 
-  componentWillUnmount () {
-    // remove eventlistener after compoment unmounts
-    // document.body.removeEventListener('click', (e) => {
-    //   if (!e.target.className.includes("search")) this.handleReset();
-    // });
-  }
-
   handleChange (e) {
     let query = e.currentTarget.value;
     if (query === "") {
