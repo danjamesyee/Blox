@@ -77,16 +77,6 @@ class TracksEdit extends React.Component {
       id: this.props.match.params.trackId,
     });
   }
-  createNotification(track) {
-    NotificationManager.warning(
-      "Music can take up to 1 minute to play",
-      "Please be patient",
-      3000
-    );
-    console.log("end of first");
-    // this.sleep(8000);
-    // setTimeout(this.playNote(track), 100000000);
-  }
 
   playNote(part) {
     this.setState({ playing: true });
@@ -255,7 +245,6 @@ class TracksEdit extends React.Component {
               <button
                 className="play-button"
                 type="button"
-                onMouseEnter={this.createNotification}
                 onClick={() => this.playNote()}
               >
                 Play
