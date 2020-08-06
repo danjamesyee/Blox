@@ -14,22 +14,25 @@ import "react-notifications/lib/notifications.css";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true };
+    this.state = { isLoading: true, playing: -1 };
     this.state.track = [];
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
     this.unload = this.unload.bind(this);
     this.createNotification = this.createNotification.bind(this);
+    this.synth = new Tone.Synth().toMaster();
+    this.playing = false;
   }
 
   componentDidMount() {
-    // this.createNotification();
-
+    this.createNotification();
+    // debugger;
     this.props
       .fetchBlocks()
       .then(() => this.props.fetchTracks())
       .then(() => this.setState({ isLoading: false }));
   }
+
   createNotification(track) {
     NotificationManager.warning(
       "Music can take up to 1 minute to play",
@@ -40,24 +43,66 @@ class MainPage extends React.Component {
     // setTimeout(this.playNote(track), 100000000);
   }
 
+  pause() {
+    this.playing = false;
+  }
+
   playNote(track) {
-    // debugger;
-    // this.createNotification();
-    Tone.Transport.start();
+    this.setState({ playing: track._id });
     const synth = new Tone.Synth().toMaster();
-    for (let i = 0; i < track.blocks.length; i++) {
-      synth.triggerAttackRelease(
-        track.blocks[i].note,
-        track.blocks[i].duration
-      );
-      if (track.blocks[i].duration === "16n") {
-        this.sleep(200);
-      } else if (track.blocks[i].duration === "8n") {
-        this.sleep(400);
-      } else if (track.blocks[i].duration === "4n") {
-        this.sleep(800);
+
+    let note = 0;
+    // debugger;
+    synth.setNote(track.blocks[note].note);
+
+    Tone.Transport.scheduleRepeat((time) => {
+      if (note >= track.blocks.length || this.state.playing === -1) {
+        this.setState({ playing: -1 });
+
+        synth.triggerRelease(time);
+        Tone.Transport.cancel();
+      } else {
+        synth.setNote(track.blocks[note].note);
+
+        synth.triggerAttackRelease(
+          track.blocks[note].note,
+          track.blocks[note].duration,
+          time
+        );
       }
-    }
+      note++;
+    }, track.blocks[note].duration);
+
+    Tone.Transport.start();
+    // debugger;
+    // Tone.Transport.start();
+    // this.setState({ playing: true });
+    // this.playing = true;
+    // const myPromise = new Promise(
+    //   NotificationManager.warning(
+    //     "Music can take up to 1 minute to play",
+    //     "Please be patient",
+    //     3000
+    //   )
+    // ).then(() => {
+    //   for (let i = 0; i < track.blocks.length; i++) {
+    //     // debugger;
+    //     if (this.playing === false) {
+    //       break;
+    //     }
+    //     this.synth.triggerAttackRelease(
+    //       track.blocks[i].note,
+    //       track.blocks[i].duration
+    //     );
+    //     if (track.blocks[i].duration === "16n") {
+    //       this.sleep(200);
+    //     } else if (track.blocks[i].duration === "8n") {
+    //       this.sleep(400);
+    //     } else if (track.blocks[i].duration === "4n") {
+    //       this.sleep(800);
+    //     }
+    //   }
+    // });
   }
 
   sleep(miliseconds) {
@@ -69,6 +114,17 @@ class MainPage extends React.Component {
   unload() {}
 
   render() {
+    let pause = (
+      <img
+        src={require("../../assets/stylesheets/stop.png")}
+        alt="pause-button"
+        className="stop-button"
+        onClick={() => {
+          this.playing = false;
+          this.setState({ playing: -1 });
+        }}
+      ></img>
+    );
     let blocks = this.props.blocks || {};
     let tracks = this.props.tracks || [];
     if (tracks.length === 0)
@@ -131,15 +187,18 @@ class MainPage extends React.Component {
                 </header>
                 <div className="flexer">
                   <VotesContainer trackId={track._id} key={i} />
-                  <img
-                    src="https://www.pinpng.com/pngs/m/47-472328_play-button-svg-png-icon-free-download-download.png"
-                    alt="play-button"
-                    className="play-button"
-                    onMouseEnter={this.createNotification}
-                    onClick={() => {
-                      this.playNote(track);
-                    }}
-                  ></img>
+                  {this.state.playing === track._id ? (
+                    pause
+                  ) : (
+                    <img
+                      src={require("../../assets/stylesheets/play.png")}
+                      alt="play-button"
+                      className="play-button"
+                      onClick={() => {
+                        this.playNote(track);
+                      }}
+                    ></img>
+                  )}
 
                   <br />
                   <Link className="link-to-track" to={`/tracks/${track._id}`}>

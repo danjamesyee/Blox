@@ -14,8 +14,9 @@ class Tracks extends React.Component {
     this.playNote = this.playNote.bind(this);
     this.sleep = this.sleep.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { title: "" };
+    this.state = { title: "", playing: false };
     this.state.track = [];
+    this.pause = this.pause.bind(this);
   }
   onDragEnd = (result) => {
     const { destination, source, reason } = result;
@@ -48,17 +49,6 @@ class Tracks extends React.Component {
       });
   }
 
-  createNotification(track) {
-    NotificationManager.warning(
-      "Music can take up to 1 minute to play",
-      "Please be patient",
-      3000
-    );
-    console.log("end of first");
-    // this.sleep(8000);
-    // setTimeout(this.playNote(track), 100000000);
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     this.props
@@ -68,26 +58,44 @@ class Tracks extends React.Component {
   }
 
   addNoteToTrack(block) {
+    const synth = new Tone.Synth().toMaster();
+
+    synth.triggerAttackRelease(block.note, block.duration);
     this.setState({ track: this.state.track });
     this.state.track.push(block);
   }
 
   playNote() {
-    Tone.Transport.start();
+    this.setState({ playing: true });
     const synth = new Tone.Synth().toMaster();
-    for (let i = 0; i < this.state.track.length; i++) {
-      synth.triggerAttackRelease(
-        this.state.track[i].note,
-        this.state.track[i].duration
-      );
-      if (this.state.track[i].duration === "16n") {
-        this.sleep(200);
-      } else if (this.state.track[i].duration === "8n") {
-        this.sleep(400);
-      } else if (this.state.track[i].duration === "4n") {
-        this.sleep(800);
+    let track = this.state.track;
+
+    let note = 0;
+    synth.setNote(track[note].note);
+
+    Tone.Transport.scheduleRepeat((time) => {
+      if (note >= track.length || this.state.playing === false) {
+        this.setState({ playing: false });
+
+        synth.triggerRelease(time);
+        Tone.Transport.cancel();
+      } else {
+        synth.setNote(track[note].note);
+
+        synth.triggerAttackRelease(
+          track[note].note,
+          track[note].duration,
+          time
+        );
       }
-    }
+      note++;
+    }, track[note].duration);
+
+    Tone.Transport.start();
+  }
+
+  pause(synth) {
+    this.setState({ playing: false });
   }
 
   sleep(miliseconds) {
@@ -98,6 +106,20 @@ class Tracks extends React.Component {
 
   render() {
     const synth = new Tone.Synth().toMaster();
+    const audio = <audio controls></audio>;
+    let pause = (
+      <button
+        className="play-button pause"
+        type="button"
+        onClick={() => this.pause(synth)}
+        style={{
+          backgroundColor: "red",
+        }}
+      >
+        Stop
+      </button>
+    );
+
     let titleError;
     if (this.props.errors.title === undefined) {
       titleError = <div className="errors"></div>;
@@ -184,14 +206,19 @@ class Tracks extends React.Component {
             <p className="begin">
               Press play to begin or to hear your track once you've made it
             </p>
-            <button
-              className="play-button"
-              type="button"
-              onMouseEnter={this.createNotification}
-              onClick={() => this.playNote()}
-            >
-              Play
-            </button>
+
+            {this.state.playing ? (
+              pause
+            ) : (
+              <button
+                className="play-button"
+                type="button"
+                onMouseEnter={this.createNotification}
+                onClick={() => this.playNote()}
+              >
+                Play
+              </button>
+            )}
             <button
               className="play-button"
               type="button"
@@ -200,7 +227,10 @@ class Tracks extends React.Component {
               Clear
             </button>
 
-            <h3>Click the note buttons to add them to the track</h3>
+            <h3>
+              Click the note buttons to add them to the track then click and
+              drag the blocks to move them around the timeline
+            </h3>
             <h4>Quarter Notes</h4>
             {blocks
               .slice(0, 15)
