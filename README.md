@@ -69,32 +69,48 @@ The challenge involved with collecting musical data is knowing what kind of data
 
 ### Tracks: create, edit, and view tracks.
 
-A track is a collection of musical blocks. These blocks exist in the backend and act a musical templates to create a track. After a user adds a collection of blocks on to a track, they can save the track and it is sent to the backend to be stored. On the frontend, creating a track involves maintaining the right blocks for the track in the state, so that it will re-render upon a new block being added. In addition, the drag and drop functionality is integrated into this system by wrapping the whole displayed array of blocks in the drag and drop context and then causing the change of state each time the user moves a block. All this data is then saved into a track as a collection of blocks which can later be retrieved and played again. In order to play the track, we had to overcome the issue of all a track's notes playing at once when iterated over. Our solution, was to create a sleep function that would pause the program for a certain amount of time depending on the note's duration in order to maintain correct timing on playback.
+A track is a collection of musical blocks. These blocks exist in the backend and act a musical templates to create a track. After a user adds a collection of blocks on to a track, they can save the track and it is sent to the backend to be stored. On the frontend, creating a track involves maintaining the right blocks for the track in the state, so that it will re-render upon a new block being added. In addition, the drag and drop functionality is integrated into this system by wrapping the whole displayed array of blocks in the drag and drop context and then causing the change of state each time the user moves a block. All this data is then saved into a track as a collection of blocks which can later be retrieved and played again. In order to play the track, we used the Tone.js sound framework to iterate through the array of blocks and play them at the correct time. 
 
 ```Javascript
 playNote() {
-  Tone.Transport.start();
-  const synth = new Tone.Synth().toMaster();
-  for (let i = 0; i < this.state.track.length; i++) {
-    synth.triggerAttackRelease(
-      this.state.track[i].note,
-      this.state.track[i].duration
-    );
-    if (this.state.track[i].duration === "16n") {
-      this.sleep(200);
-    } else if (this.state.track[i].duration === "8n") {
-      this.sleep(400);
-    } else if (this.state.track[i].duration === "4n") {
-      this.sleep(800);
-    }
+    let track = this.state.track;
+
+    const synth = new Tone.Synth().toMaster();
+    let newPart = [];
+    let dur = 0;
+    track.forEach((block, idx) => {
+      if (idx !== 0) {
+        if (track[idx - 1].duration === "4n") dur += 0.5;
+        if (track[idx - 1].duration === "8n") dur += 0.25;
+        if (track[idx - 1].duration === "16n") dur += 0.125;
+      }
+
+      newPart.push([dur, block.note]);
+    });
+    newPart.push([dur + 1, "C4"]);
+    this.setState({ playing: true });
+
+    let note = 0;
+    Tone.Transport.cancel();
+
+    let part = new Tone.Part((time, pitch) => {
+      if (note >= newPart.length - 1 || this.state.playing === false) {
+        this.setState({ playing: false });
+
+        Tone.Transport.cancel();
+      } else {
+        synth.triggerAttackRelease(pitch, "4n", time);
+      }
+      note++;
+    }, newPart);
+
+    part.start();
+    Tone.Transport.start();
   }
-}
-sleep(miliseconds) {
-  var currentTime = new Date().getTime();
-  while (currentTime + miliseconds >= new Date().getTime()) {}
-}
 
 ```
+
+
 
 <!-- !YEE -->
 
