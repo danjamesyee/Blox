@@ -1,17 +1,30 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
+import lodash from "lodash"
 
-export default class Votes extends React.Component {
+class Votes extends React.Component {
   componentDidMount() {
     const { fetchTrackVotes, trackId } = this.props;
 
     fetchTrackVotes(trackId);
   }
 
+  handleVote(type) {
+    const { upvote, downvote, currentUser, trackId, history } = this.props;
+
+    if (lodash.isEmpty(currentUser)) {
+      history.push("/login")}
+    else if (type === 'up') upvote(trackId);
+    else downvote(trackId);
+  }
+
   render() {
-    const { upvote, downvote, trackId, currentUser, votes } = this.props;
+    const { trackId, currentUser, votes } = this.props;
 
     let upvoted = "";
     let downvoted = "";
+    let up = "up";
+    let down = "down";
 
     // current user exists
     if (currentUser) {
@@ -27,14 +40,14 @@ export default class Votes extends React.Component {
     }
     return (
       <div className="vote">
-        <div onClick={() => upvote(trackId)} className={"material-icons upvote" + upvoted}>
+        <div onClick={() => this.handleVote(up)} className={"material-icons upvote" + upvoted}>
           keyboard_arrow_up
         </div>
 
         <div className="rating">{this.props.rating}</div>
 
         <div
-          onClick={() => downvote(trackId)}
+          onClick={() => this.handleVote(down)}
           className={"material-icons downvote" + downvoted}
         >
           keyboard_arrow_down
@@ -43,3 +56,5 @@ export default class Votes extends React.Component {
     );
   }
 }
+
+export default withRouter(Votes);
