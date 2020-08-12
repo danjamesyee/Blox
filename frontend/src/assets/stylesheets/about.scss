@@ -11,6 +11,36 @@
   animation-timing-function: ease-in;
   animation-duration: 2s;
 }
+
+.name-card {
+  width: 280px;
+  height: 180px;
+  margin: 20px;
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  // opacity: 0.6;
+}
+
+.name-card > h3 {
+  margin-top: 10px;
+  margin-left: 15px;
+  font-weight: bolder;
+  text-shadow: 1px 1px grey;
+}
+
+.name-card:hover {
+  opacity: 1;
+}
+
+.about-icons {
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+  padding: 10px;
+  text-shadow: 1px 1px grey;
+}
+
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;
@@ -22,9 +52,13 @@
 
 .name-cards > h3 {
   background: cornflowerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   padding: 10px;
   margin: 20px;
+  // margin-left: 30px;
   height: 180px;
   width: 280px;
   border-radius: 4px;
@@ -45,7 +79,7 @@
   font-weight: bold;
 }
 .name-cards > h3 > a {
-  margin-right: 245px;
+  // margin-right: 245px;
   position: relative;
   bottom: 36px;
 }
@@ -56,7 +90,7 @@
 }
 
 #yee > h3 > a {
-  margin-right: 245px;
+  // margin-right: 245px;
   position: relative;
   bottom: 36px;
   font-weight: bold;
@@ -70,6 +104,7 @@
   background-repeat: no-repeat;
   background-image: url("https://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/004/981/medium/daniel_chau.jpg?1587762421");
 }
+
 #creppel {
   position: relative;
   color: white;
