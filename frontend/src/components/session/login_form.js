@@ -21,30 +21,30 @@ class LoginForm extends React.Component {
     if (nextProps.currentUser === true) {
       this.props.history.push("/");
     }
-
+    
     // Set or clear errors
     this.setState({ errors: nextProps.errors });
   }
-
+  
   // Handle field updates (called in the render method)
   update(field) {
     return (e) =>
-      this.setState({
-        [field]: e.currentTarget.value,
-      });
+    this.setState({
+      [field]: e.currentTarget.value,
+    });
   }
-
+  
   // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
-
+    
     let user = {
       email: this.state.email,
       password: this.state.password,
     };
-
+    
     this.props.login(user)
-    // .then(this.props.history.push("/"));
+    .then(this.props.history.goBack);
   }
 
 
