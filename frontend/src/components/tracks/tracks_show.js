@@ -111,7 +111,7 @@ class TracksShowPage extends React.Component {
       this.props.currentUser.id === track.user._id
     ) {
       editLink = (
-        <div>
+        <div className="tracks-edit-delete">
           <Link id="show-edit" to={`/tracks/${track._id}/edit`}>
             Edit
           </Link>
