@@ -94,10 +94,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    let searchbar = (this.props.location.pathname === '/') ? 
-      (<SearchBar /> ): 
-      (<></>)
-
     return (
       <div id="navbar">
         <div className="navbar-inner">
@@ -113,7 +109,7 @@ class NavBar extends React.Component {
               </Toast.Header>
             </Toast>
           </div>
-          {searchbar}
+          <SearchBar />
           {this.getLinks()}
         </div>
       </div>
