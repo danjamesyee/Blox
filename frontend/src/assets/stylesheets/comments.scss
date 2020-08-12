@@ -1,11 +1,19 @@
 .comments {
   margin-top: 5%;
   display: flex;
+  margin-left: 115px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
+}
+
+.comments-errors {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 5px;
 }
 
 .show-page-comment-buttons {

@@ -138,6 +138,7 @@ button {
   text-decoration: none;
   border-radius: 5px;
   background-color: cornflowerblue;
+  margin-right: 5px;
 }
 #show-edit:hover {
   color: black;
@@ -170,4 +171,9 @@ button {
   font-size: 16px;
   left: 114px;
   top: 15px;
+}
+
+.tracks-edit-delete {
+  margin-left: 115px;
+  margin-top: 5px;
 }
