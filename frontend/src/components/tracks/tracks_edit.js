@@ -243,28 +243,41 @@ class TracksEdit extends React.Component {
               )}
             </Droppable>
             <br />
-            <p className="begin">
-              Press play to begin or to hear your track once you've made it
-            </p>
-            {this.state.playing ? (
-              pause
-            ) : (
-              <button
-                className="play-button"
-                type="button"
-                onClick={() => this.playNote()}
-              >
-                Play
-              </button>
-            )}
-            <button className="play-button" type="button" onClick={this.clear}>
-              Clear
-            </button>
-            <ul>
-              <li>Click the note buttons to add them to the track</li>
-              <li>Click the notes on the track to delete</li>
-              <li>Drag and drop to move the notes</li>
-            </ul>
+            <div className="play-flex">
+              <div className="play-buttons">
+                <p className="begin">
+                  Press play to hear your track once you've made it
+                </p>
+
+                {this.state.playing ? (
+                  pause
+                ) : (
+                  <button
+                    className="play-button"
+                    type="button"
+                    onMouseEnter={this.createNotification}
+                    onClick={() => this.playNote()}
+                  >
+                    Play
+                  </button>
+                )}
+
+                <button
+                  className="play-button"
+                  type="button"
+                  onClick={() => this.setState({ notes: [], track: [] })}
+                >
+                  Clear
+                </button>
+              </div>
+              <ul>
+                <li className="inst-list">
+                  Click the note buttons to add them to the track
+                </li>
+                <li>Click the notes on the track to delete</li>
+                <li>Drag and drop to move the notes</li>
+              </ul>
+            </div>
             <h4>Quarter Notes</h4>
             {blocks
               .slice(0, 15)
