@@ -61,13 +61,13 @@ export default class Search extends React.Component {
   // <Link id="search-links" to={`users/${user._id}`}>{user.handle}</Link> 
   render() {
     let users = this.props.users.map((user, i) => 
-    <Link to={`users/${user._id}`} id="search-li" key={"searchUser" + i}> 
+    <Link to={`/users/${user._id}`} id="search-li" key={"searchUser" + i}> 
       {user.handle} 
     </Link>
     );
 
     let tracks = this.props.tracks.map((track, i) => 
-      <Link id="search-li" key={"searchTrack" + i} to={`tracks/${track._id}`}> 
+      <Link id="search-li" key={"searchTrack" + i} to={`/tracks/${track._id}`}> 
         {track.title}
       </Link>
     );
@@ -102,7 +102,7 @@ export default class Search extends React.Component {
           search
         </span>
         <input
-          autocomplete="off"
+          autoComplete="off"
           id="search"
           className="search-bar-input"
           type="text"
