@@ -1,4 +1,5 @@
 import React from 'react';
+import lodash from "lodash";
 
 export default class CreateComment extends React.Component {
   constructor(props) {
@@ -44,6 +45,16 @@ export default class CreateComment extends React.Component {
           <div className="comment-button" onClick={this.handleComment}>Comment</div>
         </div>
       );
+    }
+
+    if (lodash.isEmpty(this.props.currentUser)) {
+      if (this.state.text.length > 0) {
+        buttons = (
+          <h3 className="comments-errors">* Must be logged in to post a comment</h3>
+        )
+      } else {
+        buttons = <></>;
+      }
     }
 
     return (
