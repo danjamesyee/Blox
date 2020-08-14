@@ -54,7 +54,7 @@ Bootstrap is a popular framework that includes HTML and CSS based design templat
 
 #### Drag and Drop with React-beautiful-dnd
 
-Allows us to rearrange musical blocks on the tracks, allowing the user added freedom and interaction in the music creation process.
+Allows us to rearrange musical blocks on the tracks, allowing the user added functionality and interaction in the music creation process.
 
 
 ![gifdnd](https://raw.githubusercontent.com/danjamesyee/MERNblocks/master/dragndrop.gif)
