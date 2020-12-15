@@ -28,11 +28,6 @@ Many people are interested in music, however they lack any musical experience an
 - [x] Search functionality by title/username
 - [x] Production README
 
-#### Bonus Features:
-
-- [ ] Mobile app
-- [ ] Live collaboration
-- [ ] Custom musical blocks
 
 # Technologies and Technical Challenges
 
