@@ -31,7 +31,7 @@
     "react-beautiful-dnd": "^13.0.0",
     "react-notifications": "^1.6.0",
     "tone": "^13.8.25",
-    "validator": "^13.1.1",
+    "validator": "^13.7.0",
     "webpack": "^4.42.0"
   },
   "devDependencies": {
